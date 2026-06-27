@@ -34,7 +34,7 @@ The scaffold creates these project artifacts:
 - `candidate-role-library.md`: reusable candidate roles with best-practice skill, tool, knowledge-base, record, handoff matches, and capability-source tracking for ECC / Everything Claude Code, Claude Code plugins, skills, tools, and external references.
 - `use-cases.md`: concrete, measurable use cases created by demand intake.
 - `role-loop-charters.md`: role goals, standards, constraints, records, evaluation/feedback, update duties, authority, and handoffs.
-- `loop-manager.md`: Loop cadence, fixed-time retrospectives, role health, resources, self-review, experience distillation, communication-efficiency review, responsibility/skill optimization, reflection, and feedback to Super Assistant.
+- `loop-manager.md`: Loop cadence, default automatic distillation time nodes, fixed-time retrospectives, role health, resources, self-review, experience distillation, communication-efficiency review, responsibility/skill optimization, reflection, and feedback to Super Assistant.
 - `stage-knowledge-base.md`: per-stage goals, standards, constraints, workflows, principles, outputs, and records.
 - `stage-confirmation-checklist.md`: requester/domain-owner confirmation gate for the stage knowledge base.
 - `implementation-plan.md`: stage execution plan, responsible roles, subagent justification, gates, tool readiness, and handoffs.
@@ -78,6 +78,7 @@ A Loop is weak if it cannot answer these questions:
 - What exactly improves after each round?
 - Who owns the Loop end to end?
 - Was Loop Manager created at project start, distinct from project manager/delivery coordination?
+- Does Loop Manager have default automatic distillation time nodes from project start?
 - Did demand intake refine rough ideas into concrete, measurable use cases?
 - Were implementation roles selected from confirmed demand instead of invented by habit?
 - Is the initial active role set intentionally small, with Loop Manager plus usually 2-3 other active roles and specialist roles deferred until Loop Manager evidence justifies splitting?

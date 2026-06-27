@@ -8,8 +8,10 @@ This repository is the git-managed source for the `loop-builder` Codex skill.
 
 - Turns ambiguous work into a closed Loop: `goal -> input -> action -> observation -> update -> reuse`.
 - Creates Loop governance first, with a mandatory Loop Manager.
+- Gives Loop Manager default automatic distillation time nodes from project start.
 - Separates Loop Manager from project manager / delivery coordinator.
 - Selects implementation roles from an existing candidate role library, while keeping the initial active role set small.
+- Requires product manager / workflow designer to keep clarifying user needs until they are clear, bounded, testable, and ready for handoff.
 - Requires role-to-role messages, handoffs, blockers, advice, status syncs, test findings, and acceptance feedback to be recorded.
 - Creates category-based role workspaces so roles of the same category share one project folder.
 - Controls document growth with `document-index.md`, document budgets, review dates, and merge/archive decisions.

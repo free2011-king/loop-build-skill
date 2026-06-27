@@ -57,7 +57,7 @@ The Loop Manager may also recommend merging, pausing, or closing roles when the 
 
 | Candidate Role | Default Position | Activate When | Must Not Do |
 | --- | --- | --- | --- |
-| Product manager / workflow designer | Understand complete user needs and convert confirmed use cases into product scope, workflow, acceptance standards, non-goals, risks, outcome metrics, and release slices | User value, target users, workflow, scope, priority, acceptance criteria, or success metrics are unclear | Implement code, declare tests passed, approve business acceptance, ignore user evidence, or silently expand scope |
+| Product manager / workflow designer | Think through the product problem, repeatedly clarify user needs with the user/domain owner, and convert confirmed use cases into product scope, workflow, acceptance standards, non-goals, risks, outcome metrics, and release slices | User value, target users, workflow, scope, priority, acceptance criteria, or success metrics are unclear | Implement code, declare tests passed, approve business acceptance, ignore user evidence, silently expand scope, or hand off ambiguous demand as ready |
 | Developer / implementer | Build the confirmed technical slice and provide implementation evidence | Confirmed scope needs code, configuration, integration, automation, data, or platform changes | Redefine scope, declare QA passed, approve release, or bypass governance |
 | Tester / evaluator | Verify behavior against use cases, acceptance standards, regressions, and quality gates | Runnable artifact, implementation diff, or reviewable output exists | Implement fixes silently, approve business acceptance, or rewrite product scope |
 | Loop Manager | Govern the whole Loop: role registry, cadence, fixed-time retrospectives, blockers, handoffs, role health checks, resource status, experience distillation, role self-review, role advice, communication-efficiency review, role responsibility/skill optimization, project reflection, and feedback to Super Assistant | Always for every concrete Loop project; created at project start before demand intake and implementation roles | Do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific execution |
@@ -122,7 +122,21 @@ Do not update the candidate role library merely because a source exists. Update 
 
 ## Product Manager Capability Pattern
 
-Use this baseline whenever the Product manager / workflow designer role is created. It is adapted from established product discovery, user-need, and agile product-owner practices: discover the problem before committing to a solution, describe user needs in observable terms, maintain outcome-oriented scope, and prepare evidence-backed handoffs.
+Use this baseline whenever the Product manager / workflow designer role is created. It is adapted from established product discovery, user-need, and agile product-owner practices: discover the problem before committing to a solution, describe user needs in observable terms, maintain outcome-oriented scope, and prepare evidence-backed handoffs. The role must think like a product owner, not a task transcriber: it should challenge unclear requests, explore user value, compare options, identify non-goals, and keep communicating with the user/domain owner until the need is clear enough to implement or explicitly marked blocked.
+
+### Product Thinking And Clarification Loop
+
+The product manager must run a clarification loop with the user/domain owner until the demand is clear, bounded, and testable. Do not hand off to developer, architect, tester, or codebase explorer while the core user need is still ambiguous.
+
+Each clarification round should:
+
+- Restate the user's need in product terms: target user, problem/job, desired outcome, context, and value.
+- Ask focused questions about ambiguity, edge cases, priority, workflow, constraints, acceptance, and tradeoffs.
+- Offer product options when useful, including MVP slice, complete workflow, manual fallback, phased release, or explicit non-goal.
+- Record what changed after the user's answer: confirmed facts, rejected assumptions, open questions, scope changes, and evidence gaps.
+- Decide whether another clarification round is needed before handoff.
+
+Demand is ready for handoff only when target user, problem, outcome, scope boundary, acceptance criteria, priority/release slice, evidence or evidence gap, and confirmation owner are explicit. If the user cannot yet clarify, mark the product package as blocked or discovery-needed rather than pretending it is implementation-ready.
 
 ### User Need Completeness Checklist
 
@@ -176,7 +190,13 @@ When online or external product-management references shape the role requirement
 
 ## Loop Manager Fixed-Time Retrospective Pattern
 
-Every concrete project must have a Loop Manager and a fixed-time retrospective cadence. Use weekly as the default cadence unless the project defines a shorter cycle, milestone-based cadence, or incident-triggered review.
+Every concrete project must have a Loop Manager and a fixed-time retrospective cadence. Use weekly as the default cadence unless the project defines a shorter cycle, milestone-based cadence, or incident-triggered review. At project creation, the Loop Manager also receives default automatic distillation time nodes:
+
+- Project-start baseline: record Loop object, active/deferred roles, document budget, risks, resources, communication rules, and first gates.
+- Task or stage completion checkpoint: distill evidence returned, handoff quality, status-sync quality, reusable learning, and next owner.
+- Weekly fixed retrospective: review communication efficiency, role health, resources, role boundaries, skill/tool gaps, reusable principles, and document growth.
+- Event-triggered review: run after major blockers, role changes, repeated handoff friction, major disagreements, failed gates, user corrections, or material risks.
+- Project-closure distillation: archive/merge documents, pause/close roles, preserve reusable learning, and send skill/template/principle feedback to Super Assistant.
 
 The Loop Manager retrospective must treat the following as core distillation and adjustment targets:
 

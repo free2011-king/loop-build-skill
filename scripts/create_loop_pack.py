@@ -199,7 +199,7 @@ If a user, domain owner, role owner, or agent exceeds the document budget set be
         loop_dir / "loop-manager.md",
         f"""# {args.name} Loop Manager
 
-Every concrete Loop project must have a Loop Manager from project start, before demand intake and before implementation roles. The Loop Manager is distinct from a project manager: it governs the whole Loop system, not ordinary delivery logistics. It manages Loop rhythm, fixed-time retrospectives, communication-efficiency review, role responsibility optimization, role skill/tool improvement, and project-level reflection, maintains the active role registry during role creation and role/personnel/session changes, broadcasts role changes to every other active role, checks project-type workflow completeness, checks role health, checks resource status, checks whether each role has synced task status to the project owner at the required cadence and on completion, checks whether each role has distilled reusable experience into its workspace, receives goal-setting interactions in Codex, turns goals into dispatch packets, routes tasks against the registered role list, requires each role to run regular self-review, regularly collects each role's professional advice, handles major disagreement escalation, prompts the user or domain owner to consider advice and major decisions, then sends improvement feedback to the Super Assistant. The Loop Manager does not do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific implementation work.
+Every concrete Loop project must have a Loop Manager from project start, before demand intake and before implementation roles. The Loop Manager is distinct from a project manager: it governs the whole Loop system, not ordinary delivery logistics. It manages Loop rhythm, default automatic distillation time nodes, fixed-time retrospectives, communication-efficiency review, role responsibility optimization, role skill/tool improvement, and project-level reflection, maintains the active role registry during role creation and role/personnel/session changes, broadcasts role changes to every other active role, checks project-type workflow completeness, checks role health, checks resource status, checks whether each role has synced task status to the project owner at the required cadence and on completion, checks whether each role has distilled reusable experience into its workspace, receives goal-setting interactions in Codex, turns goals into dispatch packets, routes tasks against the registered role list, requires each role to run regular self-review, regularly collects each role's professional advice, handles major disagreement escalation, prompts the user or domain owner to consider advice and major decisions, then sends improvement feedback to the Super Assistant. The Loop Manager does not do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific implementation work.
 
 ## Role Charter
 
@@ -217,10 +217,14 @@ Every concrete Loop project must have a Loop Manager from project start, before 
 
 | Cadence | Activity | Output |
 | --- | --- | --- |
+| Project-start baseline | Record Loop object, initial active roles, deferred candidate roles, document budget, risk/resource baseline, communication rules, first gates, and first review dates | Baseline entry in Loop Manager workspace, role-registry.md check, document-index.md check |
 | Role creation, personnel/session adjustment, or role status change | Update active role registry with role ID, category, workspace, session, boundary, readiness, health, resources, and status; notify every other active role; record the notification | role-registry.md update, interaction-evidence-log.md broadcast record, affected role workspace updates |
 | Each stage handoff | Check owner, input, output, records, gate | Handoff status |
+| Task or stage completion checkpoint | Distill what changed, evidence returned, status-sync quality, handoff quality, reusable learning, and next owner | Completion distillation note in interaction-evidence-log.md or responsible role workspace |
 | User sets a goal in Codex | Convert the goal into a goal contract and dispatch packet; route to responsible role/session; define project-owner status sync cadence and completion sync requirement | Goal dispatch log update |
 | Fixed-time retrospective, weekly by default unless project cadence says otherwise | Review progress, blockers, risks, user-role communication efficiency, role-to-role communication efficiency, handoff friction, responsibility overlap/gaps, skill/tool gaps, feedback, and updates | Retrospective summary, communication-efficiency report, responsibility/skill improvement proposals |
+| Event-triggered review | Run after major blocker, role change, repeated handoff friction, major disagreement, failed gate, user correction, or material risk | Cause analysis, prevention rule, role/document/communication update proposal |
+| Project-closure distillation | Preserve reusable learning, decide which documents to merge/archive, decide which roles pause/close, and send skill/template/principle feedback to Super Assistant | Closure note, archive/merge decisions, role closure updates, skill/principle/template feedback |
 | Each role message or interaction | Confirm the message is recorded in `interaction-evidence-log.md` or a named project document, and check whether it includes document/material paths, online links, artifact references, or explicit evidence gaps | Interaction/message log update |
 | Project-owner status sync cadence | Check active roles sync task status to the project owner at the dispatch-defined cadence and immediately on completion, blocker, decision need, or handoff | role-status-sync record and stale-sync gap list |
 | Role change broadcast | After a role is created, activated, paused, replaced, closed, or its person/agent/session changes, notify all other active roles with change summary, reason, effective time, boundary impact, handoff impact, and required action | Broadcast notification record |
@@ -234,6 +238,18 @@ Every concrete Loop project must have a Loop Manager from project start, before 
 | Before execution gates | Verify required artifacts and confirmations | Gate recommendation |
 | After project learning | Send improvement proposal to Super Assistant, including communication rules, role responsibility changes, skill/tool upgrades, and template updates | Skill/principle/template update candidate |
 | Major role disagreement | Collect issue, options, evidence, impact, recommendations, and decision need; ask user/domain owner to decide | Decision packet and conflict log update |
+
+## Default Automatic Distillation Time Nodes
+
+These time nodes are active by default when the project is created. Change them only when the user/domain owner confirms a different cadence.
+
+| Time Node | Default Trigger | Distillation Focus | Required Output | Status |
+| --- | --- | --- | --- | --- |
+| Project-start baseline | Immediately when this Loop project is created | Loop object, active roles, deferred roles, document budget, risk/resource baseline, communication rules, and first gates | Baseline note, role-registry.md check, document-index.md check | active |
+| Task or stage completion checkpoint | Role completes a task, stage, handoff, or dispatch packet | What changed, evidence returned, status-sync quality, handoff quality, reusable learning, and next owner | Completion distillation note | active |
+| Weekly fixed retrospective | Weekly by default unless the project defines another cadence | Communication efficiency, role health, resource fit, responsibility boundaries, skill/tool gaps, reusable principles, and document growth | Retrospective summary and improvement proposals | active |
+| Event-triggered review | Major blocker, role change, repeated handoff friction, major disagreement, failed gate, user correction, or material risk | Cause, affected roles, boundary change, communication update, role split/merge need, and prevention rule | Decision/conflict entry, registry update when needed, all-role notification when roles change | active |
+| Project-closure distillation | Project, milestone, release, or Loop round closes | Reusable learning, archive/merge decisions, role pause/closure, and skill/template/principle updates | Closure note and feedback to Super Assistant | active |
 
 ## Project-Type Workflow Rule
 
@@ -575,7 +591,7 @@ The Loop Manager may also recommend merging, pausing, or closing roles when the 
 
 | Candidate Role | Role Category | Default Position | Activate When | Must Not Do | Default Category Workspace | Codex Session |
 | --- | --- | --- | --- | --- | --- | --- |
-| Product manager / workflow designer | product-workflow | Understand complete user needs and convert confirmed use cases into product scope, workflow, acceptance standards, non-goals, risks, outcome metrics, and release slices | User value, target users, workflow, scope, priority, acceptance criteria, or success metrics are unclear | Implement code, declare tests passed, approve business acceptance, ignore user evidence, or silently expand scope | `roles/product-workflow/` | Dedicated product role session |
+| Product manager / workflow designer | product-workflow | Think through the product problem, repeatedly clarify user needs with the user/domain owner, and convert confirmed use cases into product scope, workflow, acceptance standards, non-goals, risks, outcome metrics, and release slices | User value, target users, workflow, scope, priority, acceptance criteria, or success metrics are unclear | Implement code, declare tests passed, approve business acceptance, ignore user evidence, silently expand scope, or hand off ambiguous demand as ready | `roles/product-workflow/` | Dedicated product role session |
 | Developer / implementer | development | Build the confirmed technical slice and provide implementation evidence | Confirmed scope needs code, configuration, integration, automation, or platform changes | Redefine scope, declare QA passed, approve release, or bypass governance | `roles/development/` | Dedicated developer session |
 | Tester / evaluator | testing-evaluation | Verify behavior against use cases, acceptance standards, regressions, and quality gates | Runnable artifact or reviewable implementation exists | Implement fixes silently, approve business acceptance, or rewrite scope | `roles/testing-evaluation/` | Dedicated tester session |
 | Loop Manager | loop-manager | Govern the whole Loop: role registry, cadence, fixed-time retrospectives, blockers, handoffs, role health checks, resource status, experience distillation, role self-review, role advice, communication-efficiency review, role responsibility/skill optimization, reflection, and feedback to Super Assistant | Always for every concrete Loop project; created at project start before demand intake and implementation roles | Do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific execution | `roles/loop-manager/` | Dedicated Loop Manager session |
@@ -652,7 +668,21 @@ Do not update the candidate role library merely because a source exists. Update 
 
 ## Product Manager Capability Pattern
 
-Use this baseline whenever the Product manager / workflow designer role is created. It is adapted from established product discovery, user-need, and agile product-owner practices: discover the problem before committing to a solution, describe user needs in observable terms, maintain outcome-oriented scope, and prepare evidence-backed handoffs.
+Use this baseline whenever the Product manager / workflow designer role is created. It is adapted from established product discovery, user-need, and agile product-owner practices: discover the problem before committing to a solution, describe user needs in observable terms, maintain outcome-oriented scope, and prepare evidence-backed handoffs. The role must think like a product owner, not a task transcriber: it should challenge unclear requests, explore user value, compare options, identify non-goals, and keep communicating with the user/domain owner until the need is clear enough to implement or explicitly marked blocked.
+
+### Product Thinking And Clarification Loop
+
+The product manager must run a clarification loop with the user/domain owner until the demand is clear, bounded, and testable. Do not hand off to developer, architect, tester, or codebase explorer while the core user need is still ambiguous.
+
+Each clarification round should:
+
+- Restate the user's need in product terms: target user, problem/job, desired outcome, context, and value.
+- Ask focused questions about ambiguity, edge cases, priority, workflow, constraints, acceptance, and tradeoffs.
+- Offer product options when useful, including MVP slice, complete workflow, manual fallback, phased release, or explicit non-goal.
+- Record what changed after the user's answer: confirmed facts, rejected assumptions, open questions, scope changes, and evidence gaps.
+- Decide whether another clarification round is needed before handoff.
+
+Demand is ready for handoff only when target user, problem, outcome, scope boundary, acceptance criteria, priority/release slice, evidence or evidence gap, and confirmation owner are explicit. If the user cannot yet clarify, mark the product package as blocked or discovery-needed rather than pretending it is implementation-ready.
 
 ### User Need Completeness Checklist
 
@@ -706,7 +736,7 @@ When online or external product-management references shape the role requirement
 
 ## Loop Manager Fixed-Time Retrospective Pattern
 
-Every concrete project must have a Loop Manager and a fixed-time retrospective cadence. Use weekly as the default cadence unless the project defines a shorter cycle, milestone-based cadence, or incident-triggered review.
+Every concrete project must have a Loop Manager and a fixed-time retrospective cadence. Use weekly as the default cadence unless the project defines a shorter cycle, milestone-based cadence, or incident-triggered review. At project creation, the Loop Manager also receives default automatic distillation time nodes: project-start baseline, task/stage completion checkpoint, weekly fixed retrospective, event-triggered review, and project-closure distillation.
 
 The Loop Manager retrospective must treat the following as core distillation and adjustment targets:
 
@@ -964,7 +994,7 @@ Every role is also an advisor. The charter must make room for role-specific best
 | Loop Manager | loop-manager | Govern the whole Loop from project start | Registry, fixed-time retrospectives, communication-efficiency review, responsibility/skill optimization, status, risks, decisions, blockers, handoffs, role health checks, resource status, role self-reviews, experience distillation checks, advice summaries, and reflection are current | Do not do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or silently edit skill files | Loop artifacts, role outputs, feedback, gate results, role self-reviews, health/resource signals | Project status, role health report, resource report, reflection summary, role self-review tracker, experience distillation status, role advice summary, improvement proposals | Project status, reflection log, health/resource log, role self-review tracker, role advice summary, feedback to Super Assistant | Stage progress, blockers, recurring failures, role health, resources, role self-review completion, experience captured, role advice surfaced, skill-update candidates | Require role self-review, check role health/resources, verify experience distillation, collect role advice, and send improvement proposals to Super Assistant | `roles/loop-manager/` | Hand off execution to responsible roles; hand off delivery logistics to project manager if selected; send skill feedback to Super Assistant |
 | Super Assistant / Loop owner | super-assistant | Drive the Loop end to end | Loop artifacts, handoffs, gates, and updates stay current | Do not perform out-of-scope role work silently | Confirmed demand, role outputs, feedback | Coordination, review, updates | Handoff log, update log, review notes | Gate status, unresolved risks, user feedback | Update Loop artifacts and next-round rules | `roles/super-assistant/` | Hand off role-specific execution to responsible roles |
 | Project manager / delivery coordinator | project-management | Coordinate delivery logistics when selected | Milestones, dependency updates, stakeholder status, and delivery risks are current | Do not govern Loop learning, maintain role health, replace Loop Manager, decide product scope, implement, test, approve release, or own experience distillation | Confirmed plan, milestones, dependencies, stakeholder needs | Delivery status, milestone/dependency tracker, stakeholder updates | Delivery log, dependency tracker, status summaries | Milestones and dependencies visible; Loop Manager can see resource/schedule risks | Update delivery coordination artifacts, not Loop governance artifacts | `roles/project-management/` | Hand off Loop governance to Loop Manager; scope decisions to product/domain owner; implementation to developer |
-| Product manager / workflow designer | product-workflow | Turn confirmed use cases into complete user-need understanding, product/workflow scope, and acceptance standards | Target users, user context, problem/job, outcome metric, scope, workflow, non-goals, risks, release slices, and acceptance standards are explicit and confirmed | Do not implement, test, approve business acceptance, ignore evidence gaps, or expand scope silently | Confirmed use cases, domain constraints, user feedback/evidence, analytics or process signals | Product problem statement, user-need statements, workflow, acceptance criteria, release slice recommendation, measurement plan | User evidence, product decisions, assumptions, tradeoffs, priority rationale, scope changes, open questions | Domain/user confirmation, ambiguity reduced, developer/tester can act from evidence | Update product assumptions, scope, standards, and next-slice recommendations before development handoff | `roles/product-workflow/` | Hand off confirmed product package to developer/architect/codebase explorer and evidence review to tester |
+| Product manager / workflow designer | product-workflow | Turn confirmed use cases into complete user-need understanding, product/workflow scope, and acceptance standards | Product thinking and user clarification loop are complete: target users, user context, problem/job, outcome metric, scope, workflow, non-goals, risks, release slices, and acceptance standards are explicit and confirmed | Do not implement, test, approve business acceptance, ignore evidence gaps, expand scope silently, or hand off ambiguous demand as ready | Confirmed use cases, domain constraints, user feedback/evidence, analytics or process signals | Product problem statement, user-need statements, clarification rounds, workflow, acceptance criteria, release slice recommendation, measurement plan | User evidence, product decisions, assumptions, tradeoffs, priority rationale, scope changes, open questions, clarification history | Domain/user confirmation, ambiguity reduced, developer/tester can act from evidence | Continue user clarification until demand is clear or blocked; update product assumptions, scope, standards, and next-slice recommendations before development handoff | `roles/product-workflow/` | Hand off only confirmed product package to developer/architect/codebase explorer and evidence review to tester |
 | Developer / implementer | development | Build the confirmed technical slice | Changes are scoped, runnable, reviewed, and accompanied by implementation evidence | Do not change product scope, declare QA pass, approve release, or bypass governance | Product spec, implementation plan, stage knowledge base, repo context | Code/config/scripts, implementation notes, build evidence | Changed files, commands run, test output, blockers | Build passes, unit checks run, tester has evidence | Update implementation notes and handoff package | `roles/development/` | Hand off verification to tester and scope questions to product manager |
 | Tester / evaluator | testing-evaluation | Verify implementation against use cases and acceptance standards | Findings are evidence-based, reproducible, and tied to standards | Do not implement fixes silently, approve business acceptance, or redefine scope | Use cases, acceptance criteria, implementation evidence, runnable artifact | Test plan, pass/fail results, defects, quality risks | Test cases, evidence, failure categories, regression notes | Acceptance criteria verified or defects filed | Update quality standards, regression checks, and feedback signals | `roles/testing-evaluation/` | Hand off defects to developer and acceptance decisions to domain owner |
 |  |  |  |  |  |  |  |  |  |  |  |
@@ -1473,7 +1503,7 @@ Major or unresolved disagreements must be escalated to the Loop Manager. The Loo
             role_specific_capability = """
 ## Product Manager Capability Baseline
 
-This role must fully consider user needs before turning demand into build scope. A requested feature is not implementation-ready until the role has either documented or explicitly marked open questions for:
+This role must fully consider user needs before turning demand into build scope. It must think like a product owner, not a task transcriber: challenge unclear requests, explore user value, compare options, identify non-goals, and keep communicating with the user/domain owner until the need is clear enough to implement or explicitly blocked. A requested feature is not implementation-ready until the role has either documented or explicitly marked open questions for:
 
 - Target users / segments, decision makers, operators, and excluded users.
 - User context, trigger, workflow moment, frequency, constraints, and edge cases.
@@ -1482,6 +1512,20 @@ This role must fully consider user needs before turning demand into build scope.
 - Evidence source: interview, domain-owner confirmation, analytics, support/sales signal, process record, domain reference, or evidence gap.
 - Scope, non-goals, assumptions, dependencies, risks, privacy/security/accessibility considerations, and release-slice rationale.
 - Acceptance criteria, examples, negative cases, quality attributes, confirmation owner, and remaining decisions.
+
+## Product Clarification Loop
+
+Repeat this loop until the demand is clear, bounded, and testable:
+
+1. Restate the user's need in product terms: target user, problem/job, desired outcome, context, and value.
+2. Ask focused questions about ambiguity, edge cases, priority, workflow, constraints, acceptance, and tradeoffs.
+3. Offer product options when useful: MVP slice, complete workflow, manual fallback, phased release, or explicit non-goal.
+4. Record what changed after the user's answer: confirmed facts, rejected assumptions, open questions, scope changes, and evidence gaps.
+5. Decide whether another clarification round is needed before handoff.
+
+| Round | User / Domain Input | Product Restatement | Questions Asked | User Answer | Confirmed Facts | Rejected Assumptions | Open Questions | Scope / Acceptance Change | Need Another Round? |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |  | yes / no |
 
 Before handoff, provide a product package with problem statement, user-need statements, confirmed use cases/user stories, workflow, acceptance criteria, evidence links or gaps, priority rationale, outcome metric, scope/non-goals, risks, and user/domain-owner confirmation status.
 """

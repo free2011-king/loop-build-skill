@@ -12,6 +12,7 @@ Read this reference when creating Loop roles, role workspaces, Codex sessions, i
 - [Document Governance And Index](#document-governance-and-index)
 - [Demand Intake Role](#demand-intake-role)
 - [Loop Manager](#loop-manager)
+- [Default Loop Manager Distillation Time Nodes](#default-loop-manager-distillation-time-nodes)
 - [Project-Type Workflow Governance](#project-type-workflow-governance)
 - [Active Role Registry](#active-role-registry)
 - [Goal Setting And Dispatch In Codex](#goal-setting-and-dispatch-in-codex)
@@ -153,6 +154,18 @@ Each fixed-time retrospective must explicitly review user-to-role communication 
 The Loop Manager records these findings as concrete improvement proposals: communication rule changes, handoff-template changes, role responsibility changes, role skill/tool readiness changes, role training/checklist updates, registry updates, candidate-role library updates, or skill/template update candidates.
 
 The Loop Manager and Super Assistant must also track reusable role capability sources at the project cadence, monthly by default when no cadence is specified. Capability sources include ECC / Everything Claude Code, Claude Code plugins, local `.codex/plugins` metadata, available skills/tools, and trusted role references. A source change should update candidate roles only when it changes role responsibilities, activation triggers, skill/tool matches, evidence requirements, authority boundaries, handoff packages, or review gates. Record source, version/date when available, observed capability, proposed role-library change, owner, and status.
+
+## Default Loop Manager Distillation Time Nodes
+
+Every project-level Loop Manager starts with these automatic distillation time nodes unless the user or domain owner confirms a different cadence:
+
+| Time Node | Default Trigger | Distillation Focus | Required Output |
+| --- | --- | --- | --- |
+| Project-start baseline | Immediately when the Loop project is created | Loop object, active roles, deferred roles, document budget, risk/resource baseline, communication rules, and first gates | Baseline entry in Loop Manager workspace and `role-registry.md` / `document-index.md` checks |
+| Task or stage completion checkpoint | When a role completes a task, stage, handoff, or dispatch packet | What changed, evidence returned, status-sync quality, handoff quality, reusable learning, and next owner | Completion distillation note in `interaction-evidence-log.md` or the responsible role workspace |
+| Weekly fixed retrospective | Weekly by default when no cadence is specified | Communication efficiency, role health, resource fit, responsibility boundaries, skill/tool gaps, reusable principles, and document growth | Retrospective summary, improvement proposals, and updated role/document records |
+| Event-triggered review | Major blocker, role change, repeated handoff friction, major disagreement, failed gate, user correction, or material risk | Cause, affected roles, boundary change, communication update, role split/merge need, and prevention rule | Decision/conflict entry, role-registry update when needed, and all-role notification when roles change |
+| Project-closure distillation | When a project, milestone, release, or Loop round closes | What became reusable, what should be archived, which roles should pause/close, and what skill/template/principle should update | Closure note, archive/merge decisions, and feedback to Super Assistant |
 
 ## Project-Type Workflow Governance
 

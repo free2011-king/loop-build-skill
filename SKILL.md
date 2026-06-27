@@ -36,7 +36,7 @@ Load only the reference needed for the current task:
    Convert vague goals into actionable, testable, bounded, recordable, owned, and reusable standards. Mark assumptions and confirmation needs.
 
 3. Create Loop governance first.
-   For every concrete Loop project, create the Loop Manager at project start, before demand intake and before implementation roles. Loop Manager is mandatory and distinct from project manager/delivery coordination.
+   For every concrete Loop project, create the Loop Manager at project start, before demand intake and before implementation roles. Loop Manager is mandatory and distinct from project manager/delivery coordination. Give it default automatic distillation time nodes immediately: project-start baseline, task/stage completion checkpoint, weekly fixed retrospective unless another cadence is confirmed, event-triggered review after blockers/role changes/major disagreements, and project-closure distillation.
 
 4. Create demand intake.
    The demand intake role turns rough user ideas into concrete use cases with actor, scenario, trigger, preconditions, steps, expected output, measurable acceptance standard, constraints, records, feedback signal, owner, and confirmation status. Use `grill-me` when available before declaring demand implementation-ready.
@@ -67,12 +67,13 @@ Load only the reference needed for the current task:
 - Loop Manager manages the Loop system: role registry, cadence, fixed-time retrospectives, role health, resource status, role self-review, experience distillation, role advice, communication-efficiency review, role responsibility/skill optimization, blockers, risks, handoffs, goal dispatch, and feedback to Super Assistant.
 - Loop Manager does not perform development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific implementation.
 - Loop Manager owns staged role splitting after project start. It should recommend creating, activating, merging, pausing, or closing roles when real evidence shows overloaded responsibilities, unclear authority, repeated handoff friction, missing expertise, parallel work needs, risk isolation needs, or workflow stages that can no longer be handled by the current small role set.
+- Loop Manager must have default automatic distillation time nodes from project start: project-start baseline, task/stage completion checkpoint, weekly fixed retrospective by default, event-triggered review for blockers/role changes/major disagreements, and project-closure distillation.
 - Project manager/delivery coordinator is optional and separate from Loop Manager. Select it only when delivery scheduling, milestones, external dependencies, stakeholder reporting, or workflow coordination needs a separate owner.
 - Every active role must sync status to the project owner at the dispatch-defined cadence and immediately on completion, blocker, handoff, return, or closure.
 - Role/personnel/session changes are not complete until Loop Manager updates `role-registry.md`, notifies every other active role, and records the broadcast.
 
 ## Output Shape
 
-For a Loop-design answer, provide the Loop owner, Loop Manager, initial minimal active role set, deferred candidate roles and split triggers, role categories, Loop object, minimum viable loop, key records, feedback/evaluation signals, update mechanism, first implementation order, selected/excluded roles, implementation covenant status, category workspaces, interaction evidence rule, disagreement/escalation path, risks, confirmation needed, and artifact path if files were created.
+For a Loop-design answer, provide the Loop owner, Loop Manager, Loop Manager automatic distillation time nodes, initial minimal active role set, deferred candidate roles and split triggers, role categories, Loop object, minimum viable loop, key records, feedback/evaluation signals, update mechanism, first implementation order, selected/excluded roles, implementation covenant status, category workspaces, interaction evidence rule, disagreement/escalation path, risks, confirmation needed, and artifact path if files were created.
 
 Keep the result concrete enough that the user can start building immediately.
