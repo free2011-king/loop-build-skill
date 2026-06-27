@@ -9,7 +9,7 @@ This repository is the git-managed source for the `loop-builder` Codex skill.
 - Turns ambiguous work into a closed Loop: `goal -> input -> action -> observation -> update -> reuse`.
 - Creates Loop governance first, with a mandatory Loop Manager.
 - Separates Loop Manager from project manager / delivery coordinator.
-- Selects implementation roles from an existing candidate role library before creating new roles.
+- Selects implementation roles from an existing candidate role library, while keeping the initial active role set minimal.
 - Requires role-to-role messages, handoffs, blockers, advice, status syncs, test findings, and acceptance feedback to be recorded.
 - Creates category-based role workspaces so roles of the same category share one project folder.
 - Controls document growth with `document-index.md`, document budgets, review dates, and merge/archive decisions.
@@ -99,5 +99,6 @@ python3 "$HOME/.codex/skills/.system/skill-creator/scripts/quick_validate.py" .
 - Add new reference files only when progressive disclosure improves clarity or reduces runtime context.
 - Before adding new generated documents, update `references/artifact-pack.md`, `scripts/create_loop_pack.py`, and `scripts/test_create_loop_pack.py` together.
 - Preserve `如无必要，勿增实体`: do not add roles, documents, stages, gates, or abstractions unless they close the Loop, reduce real risk, preserve reusable learning, or satisfy a confirmed constraint.
+- Keep early projects lightly staffed: defer specialist roles until Loop Manager evidence justifies splitting, activating, merging, pausing, or closing roles.
 - Keep `document-index.md` as the single generated document-control index for concrete Loop projects.
 - Revisit candidate role requirements on the cadence defined in the skill, monthly by default when no cadence is set.

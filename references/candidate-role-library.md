@@ -6,6 +6,7 @@ Read this reference when building software, product, Agent, workflow, digital-em
 
 - [Selection Workflow](#selection-workflow)
 - [Activation Rule](#activation-rule)
+- [Staged Role Splitting](#staged-role-splitting)
 - [Core Software/Product Candidates](#core-softwareproduct-candidates)
 - [Claude Code Feature Development Role Patterns](#claude-code-feature-development-role-patterns)
 - [Role Capability Source Tracking](#role-capability-source-tracking)
@@ -21,21 +22,36 @@ Read this reference when building software, product, Agent, workflow, digital-em
 - [Disagreement Resolution](#disagreement-resolution)
 - [Reuse Checklist](#reuse-checklist)
 
-Use these roles as an existing reusable role pool, not mandatory entities. Select roles according to the project's confirmed needs and use cases, then ask the user or domain owner to confirm the selected implementation role set before execution. Activate only the roles needed by confirmed use cases and the implementation plan. Loop Manager and project manager are different roles: Loop Manager is mandatory for concrete Loop projects and governs the whole Loop; project manager/delivery coordinator is optional and only selected when delivery coordination needs a separate owner.
+Use these roles as an existing reusable role pool, not mandatory entities. At project start, prefer a minimal active role set and keep specialized roles as deferred candidates until there is confirmed need, complexity, risk, workload, or workflow evidence. Select roles according to the project's confirmed needs and use cases, then ask the user or domain owner to confirm the selected implementation role set before execution. Activate only the roles needed by confirmed use cases and the implementation plan. Loop Manager and project manager are different roles: Loop Manager is mandatory for concrete Loop projects and governs the whole Loop; project manager/delivery coordinator is optional and only selected when delivery coordination needs a separate owner.
 
 ## Selection Workflow
 
 1. Start from confirmed project needs and use cases.
 2. Match each need to an existing candidate role and role category.
-3. Select the smallest role set that can cover the work without unclear authority, evidence, record, or confidentiality boundaries.
-4. List candidate roles that are not selected and explain why they are unnecessary for this Loop round.
-5. Prepare a confirmation packet with selected roles, excluded candidates, category workspaces, authority boundaries, handoff paths, required tools/skills, readiness status, and blockers.
-6. Ask the user or domain owner to confirm the selected role set before implementation.
-7. Create a new role only when no existing role can responsibly cover the confirmed need.
+3. Select the smallest active role set that can cover the next Loop round without unclear authority, evidence, record, or confidentiality boundaries.
+4. List deferred candidate roles, the trigger that would activate each one, and why they are not needed now.
+5. List candidate roles that are excluded entirely and explain why they are unnecessary for this Loop round.
+6. Prepare a confirmation packet with selected roles, deferred candidates, excluded candidates, split triggers, category workspaces, authority boundaries, handoff paths, required tools/skills, readiness status, and blockers.
+7. Ask the user or domain owner to confirm the selected role set before implementation.
+8. Create a new role only when no existing role can responsibly cover the confirmed need.
 
 ## Activation Rule
 
 Apply `如无必要，勿增实体`: a candidate role becomes active only when it has a concrete goal, implementation standard, authority boundary, role category, category workspace, Codex session mapping, tool/skill readiness, knowledge base, records, gate, and handoff rule.
+
+## Staged Role Splitting
+
+The Loop Manager owns staged role splitting after project start. It should keep roles combined while the work is still small, exploratory, or low risk, then recommend activation or separation when evidence shows a real need.
+
+Use these triggers to split or activate a specialized role:
+
+- The current owner is overloaded or repeatedly blocked.
+- Responsibilities overlap, create gaps, or cause boundary violations.
+- The workflow needs independent review, parallel execution, risk isolation, or specialist skill.
+- Handoffs, status syncs, or evidence records show repeated friction.
+- Compliance, confidentiality, release readiness, stakeholder reporting, or evidence integrity requires separate ownership.
+
+The Loop Manager may also recommend merging, pausing, or closing roles when the project stabilizes or when a previous split is no longer useful. Record every split/merge decision in `role-registry.md`, `team-formation.md`, and `interaction-evidence-log.md`.
 
 ## Core Software/Product Candidates
 
@@ -246,6 +262,8 @@ Escalate to the Loop Manager when the disagreement changes scope, acceptance cri
 ## Reuse Checklist
 
 - [ ] Candidate roles were selected from confirmed use cases and project needs, not assumed as mandatory.
+- [ ] The active role set is intentionally minimal for the current Loop round.
+- [ ] Deferred candidate roles have activation/split triggers instead of being silently created.
 - [ ] Non-selected candidate roles have an explicit exclusion reason.
 - [ ] The user or domain owner confirmed the selected implementation role set before execution.
 - [ ] Loop Manager and project manager/delivery coordinator are separate roles; Loop Manager is mandatory, project manager is optional and justified only when delivery coordination needs a separate owner.

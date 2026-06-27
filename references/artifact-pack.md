@@ -30,7 +30,7 @@ The scaffold creates these project artifacts:
 
 - `loop-design.md`: Loop object, minimum viable loop, records, signals, update mechanism, and first build order.
 - `document-index.md`: single index controlling user/owner-created and managed documents, document budgets, purpose, status, review cadence, and merge/archive decisions.
-- `team-formation.md`: demand intake, existing-role selection, implementation role proposal, excluded candidate roles, tool/skill readiness, and requester confirmation.
+- `team-formation.md`: demand intake, minimal initial role set, existing-role selection, deferred candidate roles, split triggers, excluded candidate roles, tool/skill readiness, and requester confirmation.
 - `candidate-role-library.md`: reusable candidate roles with best-practice skill, tool, knowledge-base, record, handoff matches, and capability-source tracking for ECC / Everything Claude Code, Claude Code plugins, skills, tools, and external references.
 - `use-cases.md`: concrete, measurable use cases created by demand intake.
 - `role-loop-charters.md`: role goals, standards, constraints, records, evaluation/feedback, update duties, authority, and handoffs.
@@ -52,7 +52,8 @@ The scaffold creates these project artifacts:
 - Customize generated files to the user's actual scenario; do not leave placeholders when context is available.
 - Before creating any additional document, check `document-index.md`; reuse, merge, or archive existing documents unless a new document is necessary.
 - Keep role additions small and justified by confirmed use cases.
-- Record selected and excluded candidate roles before implementation.
+- Record selected, deferred, and excluded candidate roles before implementation.
+- Keep the initial active role set minimal; do not create specialist role workspaces merely because a candidate role exists.
 - Keep implementation claims, test findings, decisions, and handoffs traceable to evidence.
 - Treat `implementation-covenant.md` as the shared operating agreement for active implementation roles, not a substitute for individual charters.
 
@@ -61,7 +62,7 @@ The scaffold creates these project artifacts:
 Before execution begins, confirm or explicitly delegate confirmation for:
 
 - Refined demand and concrete use cases.
-- Selected implementation role set and excluded-role reasons.
+- Selected implementation role set, deferred candidate roles with split triggers, and excluded-role reasons.
 - Stage knowledge base.
 - Implementation covenant.
 - Tool/skill readiness for every active role.
@@ -79,6 +80,7 @@ A Loop is weak if it cannot answer these questions:
 - Was Loop Manager created at project start, distinct from project manager/delivery coordination?
 - Did demand intake refine rough ideas into concrete, measurable use cases?
 - Were implementation roles selected from confirmed demand instead of invented by habit?
+- Is the initial active role set intentionally minimal, with specialist roles deferred until Loop Manager evidence justifies splitting?
 - Are role capability sources tracked on a cadence, including ECC / Everything Claude Code, Claude Code plugins, skills, tools, and trusted references, with candidate-role updates recorded only when responsibilities, skill/tool matches, evidence requirements, or handoffs change?
 - Does every active role have a charter, workflow stage, authority boundary, category workspace, handoff rule, Codex session mapping if used, advisor contribution, tool/skill readiness, health/resource status, and role-registry entry?
 - Is there an accepted implementation covenant covering boundaries, communication requirements, evidence, handoffs, status sync, and escalation?

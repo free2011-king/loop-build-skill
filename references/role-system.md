@@ -6,6 +6,7 @@ Read this reference when creating Loop roles, role workspaces, Codex sessions, i
 
 - [Role Creation Gate](#role-creation-gate)
 - [Role Category Workspace Rule](#role-category-workspace-rule)
+- [Early-Stage Role Minimalism](#early-stage-role-minimalism)
 - [Existing Role Selection Gate](#existing-role-selection-gate)
 - [Implementation Covenant](#implementation-covenant)
 - [Document Governance And Index](#document-governance-and-index)
@@ -53,6 +54,22 @@ Each category workspace should record:
 - Handoff targets for work outside the category boundary.
 - Category-level self-review and reusable learning.
 
+## Early-Stage Role Minimalism
+
+At project start, keep the active role set small. Create the Loop Manager and the minimum roles needed to clarify demand and run the next Loop round. Do not activate product, project-management, architecture, development, testing, security, review, documentation, or governance roles merely because they exist in the candidate library.
+
+Candidate roles may be listed in `team-formation.md`, `candidate-role-library.md`, `role-sessions.md`, or `role-workspaces.md` as deferred options. A listed candidate is not an active role until the user/domain owner confirms it or confirmation is explicitly delegated, the Loop Manager adds it to `role-registry.md`, its authority boundary and workspace are clear, and the role-change broadcast is recorded.
+
+Use these split triggers before adding a specialized role:
+
+- The current role set is overloaded or repeatedly blocked.
+- A responsibility boundary becomes unclear or a role repeatedly acts outside its authority.
+- A workflow stage requires specialized expertise, independent review, risk isolation, or parallel execution.
+- Handoffs, status syncs, or evidence records show repeated friction that a clearer role boundary would reduce.
+- Compliance, confidentiality, evidence integrity, or stakeholder needs require separate ownership.
+
+The Loop Manager owns staged role splitting after project start. During fixed-time retrospectives and blocker reviews, it should recommend creating, activating, merging, pausing, closing, or combining roles based on evidence. A role split is complete only after registry update, workspace decision, all-role notification, and interaction evidence record.
+
 ## Existing Role Selection Gate
 
 Before implementation begins, select roles from the existing reusable role library according to the project's confirmed needs and use cases. Existing role categories are the default source of implementation roles.
@@ -67,7 +84,7 @@ The Loop owner must prepare a role selection packet for user or domain-owner con
 - Authority boundary, handoff path, required records, and evidence expectations.
 - Tool and skill readiness, substitutes, or blockers.
 
-Do not proceed into implementation until the selected role set is confirmed by the user/domain owner or confirmation is explicitly delegated to the Loop owner. Create a new role only when no existing role category can cover the responsibility without creating unclear authority, record, evidence, or confidentiality boundaries.
+Do not proceed into implementation until the selected role set is confirmed by the user/domain owner or confirmation is explicitly delegated to the Loop owner. Prefer a minimal active role set plus deferred candidates over a fully split team at project start. Create a new role only when no existing role category can cover the responsibility without creating unclear authority, record, evidence, or confidentiality boundaries.
 
 ## Implementation Covenant
 

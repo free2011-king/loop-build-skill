@@ -47,12 +47,6 @@ def main() -> int:
         ("demand-intake", "Demand intake role"),
         ("loop-manager", "Loop Manager"),
         ("super-assistant", "Super Assistant / Loop owner"),
-        ("domain-owner", "User / domain owner"),
-        ("product-workflow", "Product manager / workflow designer"),
-        ("project-management", "Project manager / delivery coordinator"),
-        ("development", "Developer / implementer"),
-        ("testing-evaluation", "Tester / evaluator"),
-        ("governance-risk", "Governance or risk owner"),
     ]
 
     write_text(
@@ -69,16 +63,22 @@ Super Assistant
 
 The Loop owner is responsible for driving the whole process from goal, input, action, observation, update, to reuse. The owner coordinates the needed project roles instead of treating the Loop as a one-step task.
 
-## Participating Roles
+## Initial Active Roles
 
 - Demand intake role:
 - Loop Manager:
-- User / domain owner:
-- Product manager / workflow designer:
-- Project manager / delivery coordinator, if needed:
-- Developer / implementer:
-- Tester / evaluator:
-- Governance or risk owner, if needed:
+- Super Assistant / Loop owner:
+
+## Deferred Candidate Roles
+
+Keep specialized roles as candidates until confirmed need, workload, risk, workflow evidence, or Loop Manager review shows they should be activated.
+
+- User / domain owner, when direct decision/acceptance records need a dedicated workspace:
+- Product manager / workflow designer, when user need, scope, workflow, priority, or acceptance criteria are unclear:
+- Project manager / delivery coordinator, when delivery milestones, external dependencies, stakeholder status, or schedule logistics need a separate owner:
+- Developer / implementer, when implementation work is confirmed:
+- Tester / evaluator, when testable output exists or independent evaluation is needed:
+- Governance or risk owner, when compliance, security, permission, confidentiality, or release risk requires separate ownership:
 
 ## Loop Object
 
@@ -378,7 +378,15 @@ Use this section when project learning should update Loop Builder, local Loop pr
         loop_dir / "team-formation.md",
         f"""# {args.name} Team Formation
 
-Create the Loop Manager first at project start. Then create the demand intake role and select implementation roles from the existing reusable role library according to confirmed project needs and use cases. Do not prebuild roles, sessions, folders, or skills that the demand does not require. Create a new role only when no existing role category can responsibly cover the work.
+Create the Loop Manager first at project start. Then create the demand intake role and keep the active team small until confirmed project needs and use cases justify more roles. Select implementation roles from the existing reusable role library, but do not prebuild roles, sessions, folders, or skills that the next Loop round does not require. Create a new role only when no existing role category can responsibly cover the work.
+
+## Initial Role Split Policy
+
+- Initial active roles: Loop Manager, Super Assistant / Loop owner, and Demand intake.
+- Deferred candidates are not active roles until confirmed by the user/domain owner or explicitly delegated to the Loop owner.
+- Loop Manager owns staged role splitting after project start and should recommend activation, merging, pausing, or closure based on evidence.
+- Split roles only when workload, workflow stage, specialist skill, risk isolation, independent review, confidentiality, compliance, stakeholder reporting, or repeated handoff friction proves the smaller role set is no longer enough.
+- Do not create a role workspace folder until the role category is active, unless the user/domain owner explicitly asks for a prepared workspace.
 
 ## Demand Intake Role
 
@@ -426,11 +434,24 @@ demand clarification -> product/workflow scope -> codebase exploration when need
 
 ## Existing Role Selection
 
-Select from existing reusable roles before creating any new role. The selected implementation role set must be confirmed by the user or domain owner before execution.
+Select from existing reusable roles before creating any new role. The selected implementation role set must be confirmed by the user or domain owner before execution. Prefer the smallest active role set plus deferred candidates over a fully split team at project start.
 
 | Project Need / Use Case | Selected Existing Role | Role Category | Why Needed | Category Workspace | Authority Boundary | Required Tools / Skills | Readiness / Blocker | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |  |  | draft |
+
+## Deferred Candidate Roles
+
+Record roles that may be useful later but are not active in the current Loop round.
+
+| Candidate Role | Role Category | Candidate Workspace | Activation / Split Trigger | Why Deferred Now | Review Owner | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| User / domain owner | domain-owner | `roles/domain-owner/` | Dedicated decision/acceptance records, confidentiality boundary, or recurring domain-owner work appears | External confirmation may be enough at project start | Loop Manager | deferred |
+| Product manager / workflow designer | product-workflow | `roles/product-workflow/` | User need, scope, workflow, priority, acceptance, or outcome metric is unclear enough to require a dedicated owner | Demand intake and Loop owner may cover early discovery | Loop Manager | deferred |
+| Project manager / delivery coordinator | project-management | `roles/project-management/` | Delivery milestones, external dependencies, stakeholder status, or schedule logistics need separate ownership | Delivery coordination may not be needed in early exploration | Loop Manager | deferred |
+| Developer / implementer | development | `roles/development/` | Confirmed implementation work is ready | No implementation before confirmed demand/scope | Loop Manager | deferred |
+| Tester / evaluator | testing-evaluation | `roles/testing-evaluation/` | Testable output, independent evaluation, or quality gate exists | No testable artifact yet | Loop Manager | deferred |
+| Governance or risk owner | governance-risk | `roles/governance-risk/` | Compliance, security, permission, confidentiality, or release risk needs separate ownership | Governance boundary may be light early | Loop Manager | deferred |
 
 ## Excluded Candidate Roles
 
@@ -442,7 +463,7 @@ Record existing roles that are not selected for this Loop round so the team stay
 
 ## Implementation Team Proposal
 
-Add only roles required by the confirmed demand and selected role set.
+Add only roles required by the confirmed demand and selected role set. Candidate rows below are not active until their activation trigger is met and the Loop Manager updates `role-registry.md`.
 
 | Role Category | Role / Subagent | Needed? | Reason | Required Skill(s) | Category Workspace | Codex Thread / Session | Trigger | Inputs | Outputs | Gate |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -494,6 +515,8 @@ Each role must use suitable tools and skills. Do not start role execution until 
 
 - [ ] Demand intake role is accepted.
 - [ ] Selected existing implementation roles are accepted.
+- [ ] Active role set is intentionally minimal for this Loop round.
+- [ ] Deferred candidate roles and activation/split triggers are accepted.
 - [ ] Excluded candidate roles and exclusion reasons are accepted.
 - [ ] New roles, if any, are justified because no existing role category can cover the work.
 - [ ] Required skills are accepted.
@@ -517,21 +540,36 @@ Each role must use suitable tools and skills. Do not start role execution until 
         loop_dir / "candidate-role-library.md",
         f"""# {args.name} Candidate Role Library
 
-Use this library before creating project roles. Start from these existing reusable role presets for software, product, Agent, workflow, or digital-employee Loops. Select roles according to confirmed project needs and use cases, ask the user or domain owner to confirm the selected implementation role set, then activate only the roles needed by the confirmed plan.
+Use this library before creating project roles. Start from these existing reusable role presets for software, product, Agent, workflow, or digital-employee Loops. At project start, prefer a minimal active role set and keep specialized roles as deferred candidates until there is confirmed need, complexity, risk, workload, or workflow evidence. Select roles according to confirmed project needs and use cases, ask the user or domain owner to confirm the selected implementation role set, then activate only the roles needed by the confirmed plan.
 
 ## Selection Workflow
 
 1. Start from confirmed project needs and use cases.
 2. Match each need to an existing candidate role and role category.
-3. Select the smallest role set that can cover the work without unclear authority, evidence, record, or confidentiality boundaries.
-4. List candidate roles that are not selected and explain why they are unnecessary for this Loop round.
-5. Prepare a confirmation packet with selected roles, excluded candidates, category workspaces, authority boundaries, handoff paths, required tools/skills, readiness status, and blockers.
-6. Ask the user or domain owner to confirm the selected role set before implementation.
-7. Create a new role only when no existing role can responsibly cover the confirmed need.
+3. Select the smallest active role set that can cover the next Loop round without unclear authority, evidence, record, or confidentiality boundaries.
+4. List deferred candidate roles, the trigger that would activate each one, and why they are not needed now.
+5. List candidate roles that are excluded entirely and explain why they are unnecessary for this Loop round.
+6. Prepare a confirmation packet with selected roles, deferred candidates, excluded candidates, split triggers, category workspaces, authority boundaries, handoff paths, required tools/skills, readiness status, and blockers.
+7. Ask the user or domain owner to confirm the selected role set before implementation.
+8. Create a new role only when no existing role can responsibly cover the confirmed need.
 
 ## Activation Rule
 
 Apply `如无必要，勿增实体`: a candidate role is not active until the implementation plan gives it a concrete goal, authority boundary, role category, category workspace, tools/skills, knowledge base, records, gates, and handoff rules.
+
+## Staged Role Splitting
+
+The Loop Manager owns staged role splitting after project start. It should keep roles combined while the work is still small, exploratory, or low risk, then recommend activation or separation when evidence shows a real need.
+
+Use these triggers to split or activate a specialized role:
+
+- The current owner is overloaded or repeatedly blocked.
+- Responsibilities overlap, create gaps, or cause boundary violations.
+- The workflow needs independent review, parallel execution, risk isolation, or specialist skill.
+- Handoffs, status syncs, or evidence records show repeated friction.
+- Compliance, confidentiality, release readiness, stakeholder reporting, or evidence integrity requires separate ownership.
+
+The Loop Manager may also recommend merging, pausing, or closing roles when the project stabilizes or when a previous split is no longer useful. Record every split/merge decision in `role-registry.md`, `team-formation.md`, and `interaction-evidence-log.md`.
 
 ## Reusable Candidate Roles
 
@@ -914,7 +952,7 @@ Loop Manager reviews this covenant during fixed-time retrospectives and after re
         loop_dir / "role-loop-charters.md",
         f"""# {args.name} Role Loop Charters
 
-Each active role or subagent must carry explicit Loop responsibilities. Do not create a role that only has a name, folder, or session.
+Each active role or subagent must carry explicit Loop responsibilities. Do not create a role that only has a name, folder, or session. Candidate charters below are reusable presets; they do not activate a role by themselves.
 
 Every role is also an advisor. The charter must make room for role-specific best-practice recommendations, risk warnings, assumptions, options, and confirmation needs.
 
@@ -1152,6 +1190,7 @@ The Loop owner must define this plan before execution begins. Default to Super A
 - Loop owner: Super Assistant
 - Default execution mode: Super Assistant switches stage knowledge bases and coordinates roles.
 - Subagent rule: 如无必要，勿增实体. Do not create a subagent unless the stage cannot be handled well by the Loop owner plus its stage knowledge base.
+- Role split rule: start with the minimum active role set. Let Loop Manager split, activate, merge, pause, or close roles only when evidence shows the current role set is overloaded, unclear, risky, missing specialist skill, or causing repeated handoff/status/evidence friction.
 - Role boundary rule: before acting, each role must identify its position, responsibility boundary, editable artifacts, and required handoffs. If it would need to make a decision, do work, or modify files, systems, tools, data, or artifacts outside its responsibility, it must state the boundary, stop the action, and hand off to the responsible role or subagent.
 - Tool and skill readiness rule: before a role starts execution, verify its required skills, tools, scripts, references, data access, and permissions. If any required capability is missing, install it, activate it, substitute it, downgrade scope, or mark the role blocked.
 - Implementation covenant rule: before execution, confirm `implementation-covenant.md` defines role boundaries, communication content requirements, evidence rules, handoff packages, status-sync rules, and escalation paths for all selected implementation roles.
@@ -1209,6 +1248,7 @@ The Loop Manager maintains this file during implementation role creation, confir
 ## Registry Rules
 
 - Add selected roles after user/domain-owner confirmation or explicit delegation to the Loop owner.
+- Keep early projects minimal. Candidate roles listed in planning files are not active until confirmed, registered, and broadcast by Loop Manager.
 - Update this registry when a role is created, confirmed, activated, paused, blocked, replaced, closed, or its concrete person/agent/session changes.
 - After any role/personnel/session change, notify every other active role and record the broadcast in `interaction-evidence-log.md`; also record or summarize it in affected role workspaces.
 - Use `Role ID` in `goal-dispatch-log.md` for every task dispatch.
@@ -1222,6 +1262,7 @@ The Loop Manager maintains this file during implementation role creation, confir
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | LM-001 | Loop Manager | loop-manager | dedicated Loop Manager session when Codex is used | `roles/loop-manager/` | Govern Loop registry, cadence, fixed-time retrospectives, communication efficiency, role responsibility/skill optimization, role health, resources, status, blockers, handoffs, advice, reflection, and dispatch; do not perform role-specific or delivery execution | Role registry, dispatch log, status, risks, decisions, blocker tracking, communication-efficiency tracking, responsibility/skill improvement backlog, health/resource tracking, experience distillation checks, reflection | Development, testing conclusions, business acceptance, governance decisions, release, project-manager delivery execution, role-specific implementation | loop-builder; Loop governance and retrospection practices | available | healthy / resources available |  |  | active |  |  |  | Loop Manager |
 | SA-001 | Super Assistant / Loop owner | super-assistant | current coordination session | `roles/super-assistant/` | Own and coordinate the Loop end to end; hand off role-specific work | Loop coordination, handoff records, review notes, update proposals | Development, testing conclusions, governance decisions, production config unless assigned | loop-builder | available | healthy / resources available |  |  | active |  |  |  | Loop Manager |
+| DI-001 | Demand intake role | demand-intake | dedicated intake session if Codex is used | `roles/demand-intake/` | Clarify rough demand and produce confirmed executable use cases; do not perform implementation, testing, release, governance, or domain acceptance | Demand intake record, use cases, assumptions, open questions, confirmation packet | Product scope beyond confirmed input, implementation, testing, release, governance, domain acceptance | loop-builder; grill-me when available | available / check needed | healthy / resources available |  |  | active |  |  |  | Loop Manager |
 |  |  |  |  |  |  |  |  |  |  | healthy / warning / blocked |  | yes / no | proposed / confirmed / active / paused / blocked / replaced / closed |  |  |  |  |
 
 ## Role Change Log
@@ -1243,7 +1284,7 @@ The Loop Manager maintains this file during implementation role creation, confir
         loop_dir / "role-sessions.md",
         f"""# {args.name} Role Sessions
 
-When using Codex, each active role or subagent should run in its own thread/session with a scoped prompt and its assigned workspace. The Super Assistant remains in the coordinating thread/session.
+When using Codex, each active role or subagent should run in its own thread/session with a scoped prompt and its assigned workspace. The Super Assistant remains in the coordinating thread/session. Early projects should keep sessions minimal; candidate sessions below are not created until the role is confirmed and registered.
 
 ## Codex Session Map
 
@@ -1321,7 +1362,7 @@ If the target role is missing from `role-registry.md`, record the dispatch as bl
         loop_dir / "role-workspaces.md",
         f"""# {args.name} Role Workspaces
 
-Every active role category or subagent category must have an independent workspace folder under `roles/`. A role category is a reusable responsibility type, not every individual person, agent, session, or task instance. Multiple concrete roles or sessions in the same category may share the category folder when they have the same responsibility boundary and record type. Create separate folders only when category, authority boundary, ownership, records, or confidentiality/access constraints differ.
+Every active role category or subagent category must have an independent workspace folder under `roles/`. A role category is a reusable responsibility type, not every individual person, agent, session, or task instance. Multiple concrete roles or sessions in the same category may share the category folder when they have the same responsibility boundary and record type. Create separate folders only when category, authority boundary, ownership, records, or confidentiality/access constraints differ. Candidate workspace paths below are reservations, not folders that must exist at project start.
 
 ## Workspace Map
 
