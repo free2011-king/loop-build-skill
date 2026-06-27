@@ -2,6 +2,26 @@
 
 Read this reference when creating Loop roles, role workspaces, Codex sessions, implementation teams, Loop Manager duties, tool/skill readiness checks, role boundaries, advisor contributions, or role self-review rhythms.
 
+## Contents
+
+- [Role Creation Gate](#role-creation-gate)
+- [Role Category Workspace Rule](#role-category-workspace-rule)
+- [Existing Role Selection Gate](#existing-role-selection-gate)
+- [Implementation Covenant](#implementation-covenant)
+- [Document Governance And Index](#document-governance-and-index)
+- [Demand Intake Role](#demand-intake-role)
+- [Loop Manager](#loop-manager)
+- [Project-Type Workflow Governance](#project-type-workflow-governance)
+- [Active Role Registry](#active-role-registry)
+- [Goal Setting And Dispatch In Codex](#goal-setting-and-dispatch-in-codex)
+- [Role Status Sync To Project Owner](#role-status-sync-to-project-owner)
+- [Boundary And Handoff Rule](#boundary-and-handoff-rule)
+- [Disagreement Resolution](#disagreement-resolution)
+- [Interaction Documentation And Evidence](#interaction-documentation-and-evidence)
+- [Tool And Skill Readiness](#tool-and-skill-readiness)
+- [Advisor Contribution](#advisor-contribution)
+- [Codex Session Rule](#codex-session-rule)
+
 ## Role Creation Gate
 
 Create a role only when it is necessary to close the Loop, reduce meaningful risk, preserve reusable learning, or satisfy a confirmed project constraint. For each role, define:
@@ -49,6 +69,44 @@ The Loop owner must prepare a role selection packet for user or domain-owner con
 
 Do not proceed into implementation until the selected role set is confirmed by the user/domain owner or confirmation is explicitly delegated to the Loop owner. Create a new role only when no existing role category can cover the responsibility without creating unclear authority, record, evidence, or confidentiality boundaries.
 
+## Implementation Covenant
+
+Before implementation begins, the Loop Manager must create and maintain a project-level implementation covenant for all selected implementation roles. The covenant is separate from individual role charters: charters define each role, while the covenant defines how roles work together.
+
+The covenant must include:
+
+- Role boundary matrix: role category, ownership, decision authority, editable artifacts, must-not-do list, handoff triggers, and receiving roles.
+- Communication content requirements: every role-to-role message must include sender role, receiver role, task/goal ID when available, interaction type, context, summary, requested action or decision, evidence/document links, evidence gaps, blocker/risk status, follow-up owner, deadline or next sync, and record location.
+- Message type rules: handoff, question, answer, advice, role-status-sync, blocker, defect, acceptance feedback, decision request, disagreement, update proposal, and role-change-broadcast.
+- Handoff package standards: required source materials, current state, completed work, open questions, acceptance criteria, known risks, evidence links, and next owner.
+- Status-sync rules: cadence, completion-sync requirement, project owner receiver, and required fields.
+- Evidence and record rules: where interactions are recorded and what counts as missing evidence.
+- Boundary violation handling: what a role must do when work falls outside its authority.
+- Disagreement and escalation path: direct role communication first, Loop Manager escalation for scope/risk/authority/schedule/resource issues, and user/domain-owner decision when needed.
+- Covenant review/update rhythm: Loop Manager checks covenant quality during fixed-time retrospectives and updates it when communication friction, role overlap, role gaps, or repeated evidence gaps appear.
+
+No implementation role should treat a task as execution-ready until the covenant exists, the relevant role boundaries are filled, communication content requirements are clear, and the covenant acceptance status is recorded.
+
+## Document Governance And Index
+
+To prevent document explosion, every concrete Loop project must maintain a single `document-index.md` as the source of truth for user-created and user-managed project documents. This index controls how many active documents each user, domain owner, or role owner creates and manages.
+
+Before creating a new document, the responsible role must check `document-index.md` and decide whether the content can be added to an existing indexed document. Create a new document only when the content has a distinct purpose, owner, lifecycle, evidence boundary, confidentiality boundary, or handoff requirement that cannot be cleanly handled by an existing document.
+
+`document-index.md` must track:
+
+- User / owner / role responsible for the document.
+- Document path or external link.
+- Document type and purpose.
+- Why this is a separate document instead of a section in an existing document.
+- Related Loop stage, role category, task ID, or goal ID.
+- Active / draft / merged / archived / superseded status.
+- Last review date and next review date.
+- Merge, archive, or delete candidate status.
+- Evidence or handoff dependencies.
+
+Loop Manager reviews the index during fixed-time retrospectives. If a user or role exceeds its project-defined document budget, Loop Manager must request a merge/archive decision before allowing more documents unless a new document is required by role boundary, evidence, compliance, confidentiality, or handoff needs.
+
 ## Demand Intake Role
 
 Create the demand intake role before implementation roles. It owns rough demand, clarification, refinement, concrete use cases, open questions, acceptance criteria, confirmation status, and the first handoff to the Loop owner.
@@ -59,9 +117,9 @@ When `grill-me` is available, demand intake must use it before declaring demand 
 
 ## Loop Manager
 
-Every concrete Loop project needs a Loop Manager from the very beginning of the project. Create it before demand intake and before implementation roles so it can maintain the Loop system as roles appear.
+Every concrete Loop project must have a Loop Manager from the very beginning of the project. Create it before demand intake and before implementation roles so it can maintain the Loop system as roles appear. Do not treat the Loop Manager as optional once a project becomes a concrete Loop project.
 
-The Loop Manager is distinct from a project manager. The Loop Manager owns Loop governance: cadence, status, risks, decisions, blockers, handoffs, major disagreement escalation, review rituals, role self-review, role advice summaries, role health checks, resource status, project-level reflection, the active role registry, experience distillation checks, and feedback to the Super Assistant. A project manager or delivery coordinator, when needed, owns ordinary delivery coordination such as milestones, timelines, external dependency chasing, and stakeholder status reporting.
+The Loop Manager is distinct from a project manager. The Loop Manager owns Loop governance: cadence, fixed-time retrospective rituals, status, risks, decisions, blockers, handoffs, major disagreement escalation, review rituals, role self-review, role advice summaries, role health checks, resource status, project-level reflection, the active role registry, experience distillation checks, communication-efficiency review, role responsibility optimization, role skill/tool improvement, and feedback to the Super Assistant. A project manager or delivery coordinator, when needed, owns ordinary delivery coordination such as milestones, timelines, external dependency chasing, and stakeholder status reporting.
 
 The Loop Manager must not do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific implementation work. It asks the responsible role to act, tracks the handoff, and verifies whether the returned output satisfies the agreed gate.
 
@@ -70,6 +128,14 @@ The Loop Manager regularly checks each active role's health: readiness, workload
 The Loop Manager regularly asks each active role to self-review conversations, outputs, and feedback, then distill standards, reusable experience, mistakes, surprises, unresolved questions, and update proposals into that role category's workspace. It checks that experience is actually written down, not just discussed.
 
 The Loop Manager periodically prompts the user or domain owner with role advice summaries so the user can hear professional suggestions instead of only commands or status updates.
+
+The Loop Manager must run fixed-time retrospectives at the cadence defined for the project, weekly by default when no cadence is specified. The retrospective must not be a generic status report: it must distill what changed, what was learned, and what should improve in the next cycle.
+
+Each fixed-time retrospective must explicitly review user-to-role communication efficiency, role-to-role communication efficiency, handoff friction, repeated clarification loops, stale or missing status syncs, role responsibility overlap or gaps, role boundary confusion, role skill/tool gaps, role skill/tool upgrades, and whether each role's charter or workspace should be adjusted.
+
+The Loop Manager records these findings as concrete improvement proposals: communication rule changes, handoff-template changes, role responsibility changes, role skill/tool readiness changes, role training/checklist updates, registry updates, candidate-role library updates, or skill/template update candidates.
+
+The Loop Manager and Super Assistant must also track reusable role capability sources at the project cadence, monthly by default when no cadence is specified. Capability sources include ECC / Everything Claude Code, Claude Code plugins, local `.codex/plugins` metadata, available skills/tools, and trusted role references. A source change should update candidate roles only when it changes role responsibilities, activation triggers, skill/tool matches, evidence requirements, authority boundaries, handoff packages, or review gates. Record source, version/date when available, observed capability, proposed role-library change, owner, and status.
 
 ## Project-Type Workflow Governance
 
@@ -197,7 +263,7 @@ Each interaction record must include:
 - Follow-up owner.
 - Status.
 
-If no supporting material exists, the sender must create the smallest useful document/material, request it from the responsible role, or mark the interaction as an evidence gap/blocker. Do not treat unrecorded role messages, unsupported summaries, or chat-only claims as implementation-ready Loop state.
+If no supporting material exists, the sender must first check `document-index.md`, then reuse or update an existing indexed document when possible. Create the smallest useful new document/material only when the index shows that no existing document can responsibly hold it; otherwise request it from the responsible role or mark the interaction as an evidence gap/blocker. Do not treat unrecorded role messages, unsupported summaries, or chat-only claims as implementation-ready Loop state.
 
 ## Tool And Skill Readiness
 

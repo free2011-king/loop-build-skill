@@ -2,6 +2,18 @@
 
 This is a scenario reference for applying the general Loop Builder method to enterprise internal digital employees, Agent workflows, class-Lobster-style frameworks, or human-in-the-loop AI employees. Do not treat this scenario as the default shape of every Loop.
 
+## Contents
+
+- [Principle](#principle)
+- [Three Layers](#three-layers)
+- [Build Lifecycle Loop](#build-lifecycle-loop)
+- [Stage Knowledge Base](#stage-knowledge-base)
+- [Minimum Task Run Record](#minimum-task-run-record)
+- [Key Steps](#key-steps)
+- [Suggested Feedback Tags](#suggested-feedback-tags)
+- [First-Version Build Order](#first-version-build-order)
+- [Anti-Patterns](#anti-patterns)
+
 ## Principle
 
 Do not begin by designing complex tools for every step. Begin by designing minimum record points for the whole loop, then add tools to high-value steps.
