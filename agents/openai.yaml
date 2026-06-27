@@ -1,0 +1,4 @@
+interface:
+  display_name: "Loop Builder"
+  short_description: "Design executable loops with reusable roles, gates, and feedback"
+  default_prompt: "Use $loop-builder to turn this goal into an executable Loop with reusable candidate roles, use cases, tool readiness, feedback records, and update gates."
