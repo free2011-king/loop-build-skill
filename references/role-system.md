@@ -56,9 +56,9 @@ Each category workspace should record:
 
 ## Early-Stage Role Minimalism
 
-At project start, keep the active role set small. Create the Loop Manager and the minimum roles needed to clarify demand and run the next Loop round. Do not activate product, project-management, architecture, development, testing, security, review, documentation, or governance roles merely because they exist in the candidate library.
+At project start, keep the active role set small. Create the Loop Manager and usually 2-3 other active roles needed to clarify demand and run the next Loop round. Those role files or category workspaces may be separate for clarity; the constraint is role count and responsibility sprawl, not forcing multiple roles into one file. Do not activate product, project-management, architecture, development, testing, security, review, documentation, or governance roles merely because they exist in the candidate library.
 
-Candidate roles may be listed in `team-formation.md`, `candidate-role-library.md`, `role-sessions.md`, or `role-workspaces.md` as deferred options. A listed candidate is not an active role until the user/domain owner confirms it or confirmation is explicitly delegated, the Loop Manager adds it to `role-registry.md`, its authority boundary and workspace are clear, and the role-change broadcast is recorded.
+Candidate roles may be listed in `team-formation.md`, `candidate-role-library.md`, `role-sessions.md`, or `role-workspaces.md` as deferred options. A listed candidate is not an active role until the user/domain owner confirms it or confirmation is explicitly delegated, the Loop Manager adds it to `role-registry.md`, its authority boundary and workspace are clear, and the role-change broadcast is recorded. If a role is active or explicitly prepared for confirmation, its file/workspace may be separate.
 
 Use these split triggers before adding a specialized role:
 
@@ -84,7 +84,7 @@ The Loop owner must prepare a role selection packet for user or domain-owner con
 - Authority boundary, handoff path, required records, and evidence expectations.
 - Tool and skill readiness, substitutes, or blockers.
 
-Do not proceed into implementation until the selected role set is confirmed by the user/domain owner or confirmation is explicitly delegated to the Loop owner. Prefer a minimal active role set plus deferred candidates over a fully split team at project start. Create a new role only when no existing role category can cover the responsibility without creating unclear authority, record, evidence, or confidentiality boundaries.
+Do not proceed into implementation until the selected role set is confirmed by the user/domain owner or confirmation is explicitly delegated to the Loop owner. Prefer Loop Manager plus 2-3 other active roles and deferred candidates over a fully split team at project start. Create a new role only when no existing role category can cover the responsibility without creating unclear authority, record, evidence, or confidentiality boundaries.
 
 ## Implementation Covenant
 
