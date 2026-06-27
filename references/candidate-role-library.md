@@ -209,6 +209,22 @@ The Loop Manager retrospective must treat the following as core distillation and
 
 The output must be recorded as concrete updates, not only observations: communication-rule updates, handoff-template updates, role-registry updates, role-charter changes, skill/tool readiness actions, training/checklist updates, and feedback to the Super Assistant.
 
+### Role Skill Evolution Pattern
+
+Every active role should gradually improve its own skill requirements with Loop Manager support. The role supplies domain-specific learning from real work; Loop Manager supplies cadence, evidence discipline, cross-role comparison, and artifact updates.
+
+Track role-skill updates with this lifecycle:
+
+```text
+observed skill signal -> proposed update -> evidence review -> accepted/rejected -> artifact update -> next review
+```
+
+Valid skill signals include repeated blockers, user corrections, review findings, test gaps, missing tools, useful prompts, better checklists, new references, improved handoff packages, and changed capability sources.
+
+| Date | Role | Skill Signal | Evidence | Proposed Skill / Checklist / Prompt / Tool Update | Target Artifact | Decision | Next Review |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  | role workspace / role charter / candidate-role-library.md / implementation-covenant.md / generated template / SKILL.md | proposed / accepted / rejected / applied |  |
+
 ## Extended Software Skill / Tool / Knowledge Match
 
 | Candidate Role | Best-Practice Skill Match | Tool Match | Knowledge Base To Prepare | Core Records |

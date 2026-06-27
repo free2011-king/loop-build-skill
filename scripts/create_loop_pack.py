@@ -199,7 +199,7 @@ If a user, domain owner, role owner, or agent exceeds the document budget set be
         loop_dir / "loop-manager.md",
         f"""# {args.name} Loop Manager
 
-Every concrete Loop project must have a Loop Manager from project start, before demand intake and before implementation roles. The Loop Manager is distinct from a project manager: it governs the whole Loop system, not ordinary delivery logistics. It manages Loop rhythm, default automatic distillation time nodes, fixed-time retrospectives, communication-efficiency review, role responsibility optimization, role skill/tool improvement, and project-level reflection, maintains the active role registry during role creation and role/personnel/session changes, broadcasts role changes to every other active role, checks project-type workflow completeness, checks role health, checks resource status, checks whether each role has synced task status to the project owner at the required cadence and on completion, checks whether each role has distilled reusable experience into its workspace, receives goal-setting interactions in Codex, turns goals into dispatch packets, routes tasks against the registered role list, requires each role to run regular self-review, regularly collects each role's professional advice, handles major disagreement escalation, prompts the user or domain owner to consider advice and major decisions, then sends improvement feedback to the Super Assistant. The Loop Manager does not do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific implementation work.
+Every concrete Loop project must have a Loop Manager from project start, before demand intake and before implementation roles. The Loop Manager is distinct from a project manager: it governs the whole Loop system, not ordinary delivery logistics. It manages Loop rhythm, default automatic distillation time nodes, fixed-time retrospectives, communication-efficiency review, role responsibility optimization, role skill/tool improvement, role skill-evolution tracking, and project-level reflection, maintains the active role registry during role creation and role/personnel/session changes, broadcasts role changes to every other active role, checks project-type workflow completeness, checks role health, checks resource status, checks whether each role has synced task status to the project owner at the required cadence and on completion, checks whether each role has distilled reusable experience into its workspace, receives goal-setting interactions in Codex, turns goals into dispatch packets, routes tasks against the registered role list, requires each role to run regular self-review, regularly collects each role's professional advice, handles major disagreement escalation, prompts the user or domain owner to consider advice and major decisions, then sends improvement feedback to the Super Assistant. The Loop Manager does not do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific implementation work.
 
 ## Role Charter
 
@@ -233,6 +233,7 @@ Every concrete Loop project must have a Loop Manager from project start, before 
 | Resource review cadence | Check people/agent/session availability, tool access, data/material readiness, time budget, external dependencies, and overloaded roles | Resource status report |
 | Role self-review cadence | Require each active role to distill standards, feedback, communication friction, responsibility-fit issues, skill/tool gaps, experience, and update proposals from its conversations and outputs | Role self-review records |
 | Experience distillation check | Verify each role's reusable experience, mistakes, surprises, and update proposals have been written into its category workspace or Loop artifacts | Experience distillation status |
+| Role skill-evolution checkpoint | Collect each role's skill signals, missing tools, useful prompts, better checklists, repeated mistakes, review findings, and proposed role-skill updates | Role skill evolution backlog and target artifact update decisions |
 | Role advice cadence | Ask active roles for best-practice suggestions, risks, options, assumptions, and confirmation needs; summarize them for the user or domain owner | Role advice summary and user decision requests |
 | Candidate role capability source tracking | Check ECC / Everything Claude Code, Claude Code plugins, local skills/tools, and trusted role references for changes that affect candidate-role responsibilities, activation triggers, skill/tool matches, evidence requirements, or handoffs | Candidate role capability source tracking log and proposed role-library updates |
 | Before execution gates | Verify required artifacts and confirmations | Gate recommendation |
@@ -352,6 +353,14 @@ At the fixed-time retrospective cadence, Loop Manager must review how well the u
 | Date | Role | Workspace | Conversation / Work Reviewed | Standards Distilled | Feedback Distilled | Experience Distilled | Update Proposal | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |  |  |  |
+
+## Role Skill Evolution Backlog
+
+Every role's skills, prompts, checklists, references, and tool requirements should improve through real work. Roles provide domain learning; Loop Manager provides cadence, evidence discipline, cross-role comparison, and artifact updates.
+
+| Date | Role | Skill Signal | Evidence | Proposed Skill / Checklist / Prompt / Tool Update | Target Artifact | Decision | Owner | Next Review |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  | repeated blocker / user correction / review finding / test gap / useful prompt / missing tool / better checklist / new reference |  |  | role workspace / role charter / candidate-role-library.md / implementation-covenant.md / generated template / SKILL.md | proposed / accepted / rejected / applied | Loop Manager / role owner |  |
 
 ## Role Advice Summary
 
@@ -748,6 +757,22 @@ The Loop Manager retrospective must treat the following as core distillation and
 - Reusable learning: rules, templates, prompts, checklists, role definitions, skill updates, and project principles that should change before the next cycle.
 
 The output must be recorded as concrete updates, not only observations: communication-rule updates, handoff-template updates, role-registry updates, role-charter changes, skill/tool readiness actions, training/checklist updates, and feedback to the Super Assistant.
+
+### Role Skill Evolution Pattern
+
+Every active role should gradually improve its own skill requirements with Loop Manager support. The role supplies domain-specific learning from real work; Loop Manager supplies cadence, evidence discipline, cross-role comparison, and artifact updates.
+
+Track role-skill updates with this lifecycle:
+
+```text
+observed skill signal -> proposed update -> evidence review -> accepted/rejected -> artifact update -> next review
+```
+
+Valid skill signals include repeated blockers, user corrections, review findings, test gaps, missing tools, useful prompts, better checklists, new references, improved handoff packages, and changed capability sources.
+
+| Date | Role | Skill Signal | Evidence | Proposed Skill / Checklist / Prompt / Tool Update | Target Artifact | Decision | Next Review |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  | role workspace / role charter / candidate-role-library.md / implementation-covenant.md / generated template / SKILL.md | proposed / accepted / rejected / applied |  |
 
 ## Extended Software Skill / Tool / Knowledge Match
 
@@ -1635,6 +1660,14 @@ At the cadence defined by the Loop Manager, review this role's conversations, ou
 - Experience worth reusing:
 - Mistakes or surprises:
 - Proposed updates to role charter, stage knowledge, communication rules, handoff templates, skills/tools, tests, or the Loop skill:
+
+## Skill Evolution Notes
+
+Use this section to help Loop Manager gradually optimize this role's skills and working standards.
+
+| Date | Skill / Tool / Prompt / Checklist Signal | Evidence | Proposed Update | Target Artifact | Sent To Loop Manager? | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+|  | missing skill / useful technique / repeated mistake / better prompt / tool gap / reference gap |  |  | role workspace / role charter / candidate-role-library.md / implementation-covenant.md / template / SKILL.md | yes / no | proposed / accepted / rejected / applied |
 
 ## May Edit
 

@@ -13,6 +13,7 @@ Read this reference when creating Loop roles, role workspaces, Codex sessions, i
 - [Demand Intake Role](#demand-intake-role)
 - [Loop Manager](#loop-manager)
 - [Default Loop Manager Distillation Time Nodes](#default-loop-manager-distillation-time-nodes)
+- [Role Skill Evolution With Loop Manager](#role-skill-evolution-with-loop-manager)
 - [Project-Type Workflow Governance](#project-type-workflow-governance)
 - [Active Role Registry](#active-role-registry)
 - [Goal Setting And Dispatch In Codex](#goal-setting-and-dispatch-in-codex)
@@ -166,6 +167,29 @@ Every project-level Loop Manager starts with these automatic distillation time n
 | Weekly fixed retrospective | Weekly by default when no cadence is specified | Communication efficiency, role health, resource fit, responsibility boundaries, skill/tool gaps, reusable principles, and document growth | Retrospective summary, improvement proposals, and updated role/document records |
 | Event-triggered review | Major blocker, role change, repeated handoff friction, major disagreement, failed gate, user correction, or material risk | Cause, affected roles, boundary change, communication update, role split/merge need, and prevention rule | Decision/conflict entry, role-registry update when needed, and all-role notification when roles change |
 | Project-closure distillation | When a project, milestone, release, or Loop round closes | What became reusable, what should be archived, which roles should pause/close, and what skill/template/principle should update | Closure note, archive/merge decisions, and feedback to Super Assistant |
+
+## Role Skill Evolution With Loop Manager
+
+Every active role's skill requirements are living Loop artifacts. Do not treat role skills, tools, prompts, checklists, references, or working standards as fixed at role creation time.
+
+Each active role must record skill-learning signals in its role-category workspace:
+
+- Skill or tool that helped the role perform better.
+- Missing skill, tool, reference, permission, or checklist that blocked or weakened the work.
+- Repeated mistake, handoff failure, test failure, user correction, or quality gap linked to a skill issue.
+- Better prompt, workflow, checklist, template, source, example, or validation method discovered during work.
+- Proposed update to role charter, candidate-role library, implementation covenant, generated template, or reusable skill.
+- Evidence for the update: task ID, interaction record, test output, review finding, user feedback, source link, or explicit evidence gap.
+
+Loop Manager assists this evolution without taking over the role's expertise. It collects skill-learning signals during task/stage completion checkpoints, weekly fixed retrospectives, event-triggered reviews, role self-reviews, and project-closure distillation. It then converts validated signals into concrete updates:
+
+- Role workspace updates for role-specific lessons, examples, checklists, and prompts.
+- Role charter updates for responsibility boundaries, must-not-do rules, evidence standards, and skill/tool readiness.
+- Candidate-role library updates when a skill changes activation triggers, required tools, knowledge base, handoff package, or review gate.
+- Implementation covenant updates when communication, handoff, evidence, or escalation rules should change.
+- Template/script/skill update candidates when the learning should affect future Loop projects.
+
+Loop Manager must distinguish proposed, accepted, rejected, and applied skill updates. A skill update is not complete until the target artifact, owner, evidence, and next review point are recorded.
 
 ## Project-Type Workflow Governance
 

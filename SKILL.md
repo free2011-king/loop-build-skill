@@ -47,19 +47,22 @@ Load only the reference needed for the current task:
 6. Track reusable role capability sources.
    During fixed-time reviews, and monthly by default when no cadence is set, check ECC / Everything Claude Code, Claude Code plugins, local plugin/tool metadata, and relevant external role references for new or changed role capabilities. Update candidate-role requirements only when the source changes a responsibility boundary, skill/tool match, evidence standard, activation trigger, or handoff rule.
 
-7. Establish role operating rules.
+7. Evolve role skills gradually.
+   Treat every role's skills, tools, checklists, references, prompts, and working standards as improvable Loop artifacts. With Loop Manager support, each role should record skill gaps, useful techniques, repeated mistakes, missing tools, better prompts, and update proposals after real work. Loop Manager distills these into role charter updates, candidate-role library updates, implementation covenant changes, templates, or skill update candidates at the default distillation time nodes.
+
+8. Establish role operating rules.
    Give every active role a Loop charter and category workspace. Before execution, create `implementation-covenant.md` so active roles share one agreement for role boundaries, communication content requirements, handoff packages, status sync, evidence, and escalation.
 
-8. Design the smallest full cycle.
+9. Design the smallest full cycle.
    Define `goal -> input -> action -> observation -> update -> reuse`. For build-oriented Loops, use explicit lifecycle stages such as `design -> develop -> test -> release -> operate -> review -> update` instead of collapsing development and testing.
 
-9. Choose observation and update mechanisms.
+10. Choose observation and update mechanisms.
    Define what gets recorded, who reviews it, what signal shows improvement, and which artifact changes before the next round. Control document count per user/owner through `document-index.md`, with an explicit document budget, purpose, owner, status, and merge/archive decision for each managed document.
 
-10. Scaffold and customize artifacts when useful.
+11. Scaffold and customize artifacts when useful.
    Use the script described in `references/artifact-pack.md`, then customize generated files for the user's scenario. Do not leave placeholders when the user gave enough context.
 
-11. Stop at gates when confirmation is missing.
+12. Stop at gates when confirmation is missing.
     Before moving past Loop design, ask the requester or domain owner to confirm the stage knowledge base and selected role set. Do not proceed to execution, development, testing, acceptance, or release when required confirmation is missing.
 
 ## Mandatory Governance Highlights
@@ -68,12 +71,13 @@ Load only the reference needed for the current task:
 - Loop Manager does not perform development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific implementation.
 - Loop Manager owns staged role splitting after project start. It should recommend creating, activating, merging, pausing, or closing roles when real evidence shows overloaded responsibilities, unclear authority, repeated handoff friction, missing expertise, parallel work needs, risk isolation needs, or workflow stages that can no longer be handled by the current small role set.
 - Loop Manager must have default automatic distillation time nodes from project start: project-start baseline, task/stage completion checkpoint, weekly fixed retrospective by default, event-triggered review for blockers/role changes/major disagreements, and project-closure distillation.
+- Loop Manager assists every active role in gradually optimizing its skills. It does not rewrite a role's professional judgment for it; it collects evidence, skill gaps, repeated failures, useful practices, and update proposals, then routes confirmed improvements into role workspaces, role charters, candidate-role requirements, templates, implementation covenant rules, or skill update candidates.
 - Project manager/delivery coordinator is optional and separate from Loop Manager. Select it only when delivery scheduling, milestones, external dependencies, stakeholder reporting, or workflow coordination needs a separate owner.
 - Every active role must sync status to the project owner at the dispatch-defined cadence and immediately on completion, blocker, handoff, return, or closure.
 - Role/personnel/session changes are not complete until Loop Manager updates `role-registry.md`, notifies every other active role, and records the broadcast.
 
 ## Output Shape
 
-For a Loop-design answer, provide the Loop owner, Loop Manager, Loop Manager automatic distillation time nodes, initial minimal active role set, deferred candidate roles and split triggers, role categories, Loop object, minimum viable loop, key records, feedback/evaluation signals, update mechanism, first implementation order, selected/excluded roles, implementation covenant status, category workspaces, interaction evidence rule, disagreement/escalation path, risks, confirmation needed, and artifact path if files were created.
+For a Loop-design answer, provide the Loop owner, Loop Manager, Loop Manager automatic distillation time nodes, role skill-evolution mechanism, initial minimal active role set, deferred candidate roles and split triggers, role categories, Loop object, minimum viable loop, key records, feedback/evaluation signals, update mechanism, first implementation order, selected/excluded roles, implementation covenant status, category workspaces, interaction evidence rule, disagreement/escalation path, risks, confirmation needed, and artifact path if files were created.
 
 Keep the result concrete enough that the user can start building immediately.

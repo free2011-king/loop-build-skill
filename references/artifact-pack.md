@@ -34,7 +34,7 @@ The scaffold creates these project artifacts:
 - `candidate-role-library.md`: reusable candidate roles with best-practice skill, tool, knowledge-base, record, handoff matches, and capability-source tracking for ECC / Everything Claude Code, Claude Code plugins, skills, tools, and external references.
 - `use-cases.md`: concrete, measurable use cases created by demand intake.
 - `role-loop-charters.md`: role goals, standards, constraints, records, evaluation/feedback, update duties, authority, and handoffs.
-- `loop-manager.md`: Loop cadence, default automatic distillation time nodes, fixed-time retrospectives, role health, resources, self-review, experience distillation, communication-efficiency review, responsibility/skill optimization, reflection, and feedback to Super Assistant.
+- `loop-manager.md`: Loop cadence, default automatic distillation time nodes, fixed-time retrospectives, role health, resources, self-review, experience distillation, communication-efficiency review, responsibility/skill optimization, role skill-evolution tracking, reflection, and feedback to Super Assistant.
 - `stage-knowledge-base.md`: per-stage goals, standards, constraints, workflows, principles, outputs, and records.
 - `stage-confirmation-checklist.md`: requester/domain-owner confirmation gate for the stage knowledge base.
 - `implementation-plan.md`: stage execution plan, responsible roles, subagent justification, gates, tool readiness, and handoffs.
@@ -88,6 +88,7 @@ A Loop is weak if it cannot answer these questions:
 - Are role-to-role messages and status syncs recorded with sender, receiver, type, summary, evidence, owner, and status?
 - Does Loop Manager route goals through `role-registry.md` instead of executing role-specific work?
 - Does Loop Manager's fixed-time retrospective review user-role communication efficiency, role-to-role communication efficiency, responsibility fit, and skill/tool gaps?
+- Does Loop Manager help each active role gradually distill and optimize its skills, tools, prompts, checklists, references, and role requirements from evidence?
 - What signal shows whether the Loop improved?
 - Is there a `document-index.md` controlling document count per user/owner, with purpose, owner, status, review date, and merge/archive decisions for every managed document?
 - What artifact changes before the next round?
