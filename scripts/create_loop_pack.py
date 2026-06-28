@@ -220,6 +220,7 @@ Every concrete Loop project must have a Loop Manager from project start, before 
 | Project-start baseline | Record Loop object, initial active roles, deferred candidate roles, document budget, risk/resource baseline, communication rules, first gates, and first review dates | Baseline entry in Loop Manager workspace, role-registry.md check, document-index.md check |
 | Role creation, personnel/session adjustment, or role status change | Update active role registry with role ID, category, workspace, session, boundary, readiness, health, resources, and status; notify every other active role; record the notification | role-registry.md update, interaction-evidence-log.md broadcast record, affected role workspace updates |
 | Each stage handoff | Check owner, input, output, records, gate | Handoff status |
+| Hard constraint gate check | Check user-facing product/UI/workflow/scope/acceptance/risk/release changes for decision owner, confirmation evidence, enforcing roles, stop condition, and downstream blockers | Hard constraint gate status and blocked-action list |
 | Task or stage completion checkpoint | Distill what changed, evidence returned, status-sync quality, handoff quality, reusable learning, and next owner | Completion distillation note in interaction-evidence-log.md or responsible role workspace |
 | User sets a goal in Codex | Convert the goal into a goal contract and dispatch packet; route to responsible role/session; define project-owner status sync cadence and completion sync requirement | Goal dispatch log update |
 | Fixed-time retrospective, weekly by default unless project cadence says otherwise | Review progress, blockers, risks, user-role communication efficiency, role-to-role communication efficiency, handoff friction, responsibility overlap/gaps, skill/tool gaps, feedback, and updates | Retrospective summary, communication-efficiency report, responsibility/skill improvement proposals |
@@ -265,6 +266,17 @@ demand clarification -> product/workflow scope -> codebase exploration when need
 | Date | Work Item | Project Type | Required Workflow | Project Manager / Owner | Roles With Workflow Requirement | Missing Stage / Gap | Next Action |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  | software / product / agent / workflow / research / other |  | Project manager / delivery coordinator or Super Assistant |  |  |  |
+
+## Hard Constraint Gates
+
+Hard constraints must be explicit gates, not remembered preferences. Use this section for mandatory confirmations and blocked downstream work.
+
+Example: if the product manager / workflow designer changes UI design, product workflow, scope, release slice, or acceptance criteria after prior confirmation, the change remains a proposal until the user/domain owner confirms it. Developer implementation, tester acceptance, UI/frontend approval, and release-readiness work must use the last confirmed version until confirmation evidence is recorded.
+
+| Gate ID | Constraint | Triggering Change / Stage | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition | Record Location | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| HCG-001 | Product/UI/workflow changes need user/domain-owner confirmation | Product manager changes UI design, workflow, scope, release slice, or acceptance criteria | Product manager / workflow designer | Loop Manager; developer; tester; UI/frontend reviewer; release/governance owner when selected | User / domain owner / delegated Loop owner | Before/after summary, changed artifact or screenshot/design link, affected use cases, acceptance impact, confirmation record | No downstream implementation, acceptance, or release-readiness proceeds on the changed item | interaction-evidence-log.md / product workspace / implementation-covenant.md | draft |
+|  |  |  |  |  |  |  |  |  | draft / waiting-confirmation / confirmed / blocked / closed |
 
 ## Role Boundary Rule
 
@@ -728,6 +740,8 @@ Before handing to developer, architect, tester, or codebase explorer, the produc
 - Outcome metric or observation signal.
 - User/domain-owner confirmation status and remaining decisions.
 
+If the product manager changes UI design, product workflow, scope, release slice, or acceptance criteria after a prior confirmation, it must create a new change proposal and get user/domain-owner confirmation before downstream implementation, testing, or release-readiness work proceeds.
+
 ### Product Manager Source Tracking
 
 When online or external product-management references shape the role requirements, record the source link, source type, adopted capability, and date in the role workspace or product spec. Useful source families include product discovery, user-need statements, agile product-owner accountability, PRD/spec templates, prioritization frameworks, and product analytics guidance.
@@ -742,6 +756,25 @@ When online or external product-management references shape the role requirement
 | [GOV.UK Service Manual: Start By Learning User Needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs) | Start service/product work by learning real user needs and context | Require user/domain evidence, target users, scenarios, constraints, and evidence gaps |
 | [Scrum Guide: Product Owner](https://scrumguides.org/scrum-guide.html#product-owner) | Maintain product value, product goal, backlog clarity, ordering, and transparency | Require priority logic, release slicing, outcome metrics, and transparent decisions |
 
+
+## Hard Constraint Gate Pattern
+
+Hard constraints must be written as gates with owners, evidence, and stop conditions. Use this pattern for user-facing product/UI/workflow changes, scope changes, acceptance-standard changes, governance/risk boundaries, release-readiness decisions, and other mandatory project principles.
+
+| Gate | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition |
+| --- | --- | --- | --- | --- | --- |
+| Product/UI/workflow change confirmation | Product manager / workflow designer | Loop Manager, developer, tester, UI/frontend reviewer, release/governance owner when selected | User or domain owner unless explicitly delegated | Before/after summary, changed artifact or screenshot/design link, rationale, affected use cases, acceptance impact, confirmation record | No implementation, testing acceptance, or release-readiness work proceeds on the changed product/UI/workflow until confirmation evidence is recorded |
+| Scope or acceptance criteria change | Demand intake or product manager | Loop Manager, developer, tester, code reviewer | User or domain owner | Changed scope, non-goals, acceptance criteria, affected tasks, decision record | Downstream roles use the last confirmed scope only; unconfirmed changes return as blockers |
+| Risk/governance/release boundary | Governance/risk owner or release owner | Loop Manager, developer, tester, project manager if selected | Governance owner, domain owner, or release owner | Risk decision, mitigation, rollback/monitoring plan, approval record | Release or high-risk action is blocked until approval evidence exists |
+
+Role enforcement rule:
+
+- Product manager proposes and records product/UI/workflow changes, then asks for confirmation.
+- Loop Manager checks whether the gate has owner, evidence, decision status, and downstream blockers.
+- Developer refuses to implement against unconfirmed product/UI/workflow changes.
+- Tester refuses to mark acceptance against unconfirmed criteria.
+- UI/frontend reviewer checks user-facing consistency and evidence but does not replace user confirmation.
+- Project manager, when selected, checks workflow stage completeness but does not override the gate.
 
 ## Loop Manager Fixed-Time Retrospective Pattern
 
@@ -965,6 +998,29 @@ Each recorded interaction must include these fields:
 | update-proposal | Artifact to update, reason, evidence, owner, expected improvement | Proposal has no target artifact or owner |
 | role-change-broadcast | Changed role, change type, reason, effective time, boundary/handoff impact, required action | Active roles are not notified or records are missing |
 
+## Hard Constraint Gates
+
+Hard constraints are mandatory gates. A gate is open until the required decision owner confirms it and the evidence is recorded. Downstream roles must treat open gates as blockers.
+
+Example: if the product manager / workflow designer changes UI design, product workflow, scope, release slice, or acceptance criteria, the change remains a proposal until the user/domain owner confirms it. Developer implementation, tester acceptance, UI/frontend approval, and release-readiness work must use the last confirmed version until confirmation evidence is recorded.
+
+| Gate ID | Constraint | Trigger | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition | Record Location | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | Product manager changes UI design, workflow, scope, release slice, or acceptance criteria | product-workflow | Loop Manager; development; testing-evaluation; frontend-ux; release/governance owner when selected | User / domain owner / delegated Loop owner | Before/after summary, changed artifact or screenshot/design link, affected use cases, acceptance impact, confirmation record | No implementation, test acceptance, UI approval, or release-readiness work proceeds on the changed item | interaction-evidence-log.md / product workspace / stage-confirmation-checklist.md | draft |
+|  |  |  |  |  |  |  |  |  | draft / waiting-confirmation / confirmed / blocked / closed |
+
+## Gate Enforcement By Role
+
+| Role Category | Gate Responsibility |
+| --- | --- |
+| product-workflow | Propose product/UI/workflow changes with before/after evidence, impact, and confirmation request; do not hand off changed scope as ready until confirmed |
+| loop-manager | Track gate status, stop handoffs with missing confirmation, record blockers, and ask the decision owner to confirm |
+| development | Refuse implementation against unconfirmed product/UI/workflow/scope/acceptance changes |
+| testing-evaluation | Refuse acceptance against unconfirmed criteria or changed workflows |
+| frontend-ux | Review user-facing consistency and evidence, but do not replace user/domain-owner confirmation |
+| project-management | Check workflow-stage completeness when selected; do not override gate decisions |
+| governance-risk / release | Block release or high-risk action until required approval evidence exists |
+
 ## Handoff Package Standard
 
 A handoff package must include:
@@ -1035,11 +1091,11 @@ demand clarification -> product/workflow scope -> codebase exploration when need
 | Role / Subagent | Project Type | Workflow Stage | Required Prior Inputs | Required Outputs / Evidence | Status Sync Duty | Quality Gate | Next Handoff | Must Not Skip |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Demand intake role | software / product / agent / workflow / research / other | demand clarification | User request, context, constraints | Confirmed use cases, assumptions, acceptance draft | Sync to project owner on handoff and completion | Use cases are measurable and confirmed | Product/workflow or Loop owner | Confirmation before implementation |
-| Product manager / workflow designer | software | product/workflow scope | Confirmed use cases and user/domain evidence or explicit evidence gaps | Product problem statement, target users, user-need statements, scope, workflow, acceptance criteria, outcome metric, release slice | Sync before scope handoff and completion | Scope and remaining evidence gaps confirmed by user/domain owner | Codebase explorer, architect, developer, or tester | User need confirmation, scope confirmation, evidence-gap disclosure |
+| Product manager / workflow designer | software | product/workflow scope | Confirmed use cases and user/domain evidence or explicit evidence gaps | Product problem statement, target users, user-need statements, scope, workflow, acceptance criteria, outcome metric, release slice, hard-constraint change proposals when needed | Sync before scope handoff and completion | Scope, UI/product/workflow changes, and remaining evidence gaps confirmed by user/domain owner | Codebase explorer, architect, developer, or tester | User need confirmation, scope confirmation, product/UI/workflow change confirmation, evidence-gap disclosure |
 | Codebase explorer / implementation researcher | software | codebase exploration | Confirmed scope and repo area | Entry points, data flow, patterns, risks | Sync findings before architecture handoff and completion | Findings cite files/evidence | Software architect | Evidence-backed exploration |
 | Software architect / technical designer | software | architecture/design | Scope and exploration notes | Architecture decision, build sequence, test strategy | Sync design before implementation handoff and completion | Design fits repo patterns and constraints | Developer / implementer | Architecture gate |
-| Developer / implementer | software | implementation | Confirmed design/scope | Code/config/scripts, build evidence | Sync on start, blocker, handoff, and completion | Runnable implementation with evidence | Tester/evaluator and reviewers | Test/review handoff |
-| Tester / evaluator | software | testing/evaluation | Use cases, acceptance criteria, implementation evidence | Test plan, results, defects, risks | Sync findings and completion before acceptance handoff | Evidence-based pass/fail | Developer or domain owner | Test evidence |
+| Developer / implementer | software | implementation | Confirmed design/scope and closed hard-constraint gates | Code/config/scripts, build evidence | Sync on start, blocker, handoff, and completion | Runnable implementation with evidence; no unconfirmed product/UI/workflow/scope changes | Tester/evaluator and reviewers | Hard constraint confirmation, test/review handoff |
+| Tester / evaluator | software | testing/evaluation | Use cases, acceptance criteria, implementation evidence, closed hard-constraint gates | Test plan, results, defects, risks | Sync findings and completion before acceptance handoff | Evidence-based pass/fail against confirmed criteria | Developer or domain owner | Hard constraint confirmation, test evidence |
 | Project manager / delivery coordinator | software / product / agent / workflow / research / other | workflow coordination | Project type and selected workflow | Workflow stage map, milestone/dependency status | Sync delivery status to project owner at cadence and on flow changes | No required stage silently skipped | Responsible next role / Loop owner | Project-type workflow completeness |
 | Loop Manager | all | Loop governance | Role registry, workflow map, role outputs, communication-efficiency signals, responsibility/skill improvement signals | Health/resource/status/workflow/communication/responsibility/skill gap checks | Monitor stale syncs; request updates | Governance artifacts current | Super Assistant / responsible role | Role execution boundaries |
 |  |  |  |  |  |  |  |  |  |
@@ -1213,6 +1269,7 @@ The Loop owner must ask the requester or domain owner to confirm this checklist 
 - [ ] The stage knowledge base has been reviewed.
 - [ ] Each stage has a goal, implementation standard, constraints, workflow, principles, inputs, outputs, and records.
 - [ ] Stage inputs and outputs connect clearly.
+- [ ] Hard constraint gates are identified, including user/domain-owner confirmation needed for product, UI, workflow, scope, acceptance, risk, governance, or release changes.
 - [ ] Open questions are recorded with owners and dates.
 
 ## Stage Confirmation
@@ -1220,6 +1277,12 @@ The Loop owner must ask the requester or domain owner to confirm this checklist 
 | Stage | Goal | Standard | Constraints | Workflow | Principles | Records | Decision |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |  |  |
+
+## Hard Constraint Confirmation
+
+| Gate ID | Constraint | Changed Artifact / Stage | Decision Owner | Confirmation Evidence | Downstream Roles Blocked Until Confirmed | Decision |
+| --- | --- | --- | --- | --- | --- | --- |
+| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | UI design / workflow / scope / acceptance criteria | User / domain owner / delegated Loop owner |  | developer / tester / UI reviewer / release owner | draft |
 
 ## Gate Decision
 
@@ -1247,6 +1310,7 @@ The Loop owner must define this plan before execution begins. Default to Super A
 - Subagent rule: 如无必要，勿增实体. Do not create a subagent unless the stage cannot be handled well by the Loop owner plus its stage knowledge base.
 - Role split rule: start with Loop Manager plus 2-3 other active roles. Let Loop Manager split, activate, merge, pause, or close roles only when evidence shows the current role set is overloaded, unclear, risky, missing specialist skill, or causing repeated handoff/status/evidence friction.
 - Role boundary rule: before acting, each role must identify its position, responsibility boundary, editable artifacts, and required handoffs. If it would need to make a decision, do work, or modify files, systems, tools, data, or artifacts outside its responsibility, it must state the boundary, stop the action, and hand off to the responsible role or subagent.
+- Hard constraint gate rule: before implementation, testing, acceptance, or release-readiness work, check whether the task depends on a changed product, UI design, workflow, scope, acceptance standard, risk boundary, or release condition. If the required user/domain-owner confirmation is missing, record the blocker and stop the downstream action.
 - Tool and skill readiness rule: before a role starts execution, verify its required skills, tools, scripts, references, data access, and permissions. If any required capability is missing, install it, activate it, substitute it, downgrade scope, or mark the role blocked.
 - Implementation covenant rule: before execution, confirm `implementation-covenant.md` defines role boundaries, communication content requirements, evidence rules, handoff packages, status-sync rules, and escalation paths for all selected implementation roles.
 - Role category workspace rule: every active role or subagent must use its assigned category folder under `roles/`. Multiple concrete roles or sessions in the same category may share that folder when they have the same responsibility boundary; create separate folders only for distinct categories, authority boundaries, records, or access constraints.
@@ -1603,6 +1667,14 @@ demand clarification -> product/workflow scope -> codebase exploration when need
 - Quality gate:
 - Next handoff:
 - Workflow steps this role must not skip:
+
+## Hard Constraint Gate Responsibility
+
+This role must enforce hard constraints at its workflow stage. If a received task depends on an unconfirmed product/UI/workflow/scope/acceptance/risk/release change, stop execution, record the blocker, and return it to the responsible role or Loop Manager.
+
+| Gate ID | Constraint | This Role's Enforcement Duty | Required Confirmation / Evidence | Blocked Action If Missing | Status |
+| --- | --- | --- | --- | --- | --- |
+| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | Check whether this role is asked to act on changed product/UI/workflow/scope/acceptance content | Confirmation record, changed artifact, before/after summary, affected use cases | implementation / acceptance / UI approval / release-readiness / handoff | draft |
 
 {use_case_responsibility}
 {role_specific_capability}

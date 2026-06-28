@@ -9,6 +9,7 @@ Read this reference when creating Loop roles, role workspaces, Codex sessions, i
 - [Early-Stage Role Minimalism](#early-stage-role-minimalism)
 - [Existing Role Selection Gate](#existing-role-selection-gate)
 - [Implementation Covenant](#implementation-covenant)
+- [Hard Constraint Gates](#hard-constraint-gates)
 - [Document Governance And Index](#document-governance-and-index)
 - [Demand Intake Role](#demand-intake-role)
 - [Loop Manager](#loop-manager)
@@ -100,11 +101,38 @@ The covenant must include:
 - Handoff package standards: required source materials, current state, completed work, open questions, acceptance criteria, known risks, evidence links, and next owner.
 - Status-sync rules: cadence, completion-sync requirement, project owner receiver, and required fields.
 - Evidence and record rules: where interactions are recorded and what counts as missing evidence.
+- Hard constraint gates: mandatory confirmations, enforcing roles, evidence requirements, stop conditions, and downstream blockers for user-facing product/UI/workflow/scope/acceptance/risk/release changes.
 - Boundary violation handling: what a role must do when work falls outside its authority.
 - Disagreement and escalation path: direct role communication first, Loop Manager escalation for scope/risk/authority/schedule/resource issues, and user/domain-owner decision when needed.
 - Covenant review/update rhythm: Loop Manager checks covenant quality during fixed-time retrospectives and updates it when communication friction, role overlap, role gaps, or repeated evidence gaps appear.
 
 No implementation role should treat a task as execution-ready until the covenant exists, the relevant role boundaries are filled, communication content requirements are clear, and the covenant acceptance status is recorded.
+
+## Hard Constraint Gates
+
+Hard constraints are mandatory project principles that must be converted into explicit gates before execution. They are not advice, preferences, or optional quality notes.
+
+Use a hard constraint gate when a change affects:
+
+- User-facing product behavior, workflow, UI design, content meaning, or acceptance standard.
+- Confirmed scope, non-goals, release slice, priority, or success metric.
+- Security, privacy, compliance, permissions, data access, governance, release readiness, or rollback boundary.
+- Role authority, implementation covenant, evidence standard, or required confirmation path.
+
+Each hard constraint gate must record:
+
+- Constraint statement.
+- Triggering change or stage.
+- Decision owner: user, domain owner, governance owner, release owner, or explicitly delegated Loop owner.
+- Proposing role.
+- Enforcing roles at each downstream stage.
+- Required evidence: changed artifact, before/after summary, rationale, impact, screenshots or design links when relevant, test or review expectations, and confirmation record.
+- Stop condition: what downstream roles must refuse to do until the gate is satisfied.
+- Record location in `interaction-evidence-log.md`, `implementation-covenant.md`, role workspace, or another indexed document.
+
+Example: when the product manager / workflow designer changes UI design, product workflow, scope, or acceptance criteria, the change remains a proposal until the user/domain owner confirms it. The product manager records the before/after and asks for confirmation; Loop Manager checks the gate and records the decision path; developer refuses implementation without confirmation evidence; tester refuses acceptance against unconfirmed criteria; UI/frontend reviewer checks user-facing consistency and evidence; release/governance owner refuses release readiness if the gate is still open.
+
+Every active role must enforce hard constraints at its own stage. A role that receives work violating an open hard constraint gate must stop, record the blocker, and return the task to the responsible role or Loop Manager. Loop Manager tracks open gates during stage handoffs, completion checkpoints, fixed-time retrospectives, and event-triggered reviews.
 
 ## Document Governance And Index
 

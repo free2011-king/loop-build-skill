@@ -68,6 +68,7 @@ Before execution begins, confirm or explicitly delegate confirmation for:
 - Tool/skill readiness for every active role.
 - Required evidence, status-sync cadence, quality gates, and next handoffs.
 - Document budget and index owner for each user/role owner who creates or manages project documents.
+- Hard constraint gates, including decision owner, enforcing roles, required evidence, stop condition, and record location. Product/UI/workflow changes by the product manager require user/domain-owner confirmation before downstream implementation, testing acceptance, or release-readiness work proceeds.
 
 Stop at design artifacts when required confirmation is missing.
 
@@ -85,6 +86,7 @@ A Loop is weak if it cannot answer these questions:
 - Are role capability sources tracked on a cadence, including ECC / Everything Claude Code, Claude Code plugins, skills, tools, and trusted references, with candidate-role updates recorded only when responsibilities, skill/tool matches, evidence requirements, or handoffs change?
 - Does every active role have a charter, workflow stage, authority boundary, category workspace, handoff rule, Codex session mapping if used, advisor contribution, tool/skill readiness, health/resource status, and role-registry entry?
 - Is there an accepted implementation covenant covering boundaries, communication requirements, evidence, handoffs, status sync, and escalation?
+- Are hard constraints represented as explicit gates with proposing roles, enforcing roles, decision owners, evidence, stop conditions, and blocked downstream actions?
 - Are role-to-role messages and status syncs recorded with sender, receiver, type, summary, evidence, owner, and status?
 - Does Loop Manager route goals through `role-registry.md` instead of executing role-specific work?
 - Does Loop Manager's fixed-time retrospective review user-role communication efficiency, role-to-role communication efficiency, responsibility fit, and skill/tool gaps?

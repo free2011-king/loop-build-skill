@@ -16,6 +16,7 @@ Use this skill to turn rough goals, product ideas, engineering work, Agent syste
 - Apply `如无必要，勿增实体`: add roles, stages, tools, records, gates, or abstractions only when they close the Loop, reduce meaningful risk, preserve reusable learning, or satisfy a confirmed constraint. In early project stages, keep the active role set small: Loop Manager is mandatory, and the other active roles should usually start with 2-3 roles selected for the next Loop round. Separate role files or workspaces are allowed for clarity; avoid activating too many specialized roles before confirmed complexity, workload, risk, or workflow evidence requires splitting them out.
 - Separate confirmed requirements from advisor recommendations, assumptions, risks, and questions. Advice does not become execution scope without confirmation.
 - Keep role authority explicit. A role that reaches outside its boundary must state the boundary, stop, hand off, and record the handoff.
+- Turn hard constraints into explicit gates with owners, evidence, and blockers. If a role changes a user-facing product, workflow, UI design, acceptance standard, risk boundary, release scope, or other confirmed constraint, the change is only a proposal until the user/domain owner or delegated decision owner confirms it. Different roles must enforce the gate at their stage instead of relying on memory.
 - Require all role-to-role messages, status syncs, handoffs, disagreements, blockers, advice, test findings, acceptance feedback, implementation claims, and update proposals to be recorded in project documents.
 
 ## Reference Routing
@@ -53,16 +54,19 @@ Load only the reference needed for the current task:
 8. Establish role operating rules.
    Give every active role a Loop charter and category workspace. Before execution, create `implementation-covenant.md` so active roles share one agreement for role boundaries, communication content requirements, handoff packages, status sync, evidence, and escalation.
 
-9. Design the smallest full cycle.
+9. Define hard constraint gates.
+   Convert mandatory principles into stage gates. For each hard constraint, record the trigger, decision owner, enforcing role, required evidence, stop condition, and next handoff. Example: if the product manager changes UI/product design, scope, workflow, or acceptance criteria, the user/domain owner must confirm the change before developer implementation, tester acceptance, or release-readiness work proceeds.
+
+10. Design the smallest full cycle.
    Define `goal -> input -> action -> observation -> update -> reuse`. For build-oriented Loops, use explicit lifecycle stages such as `design -> develop -> test -> release -> operate -> review -> update` instead of collapsing development and testing.
 
-10. Choose observation and update mechanisms.
+11. Choose observation and update mechanisms.
    Define what gets recorded, who reviews it, what signal shows improvement, and which artifact changes before the next round. Control document count per user/owner through `document-index.md`, with an explicit document budget, purpose, owner, status, and merge/archive decision for each managed document.
 
-11. Scaffold and customize artifacts when useful.
+12. Scaffold and customize artifacts when useful.
    Use the script described in `references/artifact-pack.md`, then customize generated files for the user's scenario. Do not leave placeholders when the user gave enough context.
 
-12. Stop at gates when confirmation is missing.
+13. Stop at gates when confirmation is missing.
     Before moving past Loop design, ask the requester or domain owner to confirm the stage knowledge base and selected role set. Do not proceed to execution, development, testing, acceptance, or release when required confirmation is missing.
 
 ## Mandatory Governance Highlights
@@ -75,9 +79,10 @@ Load only the reference needed for the current task:
 - Project manager/delivery coordinator is optional and separate from Loop Manager. Select it only when delivery scheduling, milestones, external dependencies, stakeholder reporting, or workflow coordination needs a separate owner.
 - Every active role must sync status to the project owner at the dispatch-defined cadence and immediately on completion, blocker, handoff, return, or closure.
 - Role/personnel/session changes are not complete until Loop Manager updates `role-registry.md`, notifies every other active role, and records the broadcast.
+- Hard constraints are not preferences. A product, UI, workflow, scope, acceptance, risk, governance, or release change that requires user/domain-owner confirmation must be blocked by each downstream role until confirmation evidence is recorded.
 
 ## Output Shape
 
-For a Loop-design answer, provide the Loop owner, Loop Manager, Loop Manager automatic distillation time nodes, role skill-evolution mechanism, initial minimal active role set, deferred candidate roles and split triggers, role categories, Loop object, minimum viable loop, key records, feedback/evaluation signals, update mechanism, first implementation order, selected/excluded roles, implementation covenant status, category workspaces, interaction evidence rule, disagreement/escalation path, risks, confirmation needed, and artifact path if files were created.
+For a Loop-design answer, provide the Loop owner, Loop Manager, Loop Manager automatic distillation time nodes, role skill-evolution mechanism, hard constraint gates, initial minimal active role set, deferred candidate roles and split triggers, role categories, Loop object, minimum viable loop, key records, feedback/evaluation signals, update mechanism, first implementation order, selected/excluded roles, implementation covenant status, category workspaces, interaction evidence rule, disagreement/escalation path, risks, confirmation needed, and artifact path if files were created.
 
 Keep the result concrete enough that the user can start building immediately.

@@ -13,6 +13,7 @@ Read this reference when building software, product, Agent, workflow, digital-em
 - [Extended Software Development Candidates](#extended-software-development-candidates)
 - [Skill / Tool / Knowledge Match](#skill--tool--knowledge-match)
 - [Product Manager Capability Pattern](#product-manager-capability-pattern)
+- [Hard Constraint Gate Pattern](#hard-constraint-gate-pattern)
 - [Loop Manager Fixed-Time Retrospective Pattern](#loop-manager-fixed-time-retrospective-pattern)
 - [Extended Software Skill / Tool / Knowledge Match](#extended-software-skill--tool--knowledge-match)
 - [Project-Type Workflow Defaults](#project-type-workflow-defaults)
@@ -173,6 +174,8 @@ Before handing to developer, architect, tester, or codebase explorer, the produc
 - Outcome metric or observation signal.
 - User/domain-owner confirmation status and remaining decisions.
 
+If the product manager changes UI design, product workflow, scope, release slice, or acceptance criteria after a prior confirmation, it must create a new change proposal and get user/domain-owner confirmation before downstream implementation, testing, or release-readiness work proceeds.
+
 ### Product Manager Source Tracking
 
 When online or external product-management references shape the role requirements, record the source link, source type, adopted capability, and date in the role workspace or product spec. Useful source families include product discovery, user-need statements, agile product-owner accountability, PRD/spec templates, prioritization frameworks, and product analytics guidance.
@@ -187,6 +190,25 @@ When online or external product-management references shape the role requirement
 | [GOV.UK Service Manual: Start By Learning User Needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs) | Start service/product work by learning real user needs and context | Require user/domain evidence, target users, scenarios, constraints, and evidence gaps |
 | [Scrum Guide: Product Owner](https://scrumguides.org/scrum-guide.html#product-owner) | Maintain product value, product goal, backlog clarity, ordering, and transparency | Require priority logic, release slicing, outcome metrics, and transparent decisions |
 
+
+## Hard Constraint Gate Pattern
+
+Hard constraints must be written as gates with owners, evidence, and stop conditions. Use this pattern for user-facing product/UI/workflow changes, scope changes, acceptance-standard changes, governance/risk boundaries, release-readiness decisions, and other mandatory project principles.
+
+| Gate | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition |
+| --- | --- | --- | --- | --- | --- |
+| Product/UI/workflow change confirmation | Product manager / workflow designer | Loop Manager, developer, tester, UI/frontend reviewer, release/governance owner when selected | User or domain owner unless explicitly delegated | Before/after summary, changed artifact or screenshot/design link, rationale, affected use cases, acceptance impact, confirmation record | No implementation, testing acceptance, or release-readiness work proceeds on the changed product/UI/workflow until confirmation evidence is recorded |
+| Scope or acceptance criteria change | Demand intake or product manager | Loop Manager, developer, tester, code reviewer | User or domain owner | Changed scope, non-goals, acceptance criteria, affected tasks, decision record | Downstream roles use the last confirmed scope only; unconfirmed changes return as blockers |
+| Risk/governance/release boundary | Governance/risk owner or release owner | Loop Manager, developer, tester, project manager if selected | Governance owner, domain owner, or release owner | Risk decision, mitigation, rollback/monitoring plan, approval record | Release or high-risk action is blocked until approval evidence exists |
+
+Role enforcement rule:
+
+- Product manager proposes and records product/UI/workflow changes, then asks for confirmation.
+- Loop Manager checks whether the gate has owner, evidence, decision status, and downstream blockers.
+- Developer refuses to implement against unconfirmed product/UI/workflow changes.
+- Tester refuses to mark acceptance against unconfirmed criteria.
+- UI/frontend reviewer checks user-facing consistency and evidence but does not replace user confirmation.
+- Project manager, when selected, checks workflow stage completeness but does not override the gate.
 
 ## Loop Manager Fixed-Time Retrospective Pattern
 
