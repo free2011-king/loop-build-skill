@@ -8,10 +8,12 @@ Read this reference when creating Loop roles, role workspaces, Codex sessions, i
 - [Role Category Workspace Rule](#role-category-workspace-rule)
 - [Early-Stage Role Minimalism](#early-stage-role-minimalism)
 - [Existing Role Selection Gate](#existing-role-selection-gate)
+- [Project Owner Acceptance Translation Gate](#project-owner-acceptance-translation-gate)
 - [Implementation Covenant](#implementation-covenant)
 - [Hard Constraint Gates](#hard-constraint-gates)
 - [Human Participation Classification](#human-participation-classification)
 - [Document Governance And Index](#document-governance-and-index)
+- [Project Metadata](#project-metadata)
 - [Demand Intake Role](#demand-intake-role)
 - [Loop Manager](#loop-manager)
 - [Default Loop Manager Distillation Time Nodes](#default-loop-manager-distillation-time-nodes)
@@ -89,6 +91,36 @@ The Loop owner must prepare a role selection packet for user or domain-owner con
 - Tool and skill readiness, substitutes, or blockers.
 
 Do not proceed into implementation until the selected role set is confirmed by the user/domain owner or confirmation is explicitly delegated to the Loop owner. Prefer Loop Manager plus 2-3 other active roles and deferred candidates over a fully split team at project start. Create a new role only when no existing role category can cover the responsibility without creating unclear authority, record, evidence, or confidentiality boundaries.
+
+## Project Owner Acceptance Translation Gate
+
+Every Loop needs a project owner function before execution. This function may be held by a project manager / delivery coordinator, by the Loop Owner, or temporarily by the Loop Manager when no separate project manager exists. The function is not primarily execution. Its most important job is to translate the user's demand into verifiable acceptance standards and get user/domain-owner confirmation.
+
+Project owner core operating principles:
+
+- Translate user demand into verifiable acceptance standards before execution or dispatch.
+- Separate the user's original words, the project owner's interpretation, assumptions, open questions, and confirmed standards.
+- Treat confirmation as the start signal. If standards are missing, ambiguous, unconfirmed, or not testable, mark the work blocked or discovery-needed.
+- Dispatch confirmed work to registered roles instead of silently doing role-specific execution.
+- Preserve acceptance standards, evidence requirements, confirmation records, and feedback so the Loop can learn.
+- Minimize user interruption after standards are confirmed and work is standardized, delegated, objectively checkable, and evidence-backed.
+
+The project owner function must not treat understanding the user's words as permission to execute. It must first produce an acceptance translation packet:
+
+- User demand in the user's words.
+- Interpreted goal, target user, scenario, and expected outcome.
+- Verifiable acceptance standards with observable pass/fail checks.
+- Positive examples, negative examples, edge cases, and non-goals.
+- Evidence required from implementation, testing, review, or release readiness.
+- Human participation classification: `human-required`, `delegated-review`, or `automated-pass`.
+- Open assumptions and questions.
+- Confirmation owner and confirmation record.
+
+If acceptance standards are missing, ambiguous, unconfirmed, or not testable, downstream roles must treat the work as blocked or discovery-needed. Developer, tester, reviewer, release, and standardized production roles should not start from "the project owner understood the user"; they should start from confirmed acceptance standards and evidence requirements.
+
+Loop Manager may temporarily perform this project owner function only as governance and dispatch support: clarify the demand, prepare the acceptance translation packet, request confirmation, route the confirmed packet to registered roles, and track the gate. It still must not perform development, testing conclusions, business acceptance, governance approval, production release, project-manager delivery execution, or role-specific implementation.
+
+This gate is what lets the Loop learn. If the project owner skips explicit acceptance translation and starts executing from private interpretation, later feedback cannot reliably update reusable standards, because the system never recorded what "done" was supposed to mean.
 
 ## Implementation Covenant
 
@@ -185,6 +217,23 @@ Before creating a new document, the responsible role must check `document-index.
 
 Loop Manager reviews the index during fixed-time retrospectives. If a user or role exceeds its project-defined document budget, Loop Manager must request a merge/archive decision before allowing more documents unless a new document is required by role boundary, evidence, compliance, confidentiality, or handoff needs.
 
+## Project Metadata
+
+Every concrete Loop project must initialize `project-metadata.md` as engineering metadata for the project. Loop Manager owns and maintains it as the project changes.
+
+`project-metadata.md` must summarize:
+
+- Project identity, Loop type, Loop owner, project owner function, and metadata owner.
+- Active and deferred role information.
+- Role division of work and must-handoff boundaries.
+- Category workspaces.
+- Thread/session basics, including thread/session ID when known, purpose, status, and last-used signal.
+- Metadata change history for role, division, project-owner, workspace, status, and thread/session changes.
+
+Keep `project-metadata.md` as a project-level view, not a task log. Detailed dispatch belongs in `goal-dispatch-log.md`; detailed interactions belong in `interaction-evidence-log.md`; detailed authority and readiness belong in `role-registry.md`; detailed Codex routing belongs in `role-sessions.md`.
+
+A role/personnel/session change is not complete until Loop Manager updates `project-metadata.md`, updates `role-registry.md` or `role-sessions.md` as needed, notifies all active roles, and records the broadcast.
+
 ## Demand Intake Role
 
 Create the demand intake role before implementation roles. It owns rough demand, clarification, refinement, concrete use cases, open questions, acceptance criteria, confirmation status, and the first handoff to the Loop owner.
@@ -197,7 +246,7 @@ When `grill-me` is available, demand intake must use it before declaring demand 
 
 Every concrete Loop project must have a Loop Manager from the very beginning of the project. Create it before demand intake and before implementation roles so it can maintain the Loop system as roles appear. Do not treat the Loop Manager as optional once a project becomes a concrete Loop project.
 
-The Loop Manager is distinct from a project manager. The Loop Manager owns Loop governance: cadence, fixed-time retrospective rituals, status, risks, decisions, blockers, handoffs, major disagreement escalation, review rituals, role self-review, role advice summaries, role health checks, resource status, project-level reflection, the active role registry, experience distillation checks, communication-efficiency review, role responsibility optimization, role skill/tool improvement, and feedback to the Super Assistant. A project manager or delivery coordinator, when needed, owns ordinary delivery coordination such as milestones, timelines, external dependency chasing, and stakeholder status reporting.
+The Loop Manager is distinct from a project manager. The Loop Manager owns Loop governance: project metadata, cadence, fixed-time retrospective rituals, status, risks, decisions, blockers, handoffs, major disagreement escalation, review rituals, role self-review, role advice summaries, role health checks, resource status, project-level reflection, the active role registry, experience distillation checks, communication-efficiency review, role responsibility optimization, role skill/tool improvement, and feedback to the Super Assistant. A project manager or delivery coordinator, when needed, owns ordinary delivery coordination such as milestones, timelines, external dependency chasing, and stakeholder status reporting.
 
 The Loop Manager must not do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific implementation work. It asks the responsible role to act, tracks the handoff, and verifies whether the returned output satisfies the agreed gate.
 

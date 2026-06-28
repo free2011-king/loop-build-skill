@@ -15,6 +15,7 @@ Read this reference when building software, product, Agent, workflow, digital-em
 - [Product Manager Capability Pattern](#product-manager-capability-pattern)
 - [Hard Constraint Gate Pattern](#hard-constraint-gate-pattern)
 - [Loop Manager Fixed-Time Retrospective Pattern](#loop-manager-fixed-time-retrospective-pattern)
+- [Project Owner Acceptance Translation Pattern](#project-owner-acceptance-translation-pattern)
 - [Extended Software Skill / Tool / Knowledge Match](#extended-software-skill--tool--knowledge-match)
 - [Project-Type Workflow Defaults](#project-type-workflow-defaults)
 - [Default Handoffs](#default-handoffs)
@@ -62,7 +63,7 @@ The Loop Manager may also recommend merging, pausing, or closing roles when the 
 | Developer / implementer | Build the confirmed technical slice and provide implementation evidence | Confirmed scope needs code, configuration, integration, automation, data, or platform changes | Redefine scope, declare QA passed, approve release, or bypass governance |
 | Tester / evaluator | Verify behavior against use cases, acceptance standards, regressions, and quality gates | Runnable artifact, implementation diff, or reviewable output exists | Implement fixes silently, approve business acceptance, or rewrite product scope |
 | Loop Manager | Govern the whole Loop: role registry, cadence, fixed-time retrospectives, blockers, handoffs, role health checks, resource status, experience distillation, role self-review, role advice, communication-efficiency review, role responsibility/skill optimization, project reflection, and feedback to Super Assistant | Always for every concrete Loop project; created at project start before demand intake and implementation roles | Do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific execution |
-| Project manager / delivery coordinator | Classify each new question/request by project nature and coordinate the complete workflow for that project type, including milestones, timeline, cross-team dependencies, stakeholder status, and delivery rituals | Delivery scheduling, external dependencies, stakeholder reporting, multi-team coordination, or project-type workflow completeness needs a dedicated owner | Govern Loop learning, maintain role health, replace Loop Manager, decide product scope, do implementation, declare QA pass, approve release, own experience distillation, or skip required project-type workflow stages |
+| Project manager / delivery coordinator | Translate user demand into verifiable acceptance standards for confirmation, classify each new question/request by project nature, and coordinate the complete workflow for that project type, including milestones, timeline, cross-team dependencies, stakeholder status, and delivery rituals | Delivery scheduling, acceptance-standard coordination, external dependencies, stakeholder reporting, multi-team coordination, or project-type workflow completeness needs a dedicated owner | Treat private understanding as execution permission, govern Loop learning, maintain role health, replace Loop Manager, decide product scope, do implementation, declare QA pass, approve release, own experience distillation, or skip required project-type workflow stages |
 
 
 ## Claude Code Feature Development Role Patterns
@@ -232,6 +233,40 @@ The Loop Manager retrospective must treat the following as core distillation and
 - Reusable learning: rules, templates, prompts, checklists, role definitions, skill updates, and project principles that should change before the next cycle.
 
 The output must be recorded as concrete updates, not only observations: communication-rule updates, handoff-template updates, role-registry updates, role-charter changes, skill/tool readiness actions, training/checklist updates, and feedback to the Super Assistant.
+
+## Project Owner Acceptance Translation Pattern
+
+Use this pattern whenever a project manager / delivery coordinator is selected, or when Loop Manager / Loop Owner temporarily carries the project owner function because no separate project manager exists.
+
+The project owner function must translate the user's demand into verifiable acceptance standards before execution. It does not start implementation from private interpretation.
+
+Core operating principles:
+
+- Translate user demand into verifiable acceptance standards before execution or dispatch.
+- Keep user wording, interpretation, assumptions, questions, and confirmed standards separate.
+- Ask the user/domain owner or delegated decision owner to confirm the standards before work begins.
+- If standards are missing, ambiguous, unconfirmed, or not testable, mark the task blocked or discovery-needed.
+- Dispatch confirmed work to registered roles and preserve evidence so the Loop can learn.
+- Avoid user interruption for standardized production only after standards are confirmed and objective checks are defined.
+
+Acceptance translation packet:
+
+- User demand in original wording.
+- Interpreted goal, target user, scenario, and desired outcome.
+- Verifiable acceptance standards with observable pass/fail checks.
+- Positive examples, negative examples, edge cases, non-goals, and constraints.
+- Evidence expected from developer, tester, reviewer, release, or standardized production roles.
+- Human participation classification for each acceptance gate.
+- Open assumptions, questions, and confirmation owner.
+- User/domain-owner confirmation record.
+
+Role enforcement rule:
+
+- Project manager / delivery coordinator owns this packet when selected.
+- Loop Manager may prepare and track this packet only when no project manager exists, but still must not perform role-specific execution.
+- Product manager helps convert vague demand into product meaning and acceptance standards.
+- Developer, tester, reviewer, and release roles refuse execution or acceptance when standards are missing, ambiguous, or unconfirmed.
+- Standardized production may proceed only after standards are confirmed and objective checks/evidence are defined.
 
 ### Role Skill Evolution Pattern
 

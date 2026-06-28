@@ -10,6 +10,7 @@ This repository is the git-managed source for the `loop-builder` Codex skill.
 - Creates Loop governance first, with a mandatory Loop Manager.
 - Gives Loop Manager default automatic distillation time nodes from project start.
 - Separates Loop Manager from project manager / delivery coordinator.
+- Requires the project owner function to translate user demand into verifiable acceptance standards and get confirmation before dispatch or execution.
 - Lets role skills, prompts, tools, checklists, and role requirements improve gradually with Loop Manager support.
 - Turns hard constraints into explicit gates with decision owners, enforcing roles, evidence, stop conditions, and blocked downstream actions.
 - Classifies human participation so aesthetic/product/value/risk judgment gets human input, while clear standardized production can proceed through objective evidence.
@@ -17,6 +18,7 @@ This repository is the git-managed source for the `loop-builder` Codex skill.
 - Requires product manager / workflow designer to keep clarifying user needs until they are clear, bounded, testable, and ready for handoff.
 - Requires role-to-role messages, handoffs, blockers, advice, status syncs, test findings, and acceptance feedback to be recorded.
 - Creates category-based role workspaces so roles of the same category share one project folder.
+- Initializes `project-metadata.md` for role information, division of work, thread/session basics, and metadata changes.
 - Controls document growth with `document-index.md`, document budgets, review dates, and merge/archive decisions.
 - Tracks reusable role capability sources such as ECC / Everything Claude Code, Claude Code plugins, local plugin/tool metadata, and external role references.
 
@@ -76,7 +78,7 @@ Useful options:
 - `--slug example-loop`: set the output folder name.
 - `--force`: overwrite an existing generated folder.
 
-The generated pack includes governance files such as `loop-design.md`, `document-index.md`, `loop-manager.md`, `role-registry.md`, `team-formation.md`, `implementation-covenant.md`, and role workspaces.
+The generated pack includes governance files such as `loop-design.md`, `document-index.md`, `project-metadata.md`, `loop-manager.md`, `role-registry.md`, `team-formation.md`, `implementation-covenant.md`, and role workspaces.
 
 ## Validate
 

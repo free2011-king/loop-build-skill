@@ -30,6 +30,7 @@ The scaffold creates these project artifacts:
 
 - `loop-design.md`: Loop object, minimum viable loop, records, signals, update mechanism, and first build order.
 - `document-index.md`: single index controlling user/owner-created and managed documents, document budgets, purpose, status, review cadence, and merge/archive decisions.
+- `project-metadata.md`: project identity, role information, division of work, thread/session basics, metadata owner, and metadata change history maintained by Loop Manager.
 - `team-formation.md`: demand intake, small initial role set, existing-role selection, deferred candidate roles, split triggers, excluded candidate roles, tool/skill readiness, and requester confirmation.
 - `candidate-role-library.md`: reusable candidate roles with best-practice skill, tool, knowledge-base, record, handoff matches, and capability-source tracking for ECC / Everything Claude Code, Claude Code plugins, skills, tools, and external references.
 - `use-cases.md`: concrete, measurable use cases created by demand intake.
@@ -51,6 +52,7 @@ The scaffold creates these project artifacts:
 
 - Customize generated files to the user's actual scenario; do not leave placeholders when context is available.
 - Before creating any additional document, check `document-index.md`; reuse, merge, or archive existing documents unless a new document is necessary.
+- Keep `project-metadata.md` current when roles, role division, project owner function, workspaces, or thread/session basics change.
 - Keep role additions small and justified by confirmed use cases.
 - Record selected, deferred, and excluded candidate roles before implementation.
 - Keep the initial active role set small: Loop Manager plus usually 2-3 other active roles. Separate role files/workspaces are fine for selected roles; do not activate specialist roles merely because a candidate role exists.
@@ -62,12 +64,14 @@ The scaffold creates these project artifacts:
 Before execution begins, confirm or explicitly delegate confirmation for:
 
 - Refined demand and concrete use cases.
+- Project owner acceptance translation: user wording, interpreted goal, verifiable acceptance standards, evidence expectations, open assumptions, confirmation owner, and confirmation record.
 - Selected implementation role set, deferred candidate roles with split triggers, and excluded-role reasons.
 - Stage knowledge base.
 - Implementation covenant.
 - Tool/skill readiness for every active role.
 - Required evidence, status-sync cadence, quality gates, and next handoffs.
 - Document budget and index owner for each user/role owner who creates or manages project documents.
+- Project metadata owner, active role metadata, division of work, and thread/session basics.
 - Hard constraint gates, including decision owner, enforcing roles, required evidence, stop condition, and record location. Product/UI/workflow changes by the product manager require user/domain-owner confirmation before downstream implementation, testing acceptance, or release-readiness work proceeds.
 - Human participation classification for each gate: aesthetic/product/value/risk/authorization judgment is `human-required`; standardized production with clear requirements, delegated authority, objective checks, and recorded evidence may be `automated-pass`.
 
@@ -84,6 +88,7 @@ A Loop is weak if it cannot answer these questions:
 - Did demand intake refine rough ideas into concrete, measurable use cases?
 - Were implementation roles selected from confirmed demand instead of invented by habit?
 - Is the initial active role set intentionally small, with Loop Manager plus usually 2-3 other active roles and specialist roles deferred until Loop Manager evidence justifies splitting?
+- Is there a `project-metadata.md` initialized and kept current for role information, division of work, thread/session basics, and metadata changes?
 - Are role capability sources tracked on a cadence, including ECC / Everything Claude Code, Claude Code plugins, skills, tools, and trusted references, with candidate-role updates recorded only when responsibilities, skill/tool matches, evidence requirements, or handoffs change?
 - Does every active role have a charter, workflow stage, authority boundary, category workspace, handoff rule, Codex session mapping if used, advisor contribution, tool/skill readiness, health/resource status, and role-registry entry?
 - Is there an accepted implementation covenant covering boundaries, communication requirements, evidence, handoffs, status sync, and escalation?
@@ -93,6 +98,7 @@ A Loop is weak if it cannot answer these questions:
 - Does Loop Manager route goals through `role-registry.md` instead of executing role-specific work?
 - Does Loop Manager's fixed-time retrospective review user-role communication efficiency, role-to-role communication efficiency, responsibility fit, and skill/tool gaps?
 - Does Loop Manager help each active role gradually distill and optimize its skills, tools, prompts, checklists, references, and role requirements from evidence?
+- Did the project owner translate user demand into confirmed, verifiable acceptance standards before dispatch or execution?
 - What signal shows whether the Loop improved?
 - Is there a `document-index.md` controlling document count per user/owner, with purpose, owner, status, review date, and merge/archive decisions for every managed document?
 - What artifact changes before the next round?
