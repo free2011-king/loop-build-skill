@@ -15,6 +15,7 @@ This repository is the git-managed source for the `loop-builder` Codex skill.
 - Turns hard constraints into explicit gates with decision owners, enforcing roles, evidence, stop conditions, and blocked downstream actions.
 - Classifies human participation so aesthetic/product/value/risk judgment gets human input, while clear standardized production can proceed through objective evidence.
 - Selects implementation roles from an existing candidate role library, while keeping the initial active role set small.
+- Caps initial real Codex threads at 3 or fewer and allows multiple roles to share one thread when boundaries and records are clear.
 - Requires product manager / workflow designer to keep clarifying user needs until they are clear, bounded, testable, and ready for handoff.
 - Requires role-to-role messages, handoffs, blockers, advice, status syncs, test findings, and acceptance feedback to be recorded.
 - Creates category-based role workspaces so roles of the same category share one project folder.
@@ -107,5 +108,6 @@ python3 "$HOME/.codex/skills/.system/skill-creator/scripts/quick_validate.py" .
 - Before adding new generated documents, update `references/artifact-pack.md`, `scripts/create_loop_pack.py`, and `scripts/test_create_loop_pack.py` together.
 - Preserve `如无必要，勿增实体`: do not add roles, documents, stages, gates, or abstractions unless they close the Loop, reduce real risk, preserve reusable learning, or satisfy a confirmed constraint.
 - Keep early projects lightly staffed: Loop Manager is mandatory, other active roles usually start at 2-3, and specialist roles stay deferred until Loop Manager evidence justifies splitting, activating, merging, pausing, or closing roles.
+- Keep early projects lightly threaded: real Codex threads should start at 3 or fewer. Share one thread across multiple roles until concrete split evidence appears.
 - Keep `document-index.md` as the single generated document-control index for concrete Loop projects.
 - Revisit candidate role requirements on the cadence defined in the skill, monthly by default when no cadence is set.

@@ -40,7 +40,7 @@ Create a role only when it is necessary to close the Loop, reduce meaningful ris
 - Project-type workflow requirement: project type, workflow stage, required prior inputs, required outputs, status-sync cadence, quality gate, next handoff, and workflow steps this role must not skip.
 - Required tools and skills: skills, tools, scripts, references, data access, permissions, readiness status, fallback, blocker, and owner.
 - Advisor contribution: best-practice suggestions, risks, options, assumptions, and confirmation needs.
-- Codex session: separate thread/session when Codex is used for an active concrete role or subagent, mapped back to its role-category workspace.
+- Codex session: real thread/session assignment when Codex is used, mapped back to role-category workspace. At project initialization, keep real threads capped at 3 and let multiple roles share one thread when boundaries and records are explicit.
 
 Do not create a role that only has a name, folder, or session.
 
@@ -62,7 +62,9 @@ Each category workspace should record:
 
 ## Early-Stage Role Minimalism
 
-At project start, keep the active role set small. Create the Loop Manager and usually 2-3 other active roles needed to clarify demand and run the next Loop round. Those role files or category workspaces may be separate for clarity; the constraint is role count and responsibility sprawl, not forcing multiple roles into one file. Do not activate product, project-management, architecture, development, testing, security, review, documentation, or governance roles merely because they exist in the candidate library.
+At project start, keep the active role set small. Create the Loop Manager and usually 2-3 other active roles needed to clarify demand and run the next Loop round. Those role files or category workspaces may be separate for clarity; the constraint is responsibility sprawl, not forcing multiple roles into one file.
+
+Keep real Codex threads even smaller: do not exceed 3 real threads at initialization. A normal early thread shape is coordination thread, Loop Manager / governance thread, and one shared implementation or discovery thread. Multiple roles may share the same real thread when the current speaking role, authority boundary, workspace, status sync, and handoff records are explicit. Do not activate product, project-management, architecture, development, testing, security, review, documentation, governance roles, or dedicated threads merely because they exist in the candidate library.
 
 Candidate roles may be listed in `team-formation.md`, `candidate-role-library.md`, `role-sessions.md`, or `role-workspaces.md` as deferred options. A listed candidate is not an active role until the user/domain owner confirms it or confirmation is explicitly delegated, the Loop Manager adds it to `role-registry.md`, its authority boundary and workspace are clear, and the role-change broadcast is recorded. If a role is active or explicitly prepared for confirmation, its file/workspace may be separate.
 
@@ -228,6 +230,7 @@ Every concrete Loop project must initialize `project-metadata.md` as engineering
 - Role division of work and must-handoff boundaries.
 - Category workspaces.
 - Thread/session basics, including thread/session ID when known, purpose, status, and last-used signal.
+- Real thread budget, shared-thread role grouping, and thread split triggers.
 - Metadata change history for role, division, project-owner, workspace, status, and thread/session changes.
 
 Keep `project-metadata.md` as a project-level view, not a task log. Detailed dispatch belongs in `goal-dispatch-log.md`; detailed interactions belong in `interaction-evidence-log.md`; detailed authority and readiness belong in `role-registry.md`; detailed Codex routing belongs in `role-sessions.md`.
@@ -441,6 +444,8 @@ Separate confirmed requirements from advisor recommendations, assumptions, risks
 
 ## Codex Session Rule
 
-When using Codex, treat each active role or subagent as a separate thread/session with its own role context and category workspace. The Super Assistant stays in the coordination session and sends scoped work to role sessions.
+When using Codex, do not treat every active role as requiring a separate real thread. At project initialization, cap real threads at 3 unless the user confirms more or Loop Manager records a concrete split trigger.
 
-If thread creation is unavailable or not explicitly requested, still record the intended role-session mapping and keep role outputs separated by role-category workspace.
+Use shared role threads by default when boundaries can stay clear. The Super Assistant stays in the coordination thread. Loop Manager may have a governance thread when useful. Product, demand, implementation, testing, and review roles may share a discovery/implementation thread until workload, context isolation, independent review, confidentiality, risk isolation, long-running work, or repeated handoff friction justifies a dedicated thread.
+
+If thread creation is unavailable, unnecessary, or not explicitly requested, still record the intended role-to-thread mapping and keep role outputs separated by role-category workspace. Every shared thread message must state the acting role, task/goal ID, authority boundary, record location, and next handoff when relevant.

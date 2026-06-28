@@ -24,22 +24,23 @@ Read this reference when building software, product, Agent, workflow, digital-em
 - [Disagreement Resolution](#disagreement-resolution)
 - [Reuse Checklist](#reuse-checklist)
 
-Use these roles as an existing reusable role pool, not mandatory entities. At project start, Loop Manager is mandatory and the other active roles should usually start with 2-3 roles chosen for the next Loop round. Keep specialized roles as deferred candidates until there is confirmed need, complexity, risk, workload, or workflow evidence. Separate role files or category workspaces are allowed for active or explicitly prepared roles. Select roles according to the project's confirmed needs and use cases, then ask the user or domain owner to confirm the selected implementation role set before execution. Activate only the roles needed by confirmed use cases and the implementation plan. Loop Manager and project manager are different roles: Loop Manager is mandatory for concrete Loop projects and governs the whole Loop; project manager/delivery coordinator is optional and only selected when delivery coordination needs a separate owner.
+Use these roles as an existing reusable role pool, not mandatory entities. At project start, Loop Manager is mandatory and the other active roles should usually start with 2-3 roles chosen for the next Loop round. Keep real Codex threads capped at 3 or fewer at initialization; multiple roles may share one thread when acting-role markers, authority boundaries, workspaces, and handoff records are explicit. Keep specialized roles and dedicated role threads as deferred candidates until there is confirmed need, complexity, risk, workload, or workflow evidence. Separate role files or category workspaces are allowed for active or explicitly prepared roles. Select roles according to the project's confirmed needs and use cases, then ask the user or domain owner to confirm the selected implementation role set and thread grouping before execution. Activate only the roles needed by confirmed use cases and the implementation plan. Loop Manager and project manager are different roles: Loop Manager is mandatory for concrete Loop projects and governs the whole Loop; project manager/delivery coordinator is optional and only selected when delivery coordination needs a separate owner.
 
 ## Selection Workflow
 
 1. Start from confirmed project needs and use cases.
 2. Match each need to an existing candidate role and role category.
 3. Select a small active role set that can cover the next Loop round without unclear authority, evidence, record, or confidentiality boundaries. Use Loop Manager plus 2-3 other active roles as the normal early-project range.
-4. List deferred candidate roles, the trigger that would activate each one, and why they are not needed now.
-5. List candidate roles that are excluded entirely and explain why they are unnecessary for this Loop round.
-6. Prepare a confirmation packet with selected roles, deferred candidates, excluded candidates, split triggers, category workspaces, authority boundaries, handoff paths, required tools/skills, readiness status, and blockers.
-7. Ask the user or domain owner to confirm the selected role set before implementation.
-8. Create a new role only when no existing role can responsibly cover the confirmed need.
+4. Create an initial real-thread plan with 3 or fewer Codex threads and shared-thread role grouping.
+5. List deferred candidate roles and dedicated-thread split triggers, and explain why they are not needed now.
+6. List candidate roles that are excluded entirely and explain why they are unnecessary for this Loop round.
+7. Prepare a confirmation packet with selected roles, deferred candidates, excluded candidates, split triggers, shared-thread assignments, category workspaces, authority boundaries, handoff paths, required tools/skills, readiness status, and blockers.
+8. Ask the user or domain owner to confirm the selected role set and thread grouping before implementation.
+9. Create a new role only when no existing role can responsibly cover the confirmed need.
 
 ## Activation Rule
 
-Apply `如无必要，勿增实体`: a candidate role becomes active only when it has a concrete goal, implementation standard, authority boundary, role category, category workspace, Codex session mapping, tool/skill readiness, knowledge base, records, gate, and handoff rule.
+Apply `如无必要，勿增实体`: a candidate role becomes active only when it has a concrete goal, implementation standard, authority boundary, role category, category workspace, real-thread or shared-thread assignment, tool/skill readiness, knowledge base, records, gate, and handoff rule.
 
 ## Staged Role Splitting
 
@@ -54,6 +55,8 @@ Use these triggers to split or activate a specialized role:
 - Compliance, confidentiality, release readiness, stakeholder reporting, or evidence integrity requires separate ownership.
 
 The Loop Manager may also recommend merging, pausing, or closing roles when the project stabilizes or when a previous split is no longer useful. Record every split/merge decision in `role-registry.md`, `team-formation.md`, and `interaction-evidence-log.md`.
+
+Dedicated thread creation is a split decision too. Create a dedicated role thread only when shared threads are overloaded, role boundaries are repeatedly confused, independent review is required, confidentiality/access boundaries differ, risk isolation is needed, context is long-running, parallel work is necessary, or handoff/status-sync friction repeats.
 
 ## Core Software/Product Candidates
 
@@ -358,11 +361,13 @@ Escalate to the Loop Manager when the disagreement changes scope, acceptance cri
 
 - [ ] Candidate roles were selected from confirmed use cases and project needs, not assumed as mandatory.
 - [ ] The active role set is intentionally small for the current Loop round: Loop Manager plus usually 2-3 other roles.
+- [ ] Initial real Codex thread count is 3 or fewer unless user/domain-owner confirmation and split evidence justify more.
+- [ ] Multiple roles sharing one thread have explicit acting-role markers, authority boundaries, workspaces, and handoff records.
 - [ ] Deferred candidate roles have activation/split triggers instead of being silently created.
 - [ ] Non-selected candidate roles have an explicit exclusion reason.
 - [ ] The user or domain owner confirmed the selected implementation role set before execution.
 - [ ] Loop Manager and project manager/delivery coordinator are separate roles; Loop Manager is mandatory, project manager is optional and justified only when delivery coordination needs a separate owner.
-- [ ] Each active role has a completed Loop charter, project-type workflow requirement, role category, category workspace, Codex session mapping, and handoff rule.
+- [ ] Each active role has a completed Loop charter, project-type workflow requirement, role category, category workspace, real-thread or shared-thread assignment, and handoff rule.
 - [ ] Implementation covenant exists before execution, with role boundaries, communication content requirements, evidence requirements, handoff packages, status-sync rules, and escalation paths accepted.
 - [ ] Each active role has skills, tools, references, data access, and permissions checked.
 - [ ] Product, project management, development, testing, and Loop Manager boundaries do not overlap.

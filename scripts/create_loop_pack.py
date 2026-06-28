@@ -71,7 +71,7 @@ The Loop owner is responsible for driving the whole process from goal, input, ac
 
 ## Deferred Candidate Roles
 
-Loop Manager is mandatory. Start the project with 2-3 other active roles that are actually needed for the next Loop round. Role files and category workspaces may be separate for clarity; avoid activating every specialized candidate at project start.
+Loop Manager is mandatory. Start the project with 2-3 other active roles that are actually needed for the next Loop round. Role files and category workspaces may be separate for clarity; avoid activating every specialized candidate at project start. Real Codex threads should be even fewer at initialization: cap them at 3 or fewer and put multiple roles in shared threads when boundaries and records are explicit.
 
 - User / domain owner, when direct decision/acceptance records need a dedicated workspace:
 - Product manager / workflow designer, when user need, scope, workflow, priority, or acceptance criteria are unclear:
@@ -223,6 +223,8 @@ This file is initialized with every Loop project and maintained by Loop Manager 
 | Document index | `document-index.md` |
 | Role registry | `role-registry.md` |
 | Role sessions | `role-sessions.md` |
+| Initial real Codex thread cap | 3 or fewer |
+| Thread grouping policy | Multiple roles may share one thread when acting role, authority boundary, workspace, records, and handoffs are explicit |
 | Last metadata review |  |
 | Metadata status | draft |
 
@@ -230,19 +232,28 @@ This file is initialized with every Loop project and maintained by Loop Manager 
 
 | Role ID | Role | Role Category | Active? | Division Of Work | Must Hand Off | Category Workspace | Thread / Session | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| LM-001 | Loop Manager | loop-manager | yes | Loop governance, role registry, metadata, cadence, retrospectives, communication efficiency, role health, resources, dispatch tracking, experience distillation checks | Development, testing conclusions, business acceptance, governance decisions, release, project-manager delivery execution, role-specific implementation | `roles/loop-manager/` | dedicated Loop Manager session when Codex is used | active |
+| LM-001 | Loop Manager | loop-manager | yes | Loop governance, role registry, metadata, cadence, retrospectives, communication efficiency, role health, resources, dispatch tracking, experience distillation checks | Development, testing conclusions, business acceptance, governance decisions, release, project-manager delivery execution, role-specific implementation | `roles/loop-manager/` | governance thread if used; may share coordination thread during tiny startup | active |
 | SA-001 | Super Assistant / Loop owner | super-assistant | yes | Overall Loop coordination, user-facing coordination, handoff review, update proposals | Role-specific execution outside assignment | `roles/super-assistant/` | current coordination session | active |
-| DI-001 | Demand intake role | demand-intake | yes | Clarify rough demand, produce confirmed executable use cases, assumptions, open questions, and confirmation packet | Product scope beyond confirmed input, implementation, testing, release, governance, domain acceptance | `roles/demand-intake/` | dedicated intake session if Codex is used | active |
+| DI-001 | Demand intake role | demand-intake | yes | Clarify rough demand, produce confirmed executable use cases, assumptions, open questions, and confirmation packet | Product scope beyond confirmed input, implementation, testing, release, governance, domain acceptance | `roles/demand-intake/` | shared discovery/implementation thread or current coordination session | active |
 |  |  |  | yes / no / deferred |  |  |  |  | proposed / active / paused / blocked / closed |
 
 ## Thread / Session Metadata
 
-| Thread / Session ID | Role ID | Role | Purpose | Workspace | Created / Activated | Last Used | Status | Notes |
+Initial real threads must not exceed 3 unless the user confirms a larger thread plan or Loop Manager records a split trigger.
+
+| Thread / Session ID | Assigned Role IDs | Assigned Roles | Purpose | Workspaces | Created / Activated | Last Used | Status | Split Trigger / Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| current coordination session | SA-001 | Super Assistant / Loop owner | Coordinate Loop with user | `roles/super-assistant/` | project start |  | active |  |
-| dedicated Loop Manager session when Codex is used | LM-001 | Loop Manager | Govern Loop metadata, registry, cadence, role health, resources, and dispatch | `roles/loop-manager/` | project start / when created |  | planned / active |  |
-| dedicated intake session if Codex is used | DI-001 | Demand intake role | Clarify demand and confirmation package | `roles/demand-intake/` | project start / when created |  | planned / active |  |
+| coordination thread | SA-001, DI-001 when small | Super Assistant / Loop owner; Demand intake role when shared | Coordinate with user, clarify demand, prepare confirmations, route work | `roles/super-assistant/`; `roles/demand-intake/` | project start |  | active | Split demand intake only if clarification is long-running, context-heavy, or repeatedly blocking coordination |
+| governance thread | LM-001 | Loop Manager | Govern metadata, registry, cadence, role health, resources, dispatch, and retrospectives | `roles/loop-manager/` | project start / when created |  | planned / active | May share coordination thread during tiny startup; split when governance tracking becomes ongoing |
+| shared implementation thread | deferred active roles | Product / project-management / development / testing roles as activated | Execute or review confirmed role work while keeping acting role explicit | selected role workspaces | when first implementation role activates |  | planned | Split only for workload, independent review, confidentiality, risk isolation, long-running context, or repeated handoff friction |
 |  |  |  |  |  |  |  | planned / active / paused / closed |  |
+
+## Thread Split Triggers
+
+- Real thread count remains capped at 3 during initialization.
+- Create a dedicated role thread only after Loop Manager records the reason, affected roles, boundary impact, and user/domain-owner confirmation or delegated approval.
+- Valid split triggers: overloaded shared thread, repeated role-boundary confusion, independent review need, confidentiality/access boundary, risk isolation, long-running context, parallel execution, or repeated handoff/status-sync friction.
+- When a thread is split, update `project-metadata.md`, `role-sessions.md`, `role-registry.md`, notify all active roles, and record the broadcast.
 
 ## Metadata Change Log
 
@@ -497,14 +508,16 @@ Use this section when project learning should update Loop Builder, local Loop pr
         loop_dir / "team-formation.md",
         f"""# {args.name} Team Formation
 
-Create the Loop Manager first at project start. Then create 2-3 other active roles needed for the next Loop round. The default scaffold starts with Super Assistant / Loop owner and Demand intake; add a third non-manager role early only when the project nature clearly needs it. Role files and category workspaces may be separate for active or explicitly prepared roles. Select implementation roles from the existing reusable role library, but do not activate roles, sessions, or skills that the next Loop round does not require. Create a new role only when no existing role category can responsibly cover the work.
+Create the Loop Manager first at project start. Then create 2-3 other active roles needed for the next Loop round. The default scaffold starts with Super Assistant / Loop owner and Demand intake; add a third non-manager role early only when the project nature clearly needs it. Role files and category workspaces may be separate for active or explicitly prepared roles. Real Codex threads should not exceed 3 at initialization; multiple roles can share one thread when the acting role, authority boundary, workspace, and handoff record are explicit. Select implementation roles from the existing reusable role library, but do not activate roles, sessions, threads, or skills that the next Loop round does not require. Create a new role only when no existing role category can responsibly cover the work.
 
 ## Initial Role Split Policy
 
 - Initial active roles: Loop Manager plus 2-3 other roles. Default: Super Assistant / Loop owner and Demand intake.
+- Initial real Codex threads: 3 or fewer. Default thread grouping is coordination thread, Loop Manager/governance thread if needed, and one shared discovery/implementation thread for selected roles.
 - Deferred candidates are not active roles until confirmed by the user/domain owner or explicitly delegated to the Loop owner.
 - Loop Manager owns staged role splitting after project start and should recommend activation, merging, pausing, or closure based on evidence.
 - Split roles only when workload, workflow stage, specialist skill, risk isolation, independent review, confidentiality, compliance, stakeholder reporting, or repeated handoff friction proves the smaller role set is no longer enough.
+- Split real threads only when workload, long-running context, independent review, confidentiality/access boundaries, risk isolation, parallel execution, or repeated role-boundary/handoff friction proves shared threads are no longer enough.
 - Separate files/workspaces are allowed for active roles and explicitly prepared roles; avoid creating active role status for every candidate role.
 
 ## Demand Intake Role
@@ -513,7 +526,7 @@ Create the Loop Manager first at project start. Then create 2-3 other active rol
 | --- | --- |
 | Role name | Demand intake role |
 | Workspace | `roles/demand-intake/` |
-| Codex thread/session | dedicated intake session if Codex is used; otherwise current coordination session until team confirmation |
+| Codex thread/session | shared coordination or discovery thread at startup; dedicated intake thread only after split trigger |
 | Owns | Initial demand record, rough-to-executable refinement, open questions, acceptance criteria, first handoff |
 | May edit | Demand intake workspace and confirmed demand artifacts |
 | Must hand off | Implementation, testing, release, governance, and domain acceptance |
@@ -553,7 +566,7 @@ demand clarification -> product/workflow scope -> codebase exploration when need
 
 ## Existing Role Selection
 
-Select from existing reusable roles before creating any new role. The selected implementation role set must be confirmed by the user or domain owner before execution. Prefer Loop Manager plus 2-3 other active roles and deferred candidates over a fully split team at project start.
+Select from existing reusable roles before creating any new role. The selected implementation role set and initial thread grouping must be confirmed by the user or domain owner before execution. Prefer Loop Manager plus 2-3 other active roles and 3 or fewer real Codex threads over a fully split team at project start.
 
 | Project Need / Use Case | Selected Existing Role | Role Category | Why Needed | Category Workspace | Authority Boundary | Required Tools / Skills | Readiness / Blocker | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -586,12 +599,12 @@ Add only roles required by the confirmed demand and selected role set. Candidate
 
 | Role Category | Role / Subagent | Needed? | Reason | Required Skill(s) | Category Workspace | Codex Thread / Session | Trigger | Inputs | Outputs | Gate |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| loop-manager | Loop Manager | Yes | Govern the whole Loop, role registry, role health, resources, experience distillation, and project-level reflection | loop-builder | `roles/loop-manager/` | dedicated Loop Manager session when Codex is used | Always, from project start | Loop artifacts, role status, feedback, resource needs | Role registry, health report, resource report, reflection, improvement proposals | Feedback sent to Super Assistant when needed |
+| loop-manager | Loop Manager | Yes | Govern the whole Loop, role registry, role health, resources, experience distillation, and project-level reflection | loop-builder | `roles/loop-manager/` | governance thread if used; may share coordination thread during tiny startup | Always, from project start | Loop artifacts, role status, feedback, resource needs | Role registry, health report, resource report, reflection, improvement proposals | Feedback sent to Super Assistant when needed |
 | super-assistant | Super Assistant / Loop owner | Yes | Own and coordinate the Loop | loop-builder | `roles/super-assistant/` | current coordination session | Always | Confirmed demand | Coordination, handoff, review | Loop artifacts updated |
-| project-management | Project manager / delivery coordinator | Candidate | Coordinate delivery milestones, timeline, external dependencies, stakeholder status, and delivery rituals when needed | project management / delivery coordination | `roles/project-management/` | dedicated project-management session when needed | Delivery coordination cannot be cleanly owned by another role | Confirmed plan, dependencies, milestones | Delivery status, dependency tracker, stakeholder summary | Delivery logistics are visible and not confused with Loop governance |
-| product-workflow | Product manager / workflow designer | Candidate | Understand complete user needs and define product scope, user value, workflow, acceptance standards, outcome metrics, and release slices | loop-builder; grill-me when refining scope; product discovery/user research/prioritization skills when available | `roles/product-workflow/` | dedicated product role session when needed | Product, user need, workflow, priority, or acceptance ambiguity exists | Confirmed demand, use cases, user/domain evidence, constraints, evidence gaps | Product problem statement, target users, workflow, acceptance criteria, outcome metric, scope decisions, release-slice rationale | User/domain-owner confirms scope, standards, and remaining evidence gaps |
-| development | Developer / implementer | Candidate | Build the agreed product, workflow, integration, or automation | language/framework skills; repo tools; test runner | `roles/development/` | dedicated developer session when implementation starts | Development work is approved | Product spec, stage KB, implementation plan | Code/config/scripts, build notes, implementation evidence | Tests or review artifacts are ready for tester |
-| testing-evaluation | Tester / evaluator | Candidate | Verify behavior, acceptance standards, quality, regressions, and release readiness evidence | test strategy; framework test tools; evaluation tools | `roles/testing-evaluation/` | dedicated tester session when review starts | Testable output exists | Use cases, acceptance criteria, implementation evidence | Test plan, findings, pass/fail evidence, quality risks | Release/acceptance decision has evidence |
+| project-management | Project manager / delivery coordinator | Candidate | Coordinate delivery milestones, timeline, external dependencies, stakeholder status, and delivery rituals when needed | project management / delivery coordination | `roles/project-management/` | shared coordination/governance thread until delivery work needs separation | Delivery coordination cannot be cleanly owned by another role | Confirmed plan, dependencies, milestones | Delivery status, dependency tracker, stakeholder summary | Delivery logistics are visible and not confused with Loop governance |
+| product-workflow | Product manager / workflow designer | Candidate | Understand complete user needs and define product scope, user value, workflow, acceptance standards, outcome metrics, and release slices | loop-builder; grill-me when refining scope; product discovery/user research/prioritization skills when available | `roles/product-workflow/` | shared discovery/implementation thread until product work needs separation | Product, user need, workflow, priority, or acceptance ambiguity exists | Confirmed demand, use cases, user/domain evidence, constraints, evidence gaps | Product problem statement, target users, workflow, acceptance criteria, outcome metric, scope decisions, release-slice rationale | User/domain-owner confirms scope, standards, and remaining evidence gaps |
+| development | Developer / implementer | Candidate | Build the agreed product, workflow, integration, or automation | language/framework skills; repo tools; test runner | `roles/development/` | shared implementation thread until workload or review separation requires a split | Development work is approved | Product spec, stage KB, implementation plan | Code/config/scripts, build notes, implementation evidence | Tests or review artifacts are ready for tester |
+| testing-evaluation | Tester / evaluator | Candidate | Verify behavior, acceptance standards, quality, regressions, and release readiness evidence | test strategy; framework test tools; evaluation tools | `roles/testing-evaluation/` | shared implementation/review thread unless independent review requires a split | Testable output exists | Use cases, acceptance criteria, implementation evidence | Test plan, findings, pass/fail evidence, quality risks | Release/acceptance decision has evidence |
 |  |  |  |  |  |  |  |  |  |  |
 
 ## Role Loop Charter Requirement
@@ -635,6 +648,8 @@ Each role must use suitable tools and skills. Do not start role execution until 
 - [ ] Demand intake role is accepted.
 - [ ] Selected existing implementation roles are accepted.
 - [ ] Active role set is intentionally minimal for this Loop round.
+- [ ] Real Codex thread count is 3 or fewer at initialization, or a larger count has explicit confirmation and split evidence.
+- [ ] Multiple roles sharing one thread have clear acting-role, workspace, evidence, and handoff rules.
 - [ ] Deferred candidate roles and activation/split triggers are accepted.
 - [ ] Excluded candidate roles and exclusion reasons are accepted.
 - [ ] New roles, if any, are justified because no existing role category can cover the work.
@@ -659,18 +674,19 @@ Each role must use suitable tools and skills. Do not start role execution until 
         loop_dir / "candidate-role-library.md",
         f"""# {args.name} Candidate Role Library
 
-Use this library before creating project roles. Start from these existing reusable role presets for software, product, Agent, workflow, or digital-employee Loops. At project start, Loop Manager is mandatory and the other active roles should usually start with 2-3 roles chosen for the next Loop round. Keep specialized roles as deferred candidates until there is confirmed need, complexity, risk, workload, or workflow evidence. Separate role files or category workspaces are allowed for active or explicitly prepared roles. Select roles according to confirmed project needs and use cases, ask the user or domain owner to confirm the selected implementation role set, then activate only the roles needed by the confirmed plan.
+Use this library before creating project roles. Start from these existing reusable role presets for software, product, Agent, workflow, or digital-employee Loops. At project start, Loop Manager is mandatory and the other active roles should usually start with 2-3 roles chosen for the next Loop round. Keep real Codex threads capped at 3 or fewer at initialization; multiple roles may share one thread when role turns, boundaries, workspaces, and records are explicit. Keep specialized roles and dedicated role threads as deferred candidates until there is confirmed need, complexity, risk, workload, or workflow evidence. Separate role files or category workspaces are allowed for active or explicitly prepared roles. Select roles according to confirmed project needs and use cases, ask the user or domain owner to confirm the selected implementation role set, then activate only the roles needed by the confirmed plan.
 
 ## Selection Workflow
 
 1. Start from confirmed project needs and use cases.
 2. Match each need to an existing candidate role and role category.
 3. Select a small active role set that can cover the next Loop round without unclear authority, evidence, record, or confidentiality boundaries. Use Loop Manager plus 2-3 other active roles as the normal early-project range.
-4. List deferred candidate roles, the trigger that would activate each one, and why they are not needed now.
-5. List candidate roles that are excluded entirely and explain why they are unnecessary for this Loop round.
-6. Prepare a confirmation packet with selected roles, deferred candidates, excluded candidates, split triggers, category workspaces, authority boundaries, handoff paths, required tools/skills, readiness status, and blockers.
-7. Ask the user or domain owner to confirm the selected role set before implementation.
-8. Create a new role only when no existing role can responsibly cover the confirmed need.
+4. Create an initial real-thread plan with 3 or fewer Codex threads and shared-thread role grouping.
+5. List deferred candidate roles and dedicated-thread split triggers, and explain why they are not needed now.
+6. List candidate roles that are excluded entirely and explain why they are unnecessary for this Loop round.
+7. Prepare a confirmation packet with selected roles, deferred candidates, excluded candidates, split triggers, shared-thread assignments, category workspaces, authority boundaries, handoff paths, required tools/skills, readiness status, and blockers.
+8. Ask the user or domain owner to confirm the selected role set and thread grouping before implementation.
+9. Create a new role only when no existing role can responsibly cover the confirmed need.
 
 ## Activation Rule
 
@@ -690,15 +706,17 @@ Use these triggers to split or activate a specialized role:
 
 The Loop Manager may also recommend merging, pausing, or closing roles when the project stabilizes or when a previous split is no longer useful. Record every split/merge decision in `role-registry.md`, `team-formation.md`, and `interaction-evidence-log.md`.
 
+Dedicated thread creation is a split decision too. Create a dedicated role thread only when shared threads are overloaded, role boundaries are repeatedly confused, independent review is required, confidentiality/access boundaries differ, risk isolation is needed, context is long-running, parallel work is necessary, or handoff/status-sync friction repeats.
+
 ## Reusable Candidate Roles
 
 | Candidate Role | Role Category | Default Position | Activate When | Must Not Do | Default Category Workspace | Codex Session |
 | --- | --- | --- | --- | --- | --- | --- |
-| Product manager / workflow designer | product-workflow | Think through the product problem, repeatedly clarify user needs with the user/domain owner, and convert confirmed use cases into product scope, workflow, acceptance standards, non-goals, risks, outcome metrics, and release slices | User value, target users, workflow, scope, priority, acceptance criteria, or success metrics are unclear | Implement code, declare tests passed, approve business acceptance, ignore user evidence, silently expand scope, or hand off ambiguous demand as ready | `roles/product-workflow/` | Dedicated product role session |
-| Developer / implementer | development | Build the confirmed technical slice and provide implementation evidence | Confirmed scope needs code, configuration, integration, automation, or platform changes | Redefine scope, declare QA passed, approve release, or bypass governance | `roles/development/` | Dedicated developer session |
-| Tester / evaluator | testing-evaluation | Verify behavior against use cases, acceptance standards, regressions, and quality gates | Runnable artifact or reviewable implementation exists | Implement fixes silently, approve business acceptance, or rewrite scope | `roles/testing-evaluation/` | Dedicated tester session |
-| Loop Manager | loop-manager | Govern the whole Loop: role registry, cadence, fixed-time retrospectives, blockers, handoffs, role health checks, resource status, experience distillation, role self-review, role advice, communication-efficiency review, role responsibility/skill optimization, reflection, and feedback to Super Assistant | Always for every concrete Loop project; created at project start before demand intake and implementation roles | Do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific execution | `roles/loop-manager/` | Dedicated Loop Manager session |
-| Project manager / delivery coordinator | project-management | Translate user demand into verifiable acceptance standards for confirmation, classify each new question/request by project nature, and coordinate the complete workflow for that project type, including milestones, timeline, cross-team dependencies, stakeholder status, and delivery rituals | Delivery scheduling, acceptance-standard coordination, external dependencies, stakeholder reporting, multi-team coordination, or project-type workflow completeness needs a dedicated owner | Treat private understanding as execution permission, govern Loop learning, maintain role health, replace Loop Manager, decide product scope, do implementation, declare QA pass, approve release, own experience distillation, or skip required project-type workflow stages | `roles/project-management/` | Dedicated project-management session when needed |
+| Product manager / workflow designer | product-workflow | Think through the product problem, repeatedly clarify user needs with the user/domain owner, and convert confirmed use cases into product scope, workflow, acceptance standards, non-goals, risks, outcome metrics, and release slices | User value, target users, workflow, scope, priority, acceptance criteria, or success metrics are unclear | Implement code, declare tests passed, approve business acceptance, ignore user evidence, silently expand scope, or hand off ambiguous demand as ready | `roles/product-workflow/` | Shared discovery/implementation thread until split trigger |
+| Developer / implementer | development | Build the confirmed technical slice and provide implementation evidence | Confirmed scope needs code, configuration, integration, automation, or platform changes | Redefine scope, declare QA passed, approve release, or bypass governance | `roles/development/` | Shared implementation thread until split trigger |
+| Tester / evaluator | testing-evaluation | Verify behavior against use cases, acceptance standards, regressions, and quality gates | Runnable artifact or reviewable implementation exists | Implement fixes silently, approve business acceptance, or rewrite scope | `roles/testing-evaluation/` | Shared implementation/review thread; dedicated only for independent review split |
+| Loop Manager | loop-manager | Govern the whole Loop: role registry, cadence, fixed-time retrospectives, blockers, handoffs, role health checks, resource status, experience distillation, role self-review, role advice, communication-efficiency review, role responsibility/skill optimization, reflection, and feedback to Super Assistant | Always for every concrete Loop project; created at project start before demand intake and implementation roles | Do development, testing conclusions, business acceptance, governance decisions, production release, project-manager delivery execution, or role-specific execution | `roles/loop-manager/` | Governance thread if used; may share coordination thread during tiny startup |
+| Project manager / delivery coordinator | project-management | Translate user demand into verifiable acceptance standards for confirmation, classify each new question/request by project nature, and coordinate the complete workflow for that project type, including milestones, timeline, cross-team dependencies, stakeholder status, and delivery rituals | Delivery scheduling, acceptance-standard coordination, external dependencies, stakeholder reporting, multi-team coordination, or project-type workflow completeness needs a dedicated owner | Treat private understanding as execution permission, govern Loop learning, maintain role health, replace Loop Manager, decide product scope, do implementation, declare QA pass, approve release, own experience distillation, or skip required project-type workflow stages | `roles/project-management/` | Shared governance/coordination thread until split trigger |
 
 
 ## Claude Code Feature Development Role Patterns
@@ -1449,7 +1467,7 @@ The Loop owner must define this plan before execution begins. Default to Super A
 - Tool and skill readiness rule: before a role starts execution, verify its required skills, tools, scripts, references, data access, and permissions. If any required capability is missing, install it, activate it, substitute it, downgrade scope, or mark the role blocked.
 - Implementation covenant rule: before execution, confirm `implementation-covenant.md` defines role boundaries, communication content requirements, evidence rules, handoff packages, status-sync rules, and escalation paths for all selected implementation roles.
 - Role category workspace rule: every active role or subagent must use its assigned category folder under `roles/`. Multiple concrete roles or sessions in the same category may share that folder when they have the same responsibility boundary; create separate folders only for distinct categories, authority boundaries, records, or access constraints.
-- Codex session rule: when using Codex, each active role or subagent should run in its own thread/session. The Super Assistant coordinates from the main thread/session and hands scoped work to role sessions.
+- Codex session rule: at project initialization, real Codex threads should not exceed 3. Multiple roles may share one thread when the acting role, authority boundary, workspace, records, and handoffs are explicit. The Super Assistant coordinates from the main thread/session; Loop Manager may use a governance thread; selected implementation or review roles may share one execution thread until a split trigger is recorded.
 
 ## Stage Assignment
 
@@ -1539,30 +1557,41 @@ The Loop Manager maintains this file during implementation role creation, confir
         loop_dir / "role-sessions.md",
         f"""# {args.name} Role Sessions
 
-When using Codex, each active role or subagent should run in its own thread/session with a scoped prompt and its assigned workspace. The Super Assistant remains in the coordinating thread/session. Early projects should usually use Loop Manager plus 2-3 other role sessions at most; candidate sessions below are not created until the role is confirmed and registered.
+When using Codex, do not create a separate real thread for every active role at project start. The Super Assistant remains in the coordinating thread/session. Early projects should use 3 or fewer real threads total. Multiple roles may share one thread when the acting role, authority boundary, assigned workspace, evidence record, and handoff are explicit. Candidate sessions below are not created until the role is confirmed, registered, and the thread plan allows it.
 
 Loop Manager must mirror thread/session basics in `project-metadata.md` whenever a role session is created, activated, paused, replaced, closed, or repurposed.
+
+## Initial Thread Budget
+
+| Thread Slot | Default Thread / Session | Roles That May Share It | Purpose | Split Trigger |
+| --- | --- | --- | --- | --- |
+| 1 | coordination thread | Super Assistant / Loop owner; Demand intake role when small | User communication, demand clarification, acceptance confirmation, coordination | Split demand intake if clarification is long-running, context-heavy, or repeatedly blocking coordination |
+| 2 | governance thread | Loop Manager; project-management when delivery is light | Metadata, registry, cadence, retrospectives, role health, dispatch tracking | Split project-management if milestone/dependency work becomes continuous or stakeholder-heavy |
+| 3 | shared discovery/implementation thread | Product/workflow, development, testing/evaluation, review roles as activated | Confirmed role work with explicit acting-role markers and workspace records | Split for independent review, confidentiality, risk isolation, long-running implementation, parallel work, or repeated handoff friction |
+
+Do not exceed these 3 real threads during initialization unless the user/domain owner confirms a larger thread plan or Loop Manager records a split trigger.
 
 ## Codex Session Map
 
 | Role Category | Role / Subagent | Codex Thread / Session | Category Workspace | Session Scope | Receives From | Returns To |
 | --- | --- | --- | --- | --- | --- | --- |
-| demand-intake | Demand intake role | dedicated intake session if Codex is used | `roles/demand-intake/` | Receive, clarify, refine, and confirm demand | User / requester | Super Assistant |
-| loop-manager | Loop Manager | dedicated Loop Manager session when Codex is used | `roles/loop-manager/` | Govern Loop cadence, fixed-time retrospectives, role registry, communication efficiency, role responsibility/skill optimization, role health, resource status, role self-review, experience distillation, reflection, risks, blockers, and feedback to Super Assistant | Super Assistant and role outputs | Super Assistant |
+| demand-intake | Demand intake role | coordination thread or shared discovery thread at startup | `roles/demand-intake/` | Receive, clarify, refine, and confirm demand | User / requester | Super Assistant |
+| loop-manager | Loop Manager | governance thread if used; may share coordination thread during tiny startup | `roles/loop-manager/` | Govern Loop cadence, fixed-time retrospectives, role registry, communication efficiency, role responsibility/skill optimization, role health, resource status, role self-review, experience distillation, reflection, risks, blockers, and feedback to Super Assistant | Super Assistant and role outputs | Super Assistant |
 | super-assistant | Super Assistant / Loop owner | current coordination session | `roles/super-assistant/` | Coordinate Loop, assign work, record handoffs, review results | User / requester | User / requester |
 | domain-owner | User / domain owner | external confirmation, or dedicated session if used | `roles/domain-owner/` | Business decisions, constraints, acceptance | Super Assistant | Super Assistant |
-| product-workflow | Product manager / workflow designer | dedicated role session when needed | `roles/product-workflow/` | Product scope, workflow drafts, acceptance standards, and handoff design | Super Assistant | Super Assistant |
-| project-management | Project manager / delivery coordinator | dedicated role session when needed | `roles/project-management/` | Delivery milestones, dependencies, stakeholder status, and delivery logistics | Super Assistant / Loop Manager | Super Assistant / Loop Manager |
-| development | Developer / implementer | dedicated role session when implementation starts | `roles/development/` | Build assigned implementation artifacts | Super Assistant | Super Assistant |
-| testing-evaluation | Tester / evaluator | dedicated role session when review starts | `roles/testing-evaluation/` | Test/evaluate assigned artifacts | Super Assistant | Super Assistant |
+| product-workflow | Product manager / workflow designer | shared discovery/implementation thread until split trigger | `roles/product-workflow/` | Product scope, workflow drafts, acceptance standards, and handoff design | Super Assistant | Super Assistant |
+| project-management | Project manager / delivery coordinator | governance or coordination thread until split trigger | `roles/project-management/` | Delivery milestones, dependencies, stakeholder status, and delivery logistics | Super Assistant / Loop Manager | Super Assistant / Loop Manager |
+| development | Developer / implementer | shared discovery/implementation thread until split trigger | `roles/development/` | Build assigned implementation artifacts | Super Assistant | Super Assistant |
+| testing-evaluation | Tester / evaluator | shared discovery/implementation thread until split trigger; dedicated only when independent review requires it | `roles/testing-evaluation/` | Test/evaluate assigned artifacts | Super Assistant | Super Assistant |
 | governance-risk | Governance or risk owner | dedicated role session or external confirmation | `roles/governance-risk/` | Risk, permission, and approval boundaries | Super Assistant | Super Assistant |
 
 ## Session Handoff Packet
 
-Every role session should receive:
+Every role session or shared-thread role turn should receive:
 
 - Task ID and goal ID from `goal-dispatch-log.md`.
 - Role name and authority boundary.
+- Acting role marker when the thread is shared.
 - Assigned workspace.
 - Stage knowledge base section to use.
 - Inputs and expected outputs.
@@ -1575,9 +1604,9 @@ Every role session should receive:
 
 ## Session Change Log
 
-| Date | Role Category | Role | Thread / Session | Category Workspace | Change | Reason |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |
+| Date | Role Category | Role | Thread / Session | Category Workspace | Change | Reason | Real Thread Count After Change |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  | shared / split / merged / paused / closed |  |  |  | <=3 / confirmed exception |
 """,
         args.force,
     )

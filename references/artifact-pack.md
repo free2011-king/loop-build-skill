@@ -30,7 +30,7 @@ The scaffold creates these project artifacts:
 
 - `loop-design.md`: Loop object, minimum viable loop, records, signals, update mechanism, and first build order.
 - `document-index.md`: single index controlling user/owner-created and managed documents, document budgets, purpose, status, review cadence, and merge/archive decisions.
-- `project-metadata.md`: project identity, role information, division of work, thread/session basics, metadata owner, and metadata change history maintained by Loop Manager.
+- `project-metadata.md`: project identity, role information, division of work, real thread budget, shared-thread role grouping, thread/session basics, metadata owner, and metadata change history maintained by Loop Manager.
 - `team-formation.md`: demand intake, small initial role set, existing-role selection, deferred candidate roles, split triggers, excluded candidate roles, tool/skill readiness, and requester confirmation.
 - `candidate-role-library.md`: reusable candidate roles with best-practice skill, tool, knowledge-base, record, handoff matches, and capability-source tracking for ECC / Everything Claude Code, Claude Code plugins, skills, tools, and external references.
 - `use-cases.md`: concrete, measurable use cases created by demand intake.
@@ -41,7 +41,7 @@ The scaffold creates these project artifacts:
 - `implementation-plan.md`: stage execution plan, responsible roles, subagent justification, gates, tool readiness, and handoffs.
 - `implementation-covenant.md`: shared implementation-role covenant for role boundaries, communication content requirements, handoff packages, status sync, evidence, escalation, and review/update records.
 - `role-workspaces.md`: category folder ownership map for each role/subagent category, including shared-folder rules.
-- `role-sessions.md`: Codex thread/session map for each role/subagent.
+- `role-sessions.md`: Codex thread/session map, initial real thread cap, shared-thread role grouping, and thread split triggers.
 - `role-registry.md`: Loop Manager-maintained active role list with IDs, categories, workspaces, sessions, authority boundaries, readiness, status, and dispatch ownership.
 - `goal-dispatch-log.md`: Loop Manager goal intake, role-registry-based routing, task dispatch packets, status-sync cadence, completion-sync requirements, and blocked dispatches.
 - `decision-conflict-log.md`: role disagreement records, Loop Manager escalation packets, and user/domain-owner decisions.
@@ -56,6 +56,7 @@ The scaffold creates these project artifacts:
 - Keep role additions small and justified by confirmed use cases.
 - Record selected, deferred, and excluded candidate roles before implementation.
 - Keep the initial active role set small: Loop Manager plus usually 2-3 other active roles. Separate role files/workspaces are fine for selected roles; do not activate specialist roles merely because a candidate role exists.
+- Keep initial real Codex threads capped at 3 or fewer. Put multiple roles in one shared thread when role boundaries, current acting role, workspaces, and handoff records are explicit.
 - Keep implementation claims, test findings, decisions, and handoffs traceable to evidence.
 - Treat `implementation-covenant.md` as the shared operating agreement for active implementation roles, not a substitute for individual charters.
 
@@ -72,6 +73,7 @@ Before execution begins, confirm or explicitly delegate confirmation for:
 - Required evidence, status-sync cadence, quality gates, and next handoffs.
 - Document budget and index owner for each user/role owner who creates or manages project documents.
 - Project metadata owner, active role metadata, division of work, and thread/session basics.
+- Initial real thread plan, shared-thread role grouping, and thread split triggers.
 - Hard constraint gates, including decision owner, enforcing roles, required evidence, stop condition, and record location. Product/UI/workflow changes by the product manager require user/domain-owner confirmation before downstream implementation, testing acceptance, or release-readiness work proceeds.
 - Human participation classification for each gate: aesthetic/product/value/risk/authorization judgment is `human-required`; standardized production with clear requirements, delegated authority, objective checks, and recorded evidence may be `automated-pass`.
 
@@ -89,6 +91,7 @@ A Loop is weak if it cannot answer these questions:
 - Were implementation roles selected from confirmed demand instead of invented by habit?
 - Is the initial active role set intentionally small, with Loop Manager plus usually 2-3 other active roles and specialist roles deferred until Loop Manager evidence justifies splitting?
 - Is there a `project-metadata.md` initialized and kept current for role information, division of work, thread/session basics, and metadata changes?
+- Are initial real Codex threads capped at 3 or fewer, with shared-thread role grouping and split triggers documented?
 - Are role capability sources tracked on a cadence, including ECC / Everything Claude Code, Claude Code plugins, skills, tools, and trusted references, with candidate-role updates recorded only when responsibilities, skill/tool matches, evidence requirements, or handoffs change?
 - Does every active role have a charter, workflow stage, authority boundary, category workspace, handoff rule, Codex session mapping if used, advisor contribution, tool/skill readiness, health/resource status, and role-registry entry?
 - Is there an accepted implementation covenant covering boundaries, communication requirements, evidence, handoffs, status sync, and escalation?
