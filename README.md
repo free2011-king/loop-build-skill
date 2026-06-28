@@ -12,6 +12,7 @@ This repository is the git-managed source for the `loop-builder` Codex skill.
 - Separates Loop Manager from project manager / delivery coordinator.
 - Lets role skills, prompts, tools, checklists, and role requirements improve gradually with Loop Manager support.
 - Turns hard constraints into explicit gates with decision owners, enforcing roles, evidence, stop conditions, and blocked downstream actions.
+- Classifies human participation so aesthetic/product/value/risk judgment gets human input, while clear standardized production can proceed through objective evidence.
 - Selects implementation roles from an existing candidate role library, while keeping the initial active role set small.
 - Requires product manager / workflow designer to keep clarifying user needs until they are clear, bounded, testable, and ready for handoff.
 - Requires role-to-role messages, handoffs, blockers, advice, status syncs, test findings, and acceptance feedback to be recorded.

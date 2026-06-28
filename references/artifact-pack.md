@@ -69,6 +69,7 @@ Before execution begins, confirm or explicitly delegate confirmation for:
 - Required evidence, status-sync cadence, quality gates, and next handoffs.
 - Document budget and index owner for each user/role owner who creates or manages project documents.
 - Hard constraint gates, including decision owner, enforcing roles, required evidence, stop condition, and record location. Product/UI/workflow changes by the product manager require user/domain-owner confirmation before downstream implementation, testing acceptance, or release-readiness work proceeds.
+- Human participation classification for each gate: aesthetic/product/value/risk/authorization judgment is `human-required`; standardized production with clear requirements, delegated authority, objective checks, and recorded evidence may be `automated-pass`.
 
 Stop at design artifacts when required confirmation is missing.
 
@@ -87,6 +88,7 @@ A Loop is weak if it cannot answer these questions:
 - Does every active role have a charter, workflow stage, authority boundary, category workspace, handoff rule, Codex session mapping if used, advisor contribution, tool/skill readiness, health/resource status, and role-registry entry?
 - Is there an accepted implementation covenant covering boundaries, communication requirements, evidence, handoffs, status sync, and escalation?
 - Are hard constraints represented as explicit gates with proposing roles, enforcing roles, decision owners, evidence, stop conditions, and blocked downstream actions?
+- Does the Loop put humans at aesthetic, product, value, risk, authorization, or ambiguity points while letting standardized clear production pass through objective evidence?
 - Are role-to-role messages and status syncs recorded with sender, receiver, type, summary, evidence, owner, and status?
 - Does Loop Manager route goals through `role-registry.md` instead of executing role-specific work?
 - Does Loop Manager's fixed-time retrospective review user-role communication efficiency, role-to-role communication efficiency, responsibility fit, and skill/tool gaps?

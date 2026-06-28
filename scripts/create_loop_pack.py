@@ -220,7 +220,7 @@ Every concrete Loop project must have a Loop Manager from project start, before 
 | Project-start baseline | Record Loop object, initial active roles, deferred candidate roles, document budget, risk/resource baseline, communication rules, first gates, and first review dates | Baseline entry in Loop Manager workspace, role-registry.md check, document-index.md check |
 | Role creation, personnel/session adjustment, or role status change | Update active role registry with role ID, category, workspace, session, boundary, readiness, health, resources, and status; notify every other active role; record the notification | role-registry.md update, interaction-evidence-log.md broadcast record, affected role workspace updates |
 | Each stage handoff | Check owner, input, output, records, gate | Handoff status |
-| Hard constraint gate check | Check user-facing product/UI/workflow/scope/acceptance/risk/release changes for decision owner, confirmation evidence, enforcing roles, stop condition, and downstream blockers | Hard constraint gate status and blocked-action list |
+| Hard constraint gate check | Check user-facing product/UI/workflow/scope/acceptance/risk/release changes for decision owner, human-participation classification, confirmation evidence, enforcing roles, stop condition, and downstream blockers | Hard constraint gate status, human-required/delegated-review/automated-pass classification, and blocked-action list |
 | Task or stage completion checkpoint | Distill what changed, evidence returned, status-sync quality, handoff quality, reusable learning, and next owner | Completion distillation note in interaction-evidence-log.md or responsible role workspace |
 | User sets a goal in Codex | Convert the goal into a goal contract and dispatch packet; route to responsible role/session; define project-owner status sync cadence and completion sync requirement | Goal dispatch log update |
 | Fixed-time retrospective, weekly by default unless project cadence says otherwise | Review progress, blockers, risks, user-role communication efficiency, role-to-role communication efficiency, handoff friction, responsibility overlap/gaps, skill/tool gaps, feedback, and updates | Retrospective summary, communication-efficiency report, responsibility/skill improvement proposals |
@@ -269,14 +269,17 @@ demand clarification -> product/workflow scope -> codebase exploration when need
 
 ## Hard Constraint Gates
 
-Hard constraints must be explicit gates, not remembered preferences. Use this section for mandatory confirmations and blocked downstream work.
+Hard constraints must be explicit gates, not remembered preferences. Use this section for mandatory confirmations, human-participation classification, automated-pass eligibility, and blocked downstream work.
 
 Example: if the product manager / workflow designer changes UI design, product workflow, scope, release slice, or acceptance criteria after prior confirmation, the change remains a proposal until the user/domain owner confirms it. Developer implementation, tester acceptance, UI/frontend approval, and release-readiness work must use the last confirmed version until confirmation evidence is recorded.
 
-| Gate ID | Constraint | Triggering Change / Stage | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition | Record Location | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| HCG-001 | Product/UI/workflow changes need user/domain-owner confirmation | Product manager changes UI design, workflow, scope, release slice, or acceptance criteria | Product manager / workflow designer | Loop Manager; developer; tester; UI/frontend reviewer; release/governance owner when selected | User / domain owner / delegated Loop owner | Before/after summary, changed artifact or screenshot/design link, affected use cases, acceptance impact, confirmation record | No downstream implementation, acceptance, or release-readiness proceeds on the changed item | interaction-evidence-log.md / product workspace / implementation-covenant.md | draft |
-|  |  |  |  |  |  |  |  |  | draft / waiting-confirmation / confirmed / blocked / closed |
+Use `human-required` for aesthetic judgment, taste, brand feel, product direction, user value tradeoffs, ambiguous demand, governance/risk authorization, or changed confirmed constraints. Use `automated-pass` for standardized production when requirements are clear, authority is delegated, objective checks pass, evidence is recorded, and no confirmed constraint changes.
+
+| Gate ID | Constraint | Human Participation | Triggering Change / Stage | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition | Record Location | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| HCG-001 | Product/UI/workflow changes need user/domain-owner confirmation | human-required for new aesthetic/product/value/meaning decisions; delegated-review only if explicitly delegated | Product manager changes UI design, workflow, scope, release slice, or acceptance criteria | Product manager / workflow designer | Loop Manager; developer; tester; UI/frontend reviewer; release/governance owner when selected | User / domain owner / delegated Loop owner | Before/after summary, changed artifact or screenshot/design link, affected use cases, acceptance impact, confirmation record | No downstream implementation, acceptance, or release-readiness proceeds on the changed item | interaction-evidence-log.md / product workspace / implementation-covenant.md | draft |
+| HCG-002 | Standardized production with clear requirements may proceed without user participation | automated-pass | Requirement is confirmed, repeatable, low-risk, and objectively checkable | Responsible execution role | Loop Manager; tester/reviewer when selected | Delegated role owner | Confirmed requirement, objective checklist/test/script output, produced artifact, status sync | Escalate to human-required or delegated-review if checks fail, ambiguity appears, or a confirmed constraint changes | interaction-evidence-log.md / role workspace | draft |
+|  |  | human-required / delegated-review / automated-pass |  |  |  |  |  |  |  | draft / waiting-confirmation / confirmed / blocked / automated-pass / closed |
 
 ## Role Boundary Rule
 
@@ -759,13 +762,14 @@ When online or external product-management references shape the role requirement
 
 ## Hard Constraint Gate Pattern
 
-Hard constraints must be written as gates with owners, evidence, and stop conditions. Use this pattern for user-facing product/UI/workflow changes, scope changes, acceptance-standard changes, governance/risk boundaries, release-readiness decisions, and other mandatory project principles.
+Hard constraints must be written as gates with owners, evidence, stop conditions, and human-participation classification. Use this pattern for user-facing product/UI/workflow changes, scope changes, acceptance-standard changes, governance/risk boundaries, release-readiness decisions, standardized production, and other mandatory project principles.
 
-| Gate | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition |
-| --- | --- | --- | --- | --- | --- |
-| Product/UI/workflow change confirmation | Product manager / workflow designer | Loop Manager, developer, tester, UI/frontend reviewer, release/governance owner when selected | User or domain owner unless explicitly delegated | Before/after summary, changed artifact or screenshot/design link, rationale, affected use cases, acceptance impact, confirmation record | No implementation, testing acceptance, or release-readiness work proceeds on the changed product/UI/workflow until confirmation evidence is recorded |
-| Scope or acceptance criteria change | Demand intake or product manager | Loop Manager, developer, tester, code reviewer | User or domain owner | Changed scope, non-goals, acceptance criteria, affected tasks, decision record | Downstream roles use the last confirmed scope only; unconfirmed changes return as blockers |
-| Risk/governance/release boundary | Governance/risk owner or release owner | Loop Manager, developer, tester, project manager if selected | Governance owner, domain owner, or release owner | Risk decision, mitigation, rollback/monitoring plan, approval record | Release or high-risk action is blocked until approval evidence exists |
+| Gate | Human Participation | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition |
+| --- | --- | --- | --- | --- | --- | --- |
+| Product/UI/workflow change confirmation | human-required for new aesthetic direction, taste, product meaning, user-value tradeoff, or changed acceptance meaning; delegated-review only if explicitly delegated | Product manager / workflow designer | Loop Manager, developer, tester, UI/frontend reviewer, release/governance owner when selected | User or domain owner unless explicitly delegated | Before/after summary, changed artifact or screenshot/design link, rationale, affected use cases, acceptance impact, confirmation record | No implementation, testing acceptance, or release-readiness work proceeds on the changed product/UI/workflow until confirmation evidence is recorded |
+| Scope or acceptance criteria change | human-required unless the change is within a pre-confirmed standard rule | Demand intake or product manager | Loop Manager, developer, tester, code reviewer | User or domain owner | Changed scope, non-goals, acceptance criteria, affected tasks, decision record | Downstream roles use the last confirmed scope only; unconfirmed changes return as blockers |
+| Standardized production with clear requirements | automated-pass | Responsible execution role | Loop Manager, tester/reviewer when selected | Delegated role owner | Confirmed requirement, objective checklist/test/script output, produced artifact, status sync | No user participation needed unless checks fail, ambiguity appears, or a confirmed constraint changes |
+| Risk/governance/release boundary | human-required or delegated-review by authorized governance/release owner | Governance/risk owner or release owner | Loop Manager, developer, tester, project manager if selected | Governance owner, domain owner, or release owner | Risk decision, mitigation, rollback/monitoring plan, approval record | Release or high-risk action is blocked until approval evidence exists |
 
 Role enforcement rule:
 
@@ -775,6 +779,7 @@ Role enforcement rule:
 - Tester refuses to mark acceptance against unconfirmed criteria.
 - UI/frontend reviewer checks user-facing consistency and evidence but does not replace user confirmation.
 - Project manager, when selected, checks workflow stage completeness but does not override the gate.
+- Standardized production roles proceed without user interruption when requirements are clear, authority is delegated, checks pass, and evidence is recorded.
 
 ## Loop Manager Fixed-Time Retrospective Pattern
 
@@ -1000,14 +1005,17 @@ Each recorded interaction must include these fields:
 
 ## Hard Constraint Gates
 
-Hard constraints are mandatory gates. A gate is open until the required decision owner confirms it and the evidence is recorded. Downstream roles must treat open gates as blockers.
+Hard constraints are mandatory gates. A gate is open until the required decision owner confirms it and the evidence is recorded, unless the gate is classified as `automated-pass`. Downstream roles must treat open human-required gates as blockers.
 
 Example: if the product manager / workflow designer changes UI design, product workflow, scope, release slice, or acceptance criteria, the change remains a proposal until the user/domain owner confirms it. Developer implementation, tester acceptance, UI/frontend approval, and release-readiness work must use the last confirmed version until confirmation evidence is recorded.
 
-| Gate ID | Constraint | Trigger | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition | Record Location | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | Product manager changes UI design, workflow, scope, release slice, or acceptance criteria | product-workflow | Loop Manager; development; testing-evaluation; frontend-ux; release/governance owner when selected | User / domain owner / delegated Loop owner | Before/after summary, changed artifact or screenshot/design link, affected use cases, acceptance impact, confirmation record | No implementation, test acceptance, UI approval, or release-readiness work proceeds on the changed item | interaction-evidence-log.md / product workspace / stage-confirmation-checklist.md | draft |
-|  |  |  |  |  |  |  |  |  | draft / waiting-confirmation / confirmed / blocked / closed |
+Use `human-required` for aesthetic judgment, taste, brand feel, product direction, user value tradeoffs, ambiguous demand, governance/risk authorization, or changed confirmed constraints. Use `automated-pass` for standardized production when requirements are clear, authority is delegated, objective checks pass, evidence is recorded, and no confirmed constraint changes.
+
+| Gate ID | Constraint | Human Participation | Trigger | Proposing Role | Enforcing Roles | Decision Owner | Required Evidence | Stop Condition | Record Location | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | human-required for new aesthetic/product/value/meaning decisions; delegated-review only if explicitly delegated | Product manager changes UI design, workflow, scope, release slice, or acceptance criteria | product-workflow | Loop Manager; development; testing-evaluation; frontend-ux; release/governance owner when selected | User / domain owner / delegated Loop owner | Before/after summary, changed artifact or screenshot/design link, affected use cases, acceptance impact, confirmation record | No implementation, test acceptance, UI approval, or release-readiness work proceeds on the changed item | interaction-evidence-log.md / product workspace / stage-confirmation-checklist.md | draft |
+| HCG-002 | Standardized production with clear requirements may proceed without user participation | automated-pass | Requirement is confirmed, repeatable, low-risk, and objectively checkable | responsible execution role | Loop Manager; tester/reviewer when selected | Delegated role owner | Confirmed requirement, objective checklist/test/script output, produced artifact, status sync | Escalate to human-required or delegated-review if checks fail, ambiguity appears, or a confirmed constraint changes | interaction-evidence-log.md / role workspace | draft |
+|  |  | human-required / delegated-review / automated-pass |  |  |  |  |  |  |  | draft / waiting-confirmation / confirmed / blocked / automated-pass / closed |
 
 ## Gate Enforcement By Role
 
@@ -1020,6 +1028,7 @@ Example: if the product manager / workflow designer changes UI design, product w
 | frontend-ux | Review user-facing consistency and evidence, but do not replace user/domain-owner confirmation |
 | project-management | Check workflow-stage completeness when selected; do not override gate decisions |
 | governance-risk / release | Block release or high-risk action until required approval evidence exists |
+| standardized execution roles | Proceed without user interruption when requirements are clear, authority is delegated, objective checks pass, and evidence is recorded; escalate when subjective judgment or ambiguity appears |
 
 ## Handoff Package Standard
 
@@ -1270,6 +1279,7 @@ The Loop owner must ask the requester or domain owner to confirm this checklist 
 - [ ] Each stage has a goal, implementation standard, constraints, workflow, principles, inputs, outputs, and records.
 - [ ] Stage inputs and outputs connect clearly.
 - [ ] Hard constraint gates are identified, including user/domain-owner confirmation needed for product, UI, workflow, scope, acceptance, risk, governance, or release changes.
+- [ ] Human participation is classified: aesthetic/product/value/risk/authorization/ambiguity points are human-required; standardized clear production may be automated-pass.
 - [ ] Open questions are recorded with owners and dates.
 
 ## Stage Confirmation
@@ -1278,11 +1288,12 @@ The Loop owner must ask the requester or domain owner to confirm this checklist 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |  |  |
 
-## Hard Constraint Confirmation
+## Hard Constraint And Human Participation Confirmation
 
-| Gate ID | Constraint | Changed Artifact / Stage | Decision Owner | Confirmation Evidence | Downstream Roles Blocked Until Confirmed | Decision |
-| --- | --- | --- | --- | --- | --- | --- |
-| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | UI design / workflow / scope / acceptance criteria | User / domain owner / delegated Loop owner |  | developer / tester / UI reviewer / release owner | draft |
+| Gate ID | Constraint | Human Participation | Changed Artifact / Stage | Decision Owner | Confirmation Or Automated Evidence | Downstream Roles Blocked Until Confirmed | Decision |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | human-required / delegated-review | UI design / workflow / scope / acceptance criteria | User / domain owner / delegated Loop owner |  | developer / tester / UI reviewer / release owner | draft |
+| HCG-002 | Standardized production with clear requirements may proceed without user participation | automated-pass | Repeatable production step | Delegated role owner | Objective checklist/test/script output and status sync | none unless checks fail or ambiguity appears | draft |
 
 ## Gate Decision
 
@@ -1311,6 +1322,7 @@ The Loop owner must define this plan before execution begins. Default to Super A
 - Role split rule: start with Loop Manager plus 2-3 other active roles. Let Loop Manager split, activate, merge, pause, or close roles only when evidence shows the current role set is overloaded, unclear, risky, missing specialist skill, or causing repeated handoff/status/evidence friction.
 - Role boundary rule: before acting, each role must identify its position, responsibility boundary, editable artifacts, and required handoffs. If it would need to make a decision, do work, or modify files, systems, tools, data, or artifacts outside its responsibility, it must state the boundary, stop the action, and hand off to the responsible role or subagent.
 - Hard constraint gate rule: before implementation, testing, acceptance, or release-readiness work, check whether the task depends on a changed product, UI design, workflow, scope, acceptance standard, risk boundary, or release condition. If the required user/domain-owner confirmation is missing, record the blocker and stop the downstream action.
+- Human participation rule: require human input for aesthetic judgment, taste, product direction, user value tradeoffs, ambiguous demand, risk/governance authorization, or changed confirmed constraints. Standardized production can proceed without user input when requirements are clear, authority is delegated, objective checks pass, and evidence is recorded.
 - Tool and skill readiness rule: before a role starts execution, verify its required skills, tools, scripts, references, data access, and permissions. If any required capability is missing, install it, activate it, substitute it, downgrade scope, or mark the role blocked.
 - Implementation covenant rule: before execution, confirm `implementation-covenant.md` defines role boundaries, communication content requirements, evidence rules, handoff packages, status-sync rules, and escalation paths for all selected implementation roles.
 - Role category workspace rule: every active role or subagent must use its assigned category folder under `roles/`. Multiple concrete roles or sessions in the same category may share that folder when they have the same responsibility boundary; create separate folders only for distinct categories, authority boundaries, records, or access constraints.
@@ -1670,11 +1682,12 @@ demand clarification -> product/workflow scope -> codebase exploration when need
 
 ## Hard Constraint Gate Responsibility
 
-This role must enforce hard constraints at its workflow stage. If a received task depends on an unconfirmed product/UI/workflow/scope/acceptance/risk/release change, stop execution, record the blocker, and return it to the responsible role or Loop Manager.
+This role must enforce hard constraints at its workflow stage. If a received task depends on an unconfirmed product/UI/workflow/scope/acceptance/risk/release change, stop execution, record the blocker, and return it to the responsible role or Loop Manager. If the task is standardized production with clear requirements, delegated authority, objective checks, and no changed confirmed constraint, it can proceed as `automated-pass` without user participation.
 
-| Gate ID | Constraint | This Role's Enforcement Duty | Required Confirmation / Evidence | Blocked Action If Missing | Status |
-| --- | --- | --- | --- | --- | --- |
-| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | Check whether this role is asked to act on changed product/UI/workflow/scope/acceptance content | Confirmation record, changed artifact, before/after summary, affected use cases | implementation / acceptance / UI approval / release-readiness / handoff | draft |
+| Gate ID | Constraint | Human Participation | This Role's Enforcement Duty | Required Confirmation / Evidence | Blocked Action If Missing | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| HCG-001 | Product/UI/workflow changes require user/domain-owner confirmation | human-required / delegated-review | Check whether this role is asked to act on changed product/UI/workflow/scope/acceptance content | Confirmation record, changed artifact, before/after summary, affected use cases | implementation / acceptance / UI approval / release-readiness / handoff | draft |
+| HCG-002 | Standardized production with clear requirements may proceed without user participation | automated-pass | Check whether requirements are stable, objective checks exist, and no confirmed constraint changed | Confirmed requirement, checklist/test/script output, produced artifact, status sync | escalate to human-required if checks fail or ambiguity appears | draft |
 
 {use_case_responsibility}
 {role_specific_capability}

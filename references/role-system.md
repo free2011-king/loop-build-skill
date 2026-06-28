@@ -10,6 +10,7 @@ Read this reference when creating Loop roles, role workspaces, Codex sessions, i
 - [Existing Role Selection Gate](#existing-role-selection-gate)
 - [Implementation Covenant](#implementation-covenant)
 - [Hard Constraint Gates](#hard-constraint-gates)
+- [Human Participation Classification](#human-participation-classification)
 - [Document Governance And Index](#document-governance-and-index)
 - [Demand Intake Role](#demand-intake-role)
 - [Loop Manager](#loop-manager)
@@ -102,6 +103,7 @@ The covenant must include:
 - Status-sync rules: cadence, completion-sync requirement, project owner receiver, and required fields.
 - Evidence and record rules: where interactions are recorded and what counts as missing evidence.
 - Hard constraint gates: mandatory confirmations, enforcing roles, evidence requirements, stop conditions, and downstream blockers for user-facing product/UI/workflow/scope/acceptance/risk/release changes.
+- Human participation classification: which gates require human judgment, which can use delegated review, and which can pass through standardized automated evidence.
 - Boundary violation handling: what a role must do when work falls outside its authority.
 - Disagreement and escalation path: direct role communication first, Loop Manager escalation for scope/risk/authority/schedule/resource issues, and user/domain-owner decision when needed.
 - Covenant review/update rhythm: Loop Manager checks covenant quality during fixed-time retrospectives and updates it when communication friction, role overlap, role gaps, or repeated evidence gaps appear.
@@ -124,6 +126,7 @@ Each hard constraint gate must record:
 - Constraint statement.
 - Triggering change or stage.
 - Decision owner: user, domain owner, governance owner, release owner, or explicitly delegated Loop owner.
+- Human participation classification: `human-required`, `delegated-review`, or `automated-pass`.
 - Proposing role.
 - Enforcing roles at each downstream stage.
 - Required evidence: changed artifact, before/after summary, rationale, impact, screenshots or design links when relevant, test or review expectations, and confirmation record.
@@ -133,6 +136,34 @@ Each hard constraint gate must record:
 Example: when the product manager / workflow designer changes UI design, product workflow, scope, or acceptance criteria, the change remains a proposal until the user/domain owner confirms it. The product manager records the before/after and asks for confirmation; Loop Manager checks the gate and records the decision path; developer refuses implementation without confirmation evidence; tester refuses acceptance against unconfirmed criteria; UI/frontend reviewer checks user-facing consistency and evidence; release/governance owner refuses release readiness if the gate is still open.
 
 Every active role must enforce hard constraints at its own stage. A role that receives work violating an open hard constraint gate must stop, record the blocker, and return the task to the responsible role or Loop Manager. Loop Manager tracks open gates during stage handoffs, completion checkpoints, fixed-time retrospectives, and event-triggered reviews.
+
+## Human Participation Classification
+
+Loop design should put human participation where human judgment is actually needed. Do not turn every standardized production step into a user-confirmation step.
+
+Use `human-required` when the decision depends on:
+
+- Aesthetic judgment, taste, brand feel, visual direction, tone, content meaning, or experience quality that cannot be reduced to an objective checklist.
+- Product direction, user value, priority, tradeoff, scope change, acceptance meaning, or target-user interpretation.
+- Ambiguous or incomplete demand where the system would otherwise invent intent.
+- Governance, risk, privacy, compliance, release authorization, budget, contract, or permission boundaries.
+- A change to a previously confirmed constraint.
+
+Use `delegated-review` when a role or domain owner has explicitly delegated a judgment boundary and the delegate has enough context, evidence, and authority to decide without returning to the user every time.
+
+Use `automated-pass` when all of these are true:
+
+- The requirement is clear, confirmed, and stable.
+- The work is standardized or repeatable.
+- The responsible role has authority to execute.
+- Required inputs, tools, data, and permissions are available.
+- Objective checks, tests, linting, scripts, checklists, or comparison criteria can verify the output.
+- No user-facing aesthetic/product/meaning/risk/release boundary changes.
+- Evidence is recorded and downstream roles can audit it.
+
+For example, after the user confirms a UI design direction and acceptance criteria, routine implementation of already-confirmed spacing tokens, copy replacement, data formatting, test execution, or build steps may use `automated-pass` if objective checks and evidence exist. A new visual direction, changed product workflow, changed wording meaning, or subjective acceptance of look and feel remains `human-required`.
+
+Loop Manager records this classification in the implementation covenant, stage confirmation checklist, dispatch packet, or role workspace. If a supposedly automated step reveals ambiguity, subjective judgment, failed checks, or a constraint change, it must be reclassified to `human-required` or `delegated-review` before continuing.
 
 ## Document Governance And Index
 
